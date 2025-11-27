@@ -32,3 +32,7 @@ dist/
 
 # Skip auxiliary bundle
 doc-mcp-claude/
+
+# Claude Code configuration
+CLAUDE.md
+.claude/
