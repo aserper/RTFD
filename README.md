@@ -18,7 +18,7 @@ Model Context Protocol server that acts as a gateway for coding agents to pull l
    doc-mcp-server
    ```
 
-The server exposes MCP tools:
+The server exposes MCP tools (all responses returned in TOON format for token efficiency):
 - `search_library_docs(library, limit=5)`: Combined lookup using PyPI, GitHub, and Google.
 - `google_search(query, limit=5)`: General Google card scrape (no API key).
 - `github_repo_search(query, limit=5, language="Python")`
@@ -28,6 +28,7 @@ The server exposes MCP tools:
 
 ## Notes
 
+- **TOON format:** All tool responses are serialized to TOON (Token-Oriented Object Notation) format, reducing response size by ~30% compared to JSON. TOON is human-readable and lossless.
 - Google scraping is best-effort and may return fewer results if Google throttles anonymous traffic; add a proxy or API if needed.
 - Network calls fail gracefully with error payloads instead of raising uncaught exceptions.
-- This project only depends on standard Python plus `mcp`, `httpx`, and `beautifulsoup4`; adjust `pyproject.toml` if you need an alternative HTTP client.
+- Dependencies: `mcp`, `httpx`, `beautifulsoup4`, and `toonify` (for TOON serialization). Adjust `pyproject.toml` if needed.
