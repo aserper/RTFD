@@ -1,0 +1,34 @@
+# Virtual environments
+.venv/
+venv/
+include/
+lib/
+lib64/
+lib64
+pyvenv.cfg
+
+# Python cache/artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# Builds and distributions
+build/
+dist/
+*.egg-info/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Local env
+.env
+.env.*
+
+# Skip auxiliary bundle
+doc-mcp-claude/

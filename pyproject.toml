@@ -1,0 +1,19 @@
+[project]
+name = "doc-mcp"
+version = "0.1.0"
+description = "MCP gateway server for library documentation search (Google, GitHub, PyPI)."
+authors = [{ name = "Doc MCP" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=0.2.0",
+    "httpx>=0.26.0",
+    "beautifulsoup4>=4.12.0"
+]
+
+[project.scripts]
+doc-mcp-server = "doc_mcp.server:run"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
