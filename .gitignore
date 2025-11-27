@@ -36,3 +36,4 @@ doc-mcp-claude/
 # Claude Code configuration
 CLAUDE.md
 .claude/
+AGENTS.md
