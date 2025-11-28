@@ -1,10 +1,10 @@
 # ![RTFD Logo](logo.png) RTFD (Read The F*****g Docs) MCP Server
 
-Model Context Protocol (MCP) server that acts as a gateway for coding agents to pull library documentation and related context. It queries Google (HTML scrape), GitHub search APIs, PyPI, npm, crates.io, GoDocs, and Zig documentation to surface relevant docs in one place.
+Model Context Protocol (MCP) server that acts as a gateway for coding agents to pull library documentation and related context. It queries PyPI, npm, crates.io, GoDocs, Zig documentation, and GitHub APIs to surface relevant docs in one place.
 
 **Features:**
 - **Pluggable Architecture**: Easily add new documentation providers by creating a single provider module
-- **Multi-Source Search**: Aggregates results from PyPI, npm, crates.io, GoDocs, Zig docs, GitHub repositories, GitHub code, and Google
+- **Multi-Source Search**: Aggregates results from PyPI, npm, crates.io, GoDocs, Zig docs, GitHub repositories, and GitHub code
 - **Token Efficient**: All responses serialized in TOON format (~30% smaller than JSON)
 - **Error Resilient**: Provider failures are isolated; one API failure doesn't crash the server
 - **Auto-Discovery**: New providers are automatically discovered and registered
@@ -30,7 +30,7 @@ Model Context Protocol (MCP) server that acts as a gateway for coding agents to 
 All tool responses are returned in **TOON format** for token efficiency.
 
 **Aggregator:**
-- `search_library_docs(library, limit=5)`: Combined lookup across all providers (PyPI, GoDocs, GitHub, Google)
+- `search_library_docs(library, limit=5)`: Combined lookup across all providers (PyPI, npm, crates.io, GoDocs, Zig, GitHub)
 
 **Individual Providers:**
 - `pypi_metadata(package)`: Fetch Python package metadata from PyPI
@@ -41,7 +41,6 @@ All tool responses are returned in **TOON format** for token efficiency.
 - `zig_docs(query)`: Search Zig programming language documentation
 - `github_repo_search(query, limit=5, language="Python")`: Search GitHub repositories
 - `github_code_search(query, repo=None, limit=5)`: Search code on GitHub
-- `google_search(query, limit=5, use_api=False)`: Search Google (HTML scrape by default; set `use_api=True` with `GOOGLE_API_KEY` and `GOOGLE_CSE_ID` env vars for Custom Search API)
 
 ## Integration with Claude Code
 
@@ -76,7 +75,7 @@ Or, if you want to run it with a specific environment (e.g., with a GitHub token
 }
 ```
 
-Once configured, Claude Code will have access to all 10 tools and can search library documentation across multiple sources in a single request.
+Once configured, Claude Code will have access to all 9 tools and can search library documentation across multiple sources in a single request.
 
 ## Integration with Other MCP Clients
 
@@ -151,14 +150,12 @@ class MyProvider(BaseProvider):
 - **GoDocs** (`godocs.py`): Retrieves Go package documentation from godocs.io
 - **Zig** (`zig.py`): Searches Zig programming language documentation
 - **GitHub** (`github.py`): Searches GitHub repositories and code
-- **Google** (`google.py`): General web search with HTML scraping
 
 Each provider can be extended or replaced without modifying server.py or other providers.
 
 ## Notes
 
 - **TOON format:** All tool responses are serialized to TOON (Token-Oriented Object Notation) format, reducing response size by ~30% compared to JSON. TOON is human-readable and lossless.
-- **Rate Limiting:** crates.io provider respects the 1 request/second rate limit enforced by crates.io
-- Google scraping is best-effort and may return fewer results if Google throttles anonymous traffic; add a proxy or API if needed.
+- **Rate Limiting:** crates.io provider respects the 1 request/second rate limit enforced by crates.io.
 - Network calls fail gracefully with error payloads instead of raising uncaught exceptions.
 - Dependencies: `mcp`, `httpx`, `beautifulsoup4`, and `toonify` (for TOON serialization). Adjust `pyproject.toml` if needed.
