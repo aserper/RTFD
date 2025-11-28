@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict
 
 import httpx
 
-from ..utils import to_toon
+from ..utils import serialize_response
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -164,11 +164,11 @@ class CratesProvider(BaseProvider):
         async def search_crates(query: str, limit: int = 5) -> str:
             """Search for Rust crates on crates.io. Returns data in TOON format."""
             result = await self._search_crates(query, per_page=limit)
-            return to_toon(result)
+            return serialize_response(result)
 
         async def crates_metadata(crate: str) -> str:
             """Get detailed metadata for a Rust crate from crates.io. Returns data in TOON format."""
             result = await self._get_crate_metadata(crate)
-            return to_toon(result)
+            return serialize_response(result)
 
         return {"search_crates": search_crates, "crates_metadata": crates_metadata}

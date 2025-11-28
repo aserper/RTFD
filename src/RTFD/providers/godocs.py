@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict
 import httpx
 from bs4 import BeautifulSoup
 
-from ..utils import to_toon
+from ..utils import serialize_response
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -96,6 +96,6 @@ class GoDocsProvider(BaseProvider):
         async def godocs_metadata(package: str) -> str:
             """Retrieve Go package documentation metadata from godocs.io. Returns data in TOON format."""
             result = await self._fetch_metadata(package)
-            return to_toon(result)
+            return serialize_response(result)
 
         return {"godocs_metadata": godocs_metadata}

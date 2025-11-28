@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict
 
 import httpx
 
-from ..utils import to_toon
+from ..utils import serialize_response
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -62,6 +62,6 @@ class PyPIProvider(BaseProvider):
         async def pypi_metadata(package: str) -> str:
             """Retrieve PyPI package metadata including documentation URLs when available. Returns data in TOON format."""
             result = await self._fetch_metadata(package)
-            return to_toon(result)
+            return serialize_response(result)
 
         return {"pypi_metadata": pypi_metadata}

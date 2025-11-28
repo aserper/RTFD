@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 import httpx
 
-from ..utils import USER_AGENT, to_toon
+from ..utils import USER_AGENT, serialize_response
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -127,14 +127,14 @@ class GitHubProvider(BaseProvider):
         ) -> str:
             """Search GitHub repositories relevant to a library or topic. Returns data in TOON format."""
             result = await self._search_repos(query, limit=limit, language=language)
-            return to_toon(result)
+            return serialize_response(result)
 
         async def github_code_search(
             query: str, repo: Optional[str] = None, limit: int = 5
         ) -> str:
             """Search GitHub code (optionally scoped to a repository). Returns data in TOON format."""
             result = await self._search_code(query, repo=repo, limit=limit)
-            return to_toon(result)
+            return serialize_response(result)
 
         return {
             "github_repo_search": github_repo_search,

@@ -14,7 +14,7 @@ from mcp.server.fastmcp import FastMCP
 
 from .providers import discover_providers
 from .providers.base import BaseProvider
-from .utils import create_http_client, to_toon
+from .utils import create_http_client, serialize_response
 
 # Initialize FastMCP server
 mcp = FastMCP("rtfd-gateway")
@@ -116,7 +116,7 @@ async def _locate_library_docs(library: str, limit: int = 5) -> Dict[str, Any]:
 async def search_library_docs(library: str, limit: int = 5) -> str:
     """Aggregated library documentation search across all providers."""
     result = await _locate_library_docs(library, limit=limit)
-    return to_toon(result)
+    return serialize_response(result)
 
 
 # Auto-register all provider tools

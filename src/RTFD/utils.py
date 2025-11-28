@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import Any
 
 import httpx
+import json
+import os
 from toon import encode
 
 USER_AGENT = (
@@ -27,6 +29,15 @@ async def create_http_client() -> httpx.AsyncClient:
     )
 
 
-def to_toon(data: Any) -> str:
-    """Convert data to TOON format for token efficiency."""
-    return encode(data)
+def serialize_response(data: Any) -> str:
+    """
+    Convert data to string format.
+    
+    Uses TOON by default for token efficiency, but falls back to JSON
+    if USE_TOON environment variable is set to 'false'.
+    """
+    use_toon = os.getenv("USE_TOON", "true").lower() == "true"
+    
+    if use_toon:
+        return encode(data)
+    return json.dumps(data)

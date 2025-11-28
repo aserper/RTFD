@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict
 
 import httpx
 
-from ..utils import to_toon
+from ..utils import serialize_response
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -95,6 +95,6 @@ class NpmProvider(BaseProvider):
         async def npm_metadata(package: str) -> str:
             """Retrieve npm package metadata including documentation URLs when available. Returns data in TOON format."""
             result = await self._fetch_metadata(package)
-            return to_toon(result)
+            return serialize_response(result)
 
         return {"npm_metadata": npm_metadata}

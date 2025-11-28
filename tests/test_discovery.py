@@ -8,11 +8,13 @@ def test_discover_providers_finds_all():
     """Test that discovery finds all 4 providers."""
     providers = discover_providers()
 
-    assert len(providers) == 4
+    assert len(providers) == 6
     assert "pypi" in providers
     assert "godocs" in providers
     assert "github" in providers
-    assert "google" in providers
+    assert "npm" in providers
+    assert "crates" in providers
+    assert "zig" in providers
 
 
 def test_all_providers_are_base_provider_subclasses():
@@ -44,10 +46,10 @@ def test_get_provider_metadata_all():
     """Test get_provider_metadata_all returns metadata for all providers."""
     metadata_list = get_provider_metadata_all()
 
-    assert len(metadata_list) == 4
+    assert len(metadata_list) == 6
 
     metadata_names = {m.name for m in metadata_list}
-    assert metadata_names == {"pypi", "godocs", "github", "google"}
+    assert metadata_names == {"pypi", "godocs", "github", "npm", "crates", "zig"}
 
 
 def test_discovery_caches_results():

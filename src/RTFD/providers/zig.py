@@ -7,7 +7,7 @@ from typing import Any, Callable, Dict
 import httpx
 from bs4 import BeautifulSoup
 
-from ..utils import to_toon
+from ..utils import serialize_response
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -39,7 +39,7 @@ class ZigProvider(BaseProvider):
         async def zig_docs(query: str) -> str:
             """Search Zig language documentation. Returns data in TOON format."""
             result = await self._search_zig_docs(query)
-            return to_toon(result)
+            return serialize_response(result)
 
         return {"zig_docs": zig_docs}
 
