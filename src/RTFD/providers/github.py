@@ -8,7 +8,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 import httpx
 
-from ..utils import USER_AGENT, serialize_response
+from ..utils import USER_AGENT, serialize_response, is_fetch_enabled
 from ..content_utils import convert_relative_urls
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
@@ -17,11 +17,15 @@ class GitHubProvider(BaseProvider):
     """Provider for GitHub repository and code search."""
 
     def get_metadata(self) -> ProviderMetadata:
+        tool_names = ["github_repo_search", "github_code_search"]
+        if is_fetch_enabled():
+            tool_names.append("fetch_github_readme")
+
         return ProviderMetadata(
             name="github",
             description="GitHub repository and code search, README fetching",
             expose_as_tool=True,
-            tool_names=["github_repo_search", "github_code_search", "fetch_github_readme"],
+            tool_names=tool_names,
             supports_library_search=True,
             required_env_vars=[],
             optional_env_vars=["GITHUB_TOKEN"],
@@ -246,8 +250,11 @@ class GitHubProvider(BaseProvider):
             result = await self._fetch_github_readme(owner, repo_name, max_bytes)
             return serialize_response(result)
 
-        return {
+        tools = {
             "github_repo_search": github_repo_search,
             "github_code_search": github_code_search,
-            "fetch_github_readme": fetch_github_readme,
         }
+        if is_fetch_enabled():
+            tools["fetch_github_readme"] = fetch_github_readme
+
+        return tools

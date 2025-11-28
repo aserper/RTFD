@@ -35,6 +35,15 @@ Model Context Protocol (MCP) server that acts as a gateway for coding agents to 
    rtfd
    ```
 
+5. Configure documentation fetching (optional):
+   By default, documentation content fetching tools are enabled (`fetch_pypi_docs`, `fetch_npm_docs`, `fetch_github_readme`).
+   To disable them and only use metadata tools, set `RTFD_FETCH=false`:
+   ```bash
+   export RTFD_FETCH=false
+   rtfd
+   ```
+   Accepted values for disabling: `false`, `0`, `no` (case-insensitive)
+
 ## Available Tools
 
 All tool responses are returned in **JSON format** by default. This can be changed to TOON by setting `USE_TOON=true`.
@@ -171,6 +180,7 @@ Each provider can be extended or replaced without modifying server.py or other p
 ## Notes
 
 - **TOON format:** Tool responses can be serialized to TOON (Token-Oriented Object Notation) format, reducing response size by ~30% compared to JSON. TOON is human-readable and lossless. Set `USE_TOON=true` to enable TOON serialization.
+- **Documentation Fetching:** Content fetching tools (`fetch_pypi_docs`, `fetch_npm_docs`, `fetch_github_readme`) are enabled by default. Set `RTFD_FETCH=false` to disable and only use metadata tools.
 - **Rate Limiting:** crates.io provider respects the 1 request/second rate limit enforced by crates.io.
 - Network calls fail gracefully with error payloads instead of raising uncaught exceptions.
-- Dependencies: `mcp`, `httpx`, `beautifulsoup4`, and `toonify` (for TOON serialization). Adjust `pyproject.toml` if needed.
+- Dependencies: `mcp`, `httpx`, `beautifulsoup4`, `toonify` (for TOON serialization), `markdownify`, and `docutils` (for content fetching). Adjust `pyproject.toml` if needed.

@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, Optional
 
 import httpx
 
-from ..utils import serialize_response
+from ..utils import serialize_response, is_fetch_enabled
 from ..content_utils import convert_rst_to_markdown, extract_sections, prioritize_sections
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
@@ -15,11 +15,15 @@ class PyPIProvider(BaseProvider):
     """Provider for PyPI package metadata."""
 
     def get_metadata(self) -> ProviderMetadata:
+        tool_names = ["pypi_metadata"]
+        if is_fetch_enabled():
+            tool_names.append("fetch_pypi_docs")
+
         return ProviderMetadata(
             name="pypi",
             description="PyPI package metadata and documentation",
             expose_as_tool=True,
-            tool_names=["pypi_metadata", "fetch_pypi_docs"],
+            tool_names=tool_names,
             supports_library_search=True,
             required_env_vars=[],
             optional_env_vars=[],
@@ -162,4 +166,8 @@ class PyPIProvider(BaseProvider):
             result = await self._fetch_pypi_docs(package, max_bytes)
             return serialize_response(result)
 
-        return {"pypi_metadata": pypi_metadata, "fetch_pypi_docs": fetch_pypi_docs}
+        tools = {"pypi_metadata": pypi_metadata}
+        if is_fetch_enabled():
+            tools["fetch_pypi_docs"] = fetch_pypi_docs
+
+        return tools

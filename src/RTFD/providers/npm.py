@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict
 
 import httpx
 
-from ..utils import serialize_response
+from ..utils import serialize_response, is_fetch_enabled
 from ..content_utils import extract_sections, prioritize_sections
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
@@ -15,11 +15,15 @@ class NpmProvider(BaseProvider):
     """Provider for npm package registry metadata."""
 
     def get_metadata(self) -> ProviderMetadata:
+        tool_names = ["npm_metadata"]
+        if is_fetch_enabled():
+            tool_names.append("fetch_npm_docs")
+
         return ProviderMetadata(
             name="npm",
             description="npm package registry metadata and documentation",
             expose_as_tool=True,
-            tool_names=["npm_metadata", "fetch_npm_docs"],
+            tool_names=tool_names,
             supports_library_search=True,
             required_env_vars=[],
             optional_env_vars=[],
@@ -189,4 +193,8 @@ class NpmProvider(BaseProvider):
             result = await self._fetch_npm_docs(package, max_bytes)
             return serialize_response(result)
 
-        return {"npm_metadata": npm_metadata, "fetch_npm_docs": fetch_npm_docs}
+        tools = {"npm_metadata": npm_metadata}
+        if is_fetch_enabled():
+            tools["fetch_npm_docs"] = fetch_npm_docs
+
+        return tools
