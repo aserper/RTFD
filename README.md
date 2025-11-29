@@ -8,6 +8,7 @@ Model Context Protocol (MCP) server that acts as a gateway for coding agents to 
 - **Format Conversion**: Automatically converts reStructuredText and HTML to Markdown for consistent formatting
 - **Pluggable Architecture**: Easily add new documentation providers by creating a single provider module
 - **Multi-Source Search**: Aggregates results from PyPI, npm, crates.io, GoDocs, Zig docs, GitHub repositories, and GitHub code
+- **Token Counting**: Every response includes token statistics showing JSON vs TOON token usage and potential savings (visible in Claude Code UI, costs 0 tokens)
 - **Token Efficient**: Responses can be serialized in TOON format (~30% smaller than JSON) by setting `USE_TOON=true`
 - **Error Resilient**: Provider failures are isolated; one API failure doesn't crash the server
 - **Auto-Discovery**: New providers are automatically discovered and registered
@@ -43,6 +44,14 @@ Model Context Protocol (MCP) server that acts as a gateway for coding agents to 
    rtfd
    ```
    Accepted values for disabling: `false`, `0`, `no` (case-insensitive)
+
+6. Configure token counting (optional):
+   By default, token counting is enabled and all tool responses include token statistics in the response metadata (visible in Claude Code UI, costs 0 tokens).
+   To disable token counting for better performance, set `RTFD_TRACK_TOKENS=false`:
+   ```bash
+   export RTFD_TRACK_TOKENS=false
+   rtfd
+   ```
 
 ## Available Tools
 
@@ -99,7 +108,7 @@ Or, if you want to run it with a specific environment (e.g., with a GitHub token
 }
 ```
 
-Once configured, Claude Code will have access to all 9 tools and can search library documentation across multiple sources in a single request.
+Once configured, Claude Code will have access to all 13 tools and can search library documentation across multiple sources in a single request. Each tool response includes token statistics in the metadata showing current usage and potential TOON savings.
 
 ## Integration with Other MCP Clients
 
@@ -177,10 +186,54 @@ class MyProvider(BaseProvider):
 
 Each provider can be extended or replaced without modifying server.py or other providers.
 
+## Token Counting
+
+RTFD automatically tracks token consumption for every API call and displays statistics in the response metadata. This feature is designed to help you understand token usage without adding any cost to your LLM.
+
+### How It Works
+
+- **Token Statistics in Metadata**: Every tool response includes a `meta` field with token statistics
+- **Zero LLM Cost**: Token counts appear in Claude Code's UI but are NOT sent to the LLM (costs 0 tokens)
+- **JSON vs TOON Comparison**: Shows token count for both formats + potential savings percentage
+- **Always Calculated**: By default, token stats are included on every response
+
+### What You'll See
+
+When calling any rtfd tool in Claude Code, the response metadata will include:
+
+```json
+{
+  "token_stats": {
+    "tokens_json": 1247,      // tokens if using JSON
+    "tokens_toon": 823,       // tokens if using TOON
+    "tokens_sent": 1247,      // actual tokens in this response
+    "format": "json",         // which format is active
+    "savings_tokens": 424,    // how many tokens TOON would save
+    "savings_percent": 34.0,  // percentage savings
+    "bytes_json": 5234,       // size in bytes (JSON)
+    "bytes_toon": 3456        // size in bytes (TOON)
+  }
+}
+```
+
+This allows you to see at a glance whether using `USE_TOON=true` would provide meaningful token savings for your workload.
+
+### Controlling Token Counting
+
+- **Enable (default)**: `RTFD_TRACK_TOKENS=true` - Calculate tokens for both formats on every response
+- **Disable**: `RTFD_TRACK_TOKENS=false` - Only serialize to active format, skip token counting (faster)
+
+Disable token counting if you experience performance issues or don't need the statistics:
+```bash
+export RTFD_TRACK_TOKENS=false
+rtfd
+```
+
 ## Notes
 
+- **Token Counting:** By default, RTFD calculates token statistics comparing JSON and TOON formats for every response. Statistics appear in response metadata (visible in Claude Code UI but cost 0 tokens to the LLM). Disable with `RTFD_TRACK_TOKENS=false` if you prefer better performance over token stats.
 - **TOON format:** Tool responses can be serialized to TOON (Token-Oriented Object Notation) format, reducing response size by ~30% compared to JSON. TOON is human-readable and lossless. Set `USE_TOON=true` to enable TOON serialization.
 - **Documentation Fetching:** Content fetching tools (`fetch_pypi_docs`, `fetch_npm_docs`, `fetch_github_readme`) are enabled by default. Set `RTFD_FETCH=false` to disable and only use metadata tools.
 - **Rate Limiting:** crates.io provider respects the 1 request/second rate limit enforced by crates.io.
 - Network calls fail gracefully with error payloads instead of raising uncaught exceptions.
-- Dependencies: `mcp`, `httpx`, `beautifulsoup4`, `toonify` (for TOON serialization), `markdownify`, and `docutils` (for content fetching). Adjust `pyproject.toml` if needed.
+- Dependencies: `mcp`, `httpx`, `beautifulsoup4`, `toonify` (for TOON serialization), `markdownify`, `docutils` (for content fetching), and `tiktoken` (for token counting). Adjust `pyproject.toml` if needed.
