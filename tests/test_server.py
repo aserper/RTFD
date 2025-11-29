@@ -71,10 +71,12 @@ async def test_search_library_docs_returns_json_string():
     """Test that search_library_docs tool returns JSON-formatted string by default."""
     result = await search_library_docs("requests", limit=2)
 
-    assert isinstance(result, str)
+    assert result.content[0].type == "text"
+    text_content = result.content[0].text
+    assert isinstance(text_content, str)
     # Check for JSON format indicators
-    assert '{"library": "requests"' in result
-    assert '"pypi":' in result
+    assert '{"library": "requests"' in text_content
+    assert '"pypi":' in text_content
 
 
 @pytest.mark.asyncio
@@ -82,8 +84,10 @@ async def test_search_library_docs_with_limit():
     """Test that search_library_docs respects limit parameter."""
     result = await search_library_docs("python", limit=2)
 
-    assert isinstance(result, str)
-    assert "python" in result
+    assert result.content[0].type == "text"
+    text_content = result.content[0].text
+    assert isinstance(text_content, str)
+    assert "python" in text_content
 
 
 @pytest.mark.asyncio

@@ -78,6 +78,8 @@ async def test_pypi_metadata_tool(provider):
 
     result = await tool("requests")
 
-    assert isinstance(result, str)
-    assert "requests" in result  # Should contain package name in TOON format
-    assert "2." in result  # Should contain version number
+    assert result.content[0].type == "text"
+    text_content = result.content[0].text
+    assert isinstance(text_content, str)
+    assert "requests" in text_content  # Should contain package name in TOON format
+    assert "2." in text_content  # Should contain version number

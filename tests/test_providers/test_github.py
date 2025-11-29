@@ -106,8 +106,10 @@ async def test_github_repo_search_tool(provider):
 
     try:
         result = await tool("python requests", limit=2)
-        assert isinstance(result, str)
-        assert "[" in result  # TOON array format
+        assert result.content[0].type == "text"
+        text_content = result.content[0].text
+        assert isinstance(text_content, str)
+        assert "[" in text_content  # TOON array format
     except Exception as e:
         # May fail due to rate limits without GITHUB_TOKEN
         assert "403" in str(e) or "rate limit" in str(e).lower()
@@ -121,7 +123,9 @@ async def test_github_code_search_tool(provider):
 
     try:
         result = await tool("def main", limit=2)
-        assert isinstance(result, str)
+        assert result.content[0].type == "text"
+        text_content = result.content[0].text
+        assert isinstance(text_content, str)
     except Exception as e:
         # GitHub code search requires authentication
         assert "401" in str(e) or "Unauthorized" in str(e)
