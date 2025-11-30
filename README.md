@@ -24,6 +24,9 @@ An agent is assisting with a Rust project and needs to integrate a crate it has 
 ### Scenario 3: Using Bleeding-Edge Libraries
 A developer wants to use a library that was released yesterday and is not yet part of the LLM's training data. Without RTFD, the model would likely hallucinate the library's usage. With RTFD, the agent can use `fetch_github_readme` or `github_code_search` to inspect the repository directly, read the latest README, and understand how to implement the new library correctly.
 
+### Scenario 4: Inspecting Docker Base Images
+You are building a containerized application and want to understand how the `python:3.11-slim` image is built to optimize your own Dockerfile. Using `fetch_dockerfile`, the agent retrieves the actual Dockerfile used to build the official image, revealing the underlying Debian version, installed system packages, and environment variables.
+
 ## Features
 
 *   **Documentation Content Fetching:** Retrieve actual documentation content (README and key sections) from PyPI, npm, and GitHub rather than just URLs.
@@ -78,13 +81,14 @@ A developer wants to use a library that was released yesterday and is not yet pa
 All tool responses are returned in JSON format by default, or TOON if configured.
 
 ### Aggregator
-*   `search_library_docs(library, limit=5)`: Combined lookup across all providers (PyPI, npm, crates.io, GoDocs, Zig, GitHub). Note: DockerHub search is accessed via dedicated tools.
+*   `search_library_docs(library, limit=5)`: Combined lookup across all providers (PyPI, npm, crates.io, GoDocs, GitHub). Note: Zig and DockerHub are accessed via dedicated tools.
 
 ### Documentation Content Fetching
 *   `fetch_pypi_docs(package, max_bytes=20480)`: Fetch Python package documentation from PyPI.
 *   `fetch_npm_docs(package, max_bytes=20480)`: Fetch npm package documentation.
 *   `fetch_github_readme(repo, max_bytes=20480)`: Fetch README from a GitHub repository (format: "owner/repo").
 *   `fetch_docker_image_docs(image, max_bytes=20480)`: Fetch Docker image documentation and description from DockerHub (e.g., "nginx", "postgres", "user/image").
+*   `fetch_dockerfile(image)`: Fetch the Dockerfile for a Docker image by parsing its description for GitHub links (best-effort).
 
 ### Metadata Providers
 *   `pypi_metadata(package)`: Fetch Python package metadata.
@@ -139,3 +143,50 @@ To add a custom provider, create a new file in the providers directory inheritin
 *   **TOON Format:** Set `USE_TOON=true` to enable.
 *   **Rate Limiting:** The crates.io provider respects the 1 request/second limit.
 *   **Dependencies:** `mcp`, `httpx`, `beautifulsoup4`, `toonify`, `markdownify`, `docutils`, `tiktoken`.
+
+## Architecture
+
+*   **Entry point:** `src/RTFD/server.py` contains the main search orchestration tool. Provider-specific tools are in `src/RTFD/providers/`.
+*   **Framework:** Uses `mcp.server.fastmcp.FastMCP` to declare tools and run the server over stdio.
+*   **HTTP layer:** `httpx.AsyncClient` with a shared `_http_client()` factory that applies timeouts, redirects, and user-agent headers.
+*   **Data model:** Responses are plain dicts for easy serialization over MCP.
+*   **Serialization:** Tool responses use `serialize_response_with_meta()` from `utils.py`. Format is configurable via `USE_TOON` environment variable.
+*   **Token counting:** Optional token statistics in the `meta` field (disabled by default). Enable with `RTFD_TRACK_TOKENS=true`.
+
+## Serialization and Token Counting
+
+Tool responses are handled by `serialize_response_with_meta()` in `utils.py`:
+
+*   **Format selection:** Controlled by `USE_TOON` environment variable (defaults to `false` for JSON).
+*   **TOON format:** When `USE_TOON=true`, uses the `toonify` library to achieve ~30% token reduction compared to JSON, particularly effective for arrays of uniform objects (e.g., search results).
+*   **Token statistics:** When `RTFD_TRACK_TOKENS=true`, the response includes a `_meta` field with token counts (`tokens_json`, `tokens_toon`, `savings_percent`, etc.).
+*   **Token counting:** Uses `tiktoken` library with `cl100k_base` encoding (compatible with Claude models).
+*   **Zero-cost metadata:** Token statistics appear in the `_meta` field of `CallToolResult`, which is visible in Claude Code's special metadata logs but NOT sent to the LLM, costing 0 tokens.
+
+Example: A result with 2 GitHub repos in TOON vs JSON:
+
+```
+# TOON (611 chars)
+github_repos[2]{name,stars,url}:
+  psf/requests,52000,https://github.com/psf/requests
+  requests/toolbelt,8800,https://github.com/requests/toolbelt
+
+# JSON (867 chars)
+{"github_repos":[{"name":"psf/requests","stars":52000,"url":"https://github.com/psf/requests"},{"name":"requests/toolbelt","stars":8800,"url":"https://github.com/requests/toolbelt"}]}
+```
+
+## Extensibility & Development
+
+### Adding Providers
+The RTFD server uses a modular architecture. Providers are located in `src/RTFD/providers/` and implement the `BaseProvider` interface. New providers are automatically discovered and registered upon server restart.
+
+To add a custom provider:
+1.  Create a new file in `src/RTFD/providers/`.
+2.  Define async functions decorated with `@mcp.tool()`.
+3.  Ensure tools return `CallToolResult` using `serialize_response_with_meta(result_data)`.
+
+### Development Notes
+*   **Dependencies:** Declared in `pyproject.toml` (Python 3.10+).
+*   **Testing:** Use `pytest` to run the test suite.
+*   **Environment:** If you change environment-sensitive settings (e.g., `GITHUB_TOKEN`, `USE_TOON`), restart the `rtfd` process.
+

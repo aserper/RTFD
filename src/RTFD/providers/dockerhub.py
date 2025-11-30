@@ -20,6 +20,7 @@ class DockerHubProvider(BaseProvider):
         tool_names = ["search_docker_images", "docker_image_metadata"]
         if is_fetch_enabled():
             tool_names.append("fetch_docker_image_docs")
+            tool_names.append("fetch_dockerfile")
 
         return ProviderMetadata(
             name="dockerhub",
@@ -221,6 +222,99 @@ class DockerHubProvider(BaseProvider):
                 "source": None,
             }
 
+    async def _fetch_dockerfile(self, image: str) -> Dict[str, Any]:
+        """Fetch Dockerfile for an image by parsing its description for GitHub links.
+
+        Args:
+            image: Image name (e.g., 'nginx', 'python')
+
+        Returns:
+            Dict with Dockerfile content or error
+        """
+        import re
+
+        try:
+            # 1. Get image metadata to find the description
+            metadata = await self._fetch_image_metadata(image)
+            if "error" in metadata:
+                return {
+                    "image": image,
+                    "error": metadata["error"],
+                    "source": None,
+                }
+
+            # 2. Get the full description (README)
+            # Note: _fetch_image_metadata might not return full_description if it uses the summary endpoint,
+            # but let's check if we need to make a separate call or if we can rely on what we have.
+            # The previous investigation showed we need to hit the repository endpoint which _fetch_image_metadata does.
+            # However, the 'readme' field in _fetch_image_metadata comes from 'readme' key in JSON.
+            # Let's verify if 'full_description' is available in the payload of _fetch_image_metadata.
+            # Looking at _fetch_image_metadata implementation:
+            # url = f"{self.DOCKERHUB_API_URL}/repositories/{repo_path}/"
+            # This endpoint returns 'full_description' usually.
+            # But _fetch_image_metadata returns a dict with specific keys.
+            # We need to access the raw description.
+            
+            # Let's re-fetch to be sure we get the full description text to parse
+            if "/" not in image:
+                repo_path = f"library/{image}"
+            else:
+                repo_path = image
+
+            url = f"{self.DOCKERHUB_API_URL}/repositories/{repo_path}/"
+            
+            async with await self._http_client() as client:
+                resp = await client.get(url)
+                resp.raise_for_status()
+                data = resp.json()
+            
+            full_desc = data.get("full_description", "")
+            
+            # 3. Find GitHub Dockerfile links
+            # Pattern: https://github.com/[owner]/[repo]/blob/[ref]/[path/to/]Dockerfile
+            # We want to capture the whole URL
+            github_pattern = r"https://github\.com/[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+/blob/[a-zA-Z0-9_.-]+(?:/[a-zA-Z0-9_.-]+)*/Dockerfile"
+            
+            matches = re.findall(github_pattern, full_desc)
+            
+            if not matches:
+                return {
+                    "image": image,
+                    "error": "No GitHub Dockerfile link found in image description",
+                    "source": "dockerhub_description",
+                }
+            
+            # Use the first match (often the 'latest' or most prominent one)
+            # Ideally we'd match against a specific tag if provided, but for now we take the first one.
+            dockerfile_url = matches[0]
+            
+            # 4. Convert to raw GitHub URL
+            # From: https://github.com/user/repo/blob/ref/path/Dockerfile
+            # To:   https://raw.githubusercontent.com/user/repo/ref/path/Dockerfile
+            
+            raw_url = dockerfile_url.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/")
+            
+            # 5. Fetch the Dockerfile
+            async with await self._http_client() as client:
+                resp = await client.get(raw_url)
+                resp.raise_for_status()
+                content = resp.text
+                
+            return {
+                "image": image,
+                "content": content,
+                "size_bytes": len(content.encode("utf-8")),
+                "source": raw_url,
+                "found_in_description": True
+            }
+
+        except Exception as exc:
+            return {
+                "image": image,
+                "error": f"Failed to fetch Dockerfile: {str(exc)}",
+                "source": None,
+            }
+
     def get_tools(self) -> Dict[str, Callable]:
         """Return MCP tool functions."""
 
@@ -267,11 +361,27 @@ class DockerHubProvider(BaseProvider):
             result = await self._fetch_image_docs(image, max_bytes)
             return serialize_response_with_meta(result)
 
+        async def fetch_dockerfile(image: str) -> CallToolResult:
+            """Fetch the Dockerfile for a Docker image.
+            
+            Attempts to find a link to the Dockerfile in the image's DockerHub description
+            and fetches it from the source (usually GitHub).
+            
+            Args:
+                image: Docker image name (e.g., 'nginx', 'python')
+                
+            Returns:
+                The content of the Dockerfile if found.
+            """
+            result = await self._fetch_dockerfile(image)
+            return serialize_response_with_meta(result)
+
         tools = {
             "search_docker_images": search_docker_images,
             "docker_image_metadata": docker_image_metadata,
         }
         if is_fetch_enabled():
             tools["fetch_docker_image_docs"] = fetch_docker_image_docs
+            tools["fetch_dockerfile"] = fetch_dockerfile
 
         return tools
