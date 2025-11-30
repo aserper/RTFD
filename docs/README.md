@@ -52,6 +52,15 @@ All tools return `CallToolResult` objects containing serialized data (JSON or TO
 - `zig_docs(query)` (in `providers/zig.py`)
   Search Zig language documentation.
 
+- `search_docker_images(query, limit=5)` (in `providers/dockerhub.py`)
+  Search for Docker images on DockerHub. Returns search results with name, description, stars, pull counts, and official image indicators.
+
+- `docker_image_metadata(image)` (in `providers/dockerhub.py`)
+  Fetch detailed metadata for a specific Docker image. Supports both official images (e.g., "nginx") and user images (e.g., "user/image"). Returns metadata including stars, pull counts, last update time, description, and repository type.
+
+- `fetch_docker_image_docs(image, max_bytes=20480)` (in `providers/dockerhub.py`)
+  Fetch Docker image documentation and description from DockerHub. Combines the description and README content for a Docker image. Returns content with metadata about size and truncation.
+
 ## Serialization and Token Counting
 
 Tool responses are handled by `serialize_response_with_meta()` in `utils.py`:

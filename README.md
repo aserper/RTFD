@@ -1,6 +1,6 @@
 # ![RTFD Logo](logo.png) RTFD (Read The F*****g Docs) MCP Server
 
-The RTFD (Read The F*****g Docs) MCP Server acts as a bridge between Large Language Models (LLMs) and real-time documentation. It allows coding agents to query package repositories like PyPI, npm, crates.io, GoDocs, and GitHub to retrieve the most up-to-date documentation and context.
+The RTFD (Read The F*****g Docs) MCP Server acts as a bridge between Large Language Models (LLMs) and real-time documentation. It allows coding agents to query package repositories like PyPI, npm, crates.io, GoDocs, DockerHub, and GitHub to retrieve the most up-to-date documentation and context.
 
 This server solves a common problem where LLMs hallucinate APIs or provide outdated code examples because their training data is months or years old. By giving agents access to the actual documentation, RTFD ensures that generated code is accurate and follows current best practices.
 
@@ -9,7 +9,7 @@ This server solves a common problem where LLMs hallucinate APIs or provide outda
 *   **Accuracy:** Agents can access the latest documentation for libraries, ensuring they use the correct version-specific APIs and avoid deprecated methods.
 *   **Context Awareness:** Instead of just getting a raw text dump, the server extracts key sections like installation instructions, quickstart guides, and API references, giving the agent exactly what it needs.
 *   **Efficiency:** The server supports TOON (Token-Oriented Object Notation) serialization, which can reduce the token cost of documentation responses by approximately 30% compared to standard JSON.
-*   **Universality:** It supports multiple ecosystems including Python, JavaScript/TypeScript, Rust, Go, Zig, and general GitHub repositories, making it a versatile tool for polyglot development.
+*   **Universality:** It supports multiple ecosystems including Python, JavaScript/TypeScript, Rust, Go, Zig, Docker, and general GitHub repositories, making it a versatile tool for polyglot development.
 
 ## Hypothetical Use Cases
 
@@ -29,7 +29,7 @@ A developer wants to use a library that was released yesterday and is not yet pa
 *   **Documentation Content Fetching:** Retrieve actual documentation content (README and key sections) from PyPI, npm, and GitHub rather than just URLs.
 *   **Smart Section Extraction:** Automatically prioritizes and extracts relevant sections such as "Installation", "Usage", and "API Reference" to reduce noise.
 *   **Format Conversion:** Automatically converts reStructuredText and HTML to Markdown for consistent formatting and easier consumption by LLMs.
-*   **Multi-Source Search:** Aggregates results from PyPI, npm, crates.io, GoDocs, Zig docs, and GitHub.
+*   **Multi-Source Search:** Aggregates results from PyPI, npm, crates.io, GoDocs, Zig docs, DockerHub, and GitHub.
 *   **Pluggable Architecture:** Easily add new documentation providers by creating a single provider module.
 *   **Token Efficiency:** Optional support for TOON serialization to reduce response size and token usage.
 *   **Error Resilience:** Failures in one provider do not crash the server; the system is designed to degrade gracefully.
@@ -78,12 +78,13 @@ A developer wants to use a library that was released yesterday and is not yet pa
 All tool responses are returned in JSON format by default, or TOON if configured.
 
 ### Aggregator
-*   `search_library_docs(library, limit=5)`: Combined lookup across all providers (PyPI, npm, crates.io, GoDocs, Zig, GitHub).
+*   `search_library_docs(library, limit=5)`: Combined lookup across all providers (PyPI, npm, crates.io, GoDocs, Zig, GitHub). Note: DockerHub search is accessed via dedicated tools.
 
 ### Documentation Content Fetching
 *   `fetch_pypi_docs(package, max_bytes=20480)`: Fetch Python package documentation from PyPI.
 *   `fetch_npm_docs(package, max_bytes=20480)`: Fetch npm package documentation.
 *   `fetch_github_readme(repo, max_bytes=20480)`: Fetch README from a GitHub repository (format: "owner/repo").
+*   `fetch_docker_image_docs(image, max_bytes=20480)`: Fetch Docker image documentation and description from DockerHub (e.g., "nginx", "postgres", "user/image").
 
 ### Metadata Providers
 *   `pypi_metadata(package)`: Fetch Python package metadata.
@@ -92,6 +93,8 @@ All tool responses are returned in JSON format by default, or TOON if configured
 *   `search_crates(query, limit=5)`: Search Rust crates.
 *   `godocs_metadata(package)`: Retrieve Go package documentation.
 *   `zig_docs(query)`: Search Zig documentation.
+*   `docker_image_metadata(image)`: Get DockerHub Docker image metadata (stars, pulls, description, etc.).
+*   `search_docker_images(query, limit=5)`: Search for Docker images on DockerHub.
 *   `github_repo_search(query, limit=5, language="Python")`: Search GitHub repositories.
 *   `github_code_search(query, repo=None, limit=5)`: Search code on GitHub.
 
