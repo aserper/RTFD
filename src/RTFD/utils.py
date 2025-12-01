@@ -45,9 +45,9 @@ def serialize_response(data: Any) -> str:
     """
     Convert data to string format.
 
-    Uses JSON.
+    Uses JSON with proper escape handling for control characters.
     """
-    return json.dumps(data)
+    return json.dumps(data, ensure_ascii=True, default=str)
 
 
 def serialize_response_with_meta(data: Any) -> CallToolResult:
@@ -70,7 +70,7 @@ def serialize_response_with_meta(data: Any) -> CallToolResult:
     """
     track_tokens = os.getenv("RTFD_TRACK_TOKENS", "false").lower() == "true"
 
-    response_text = json.dumps(data)
+    response_text = json.dumps(data, ensure_ascii=True, default=str)
 
     # If token tracking is disabled, just serialize to JSON
     if not track_tokens:
