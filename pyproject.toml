@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "MCP server for real-time library documentation access across multiple package ecosystems."
 authors = [{ name = "Amit Serper", email = "amit@example.com" }]
 license = { text = "MIT" }
+license-files = { paths = ["LICENSE"] }
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["mcp", "documentation", "pypi", "npm", "crates", "godocs", "docker", "github"]
