@@ -1,6 +1,7 @@
 # ![RTFD Logo](logo.png) RTFD (Read The F*****g Docs) MCP Server
 
 [![Tests](https://github.com/aserper/rtfd/actions/workflows/test.yml/badge.svg)](https://github.com/aserper/rtfd/actions/workflows/test.yml)
+[![PyPI](https://img.shields.io/pypi/v/rtfd-mcp.svg)](https://pypi.org/project/rtfd-mcp/)
 [![Supported Python versions](https://img.shields.io/badge/supported%20python%20versions-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/aserper/rtfd.svg?style=social)](https://github.com/aserper/rtfd)
@@ -15,7 +16,7 @@ This server solves a common problem where LLMs hallucinate APIs or provide outda
 *   **Accuracy:** Agents can access the latest documentation for libraries, ensuring they use the correct version-specific APIs and avoid deprecated methods.
 *   **Context Awareness:** Instead of just getting a raw text dump, the server extracts key sections like installation instructions, quickstart guides, and API references, giving the agent exactly what it needs.
 *   **Privacy:** Unlike cloud-based documentation services, RTFD runs entirely on your local machine. Your queries and the documentation you access never leave your system, ensuring complete privacy and no data collection.
-*   **Supported Sources:** PyPI (Python), npm (JavaScript/TypeScript), crates.io (Rust), GoDocs (Go), Zig docs, DockerHub, and GitHub repositories.
+*   **Supported Sources:** PyPI (Python), npm (JavaScript/TypeScript), crates.io (Rust), GoDocs (Go), Zig docs, DockerHub, and GitHub repositories. 
 
 ## Use Cases
 
