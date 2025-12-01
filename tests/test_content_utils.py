@@ -118,8 +118,10 @@ def test_smart_truncate():
     """Test smart truncation logic."""
     text = "Paragraph one.\n\nParagraph two.\n\nParagraph three."
 
-    # If we allow 18 bytes, it should keep the first paragraph.
-    truncated = smart_truncate(text, 18)
+    # If we allow 19 bytes, it should keep the first paragraph.
+    # "Paragraph one." (14) + "\n\n..." (5) = 19 bytes.
+    # 19 * 0.7 = 13.3 < 14 (break index), so it should work.
+    truncated = smart_truncate(text, 19)
     assert "Paragraph one." in truncated
     assert "..." in truncated
     assert "Paragraph two" not in truncated

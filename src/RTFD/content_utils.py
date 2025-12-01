@@ -276,20 +276,43 @@ def smart_truncate(text: str, max_bytes: int) -> str:
     # Try to find paragraph break (double newline)
     last_para = truncated.rfind("\n\n")
     if last_para > max_bytes * 0.7:  # Only if we're keeping >70%
-        return truncated[:last_para].strip() + "\n\n..."
+        result = truncated[:last_para].strip() + "\n\n..."
+        if len(result.encode("utf-8")) <= max_bytes:
+            return result
 
     # Try to find sentence break
     for punct in [".\n", "!\n", "?\n"]:
         last_sent = truncated.rfind(punct)
         if last_sent > max_bytes * 0.7:
-            return truncated[: last_sent + 1].strip() + "\n\n..."
+            result = truncated[: last_sent + 1].strip() + "\n\n..."
+            if len(result.encode("utf-8")) <= max_bytes:
+                return result
 
     # Try to find word break
     last_space = truncated.rfind(" ")
     if last_space > 0:
-        return truncated[:last_space].strip() + "..."
+        result = truncated[:last_space].strip() + "..."
+        if len(result.encode("utf-8")) <= max_bytes:
+            return result
 
-    # Fallback: just truncate
+    # Fallback: just truncate with strict ellipsis enforcement
+    # We need to ensure we have room for "..." (3 bytes)
+    if max_bytes <= 3:
+        return "." * max_bytes
+
+    # Recalculate truncation point allowing for ellipsis
+    encoded = text.encode("utf-8")
+    truncate_point = max_bytes - 3
+
+    while truncate_point > 0:
+        try:
+            truncated = encoded[:truncate_point].decode("utf-8")
+            break
+        except UnicodeDecodeError:
+            truncate_point -= 1
+    else:
+        return "." * max_bytes if max_bytes <= 3 else "..."
+
     return truncated.strip() + "..."
 
 

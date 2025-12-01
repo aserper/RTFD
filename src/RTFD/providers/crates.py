@@ -21,7 +21,10 @@ class CratesProvider(BaseProvider):
     def __init__(self, http_client_factory: Callable):
         """Initialize provider with HTTP client factory and rate limiting."""
         super().__init__(http_client_factory)
+        import asyncio
+
         self._last_request_time = 0.0
+        self._lock = asyncio.Lock()
 
     def get_metadata(self) -> ProviderMetadata:
         return ProviderMetadata(
@@ -52,10 +55,16 @@ class CratesProvider(BaseProvider):
 
     async def _rate_limit(self) -> None:
         """Enforce crates.io rate limit (1 request per second)."""
-        elapsed = time.time() - self._last_request_time
-        if elapsed < self.MIN_REQUEST_INTERVAL:
-            # Use async sleep equivalent via httpx timeout
-            await self._async_sleep(self.MIN_REQUEST_INTERVAL - elapsed)
+        async with self._lock:
+            elapsed = time.time() - self._last_request_time
+            if elapsed < self.MIN_REQUEST_INTERVAL:
+                wait_time = self.MIN_REQUEST_INTERVAL - elapsed
+                # Calculate the time when the request will be allowed
+                self._last_request_time = time.time() + wait_time
+                # Use async sleep equivalent via httpx timeout
+                await self._async_sleep(wait_time)
+            else:
+                self._last_request_time = time.time()
 
     @staticmethod
     async def _async_sleep(seconds: float) -> None:
@@ -78,8 +87,6 @@ class CratesProvider(BaseProvider):
                 )
                 response.raise_for_status()
                 data = response.json()
-
-            self._last_request_time = time.time()
 
             # Format the response
             crates = data.get("crates", [])
@@ -127,8 +134,6 @@ class CratesProvider(BaseProvider):
                 response = await client.get(f"{self.BASE_URL}/crates/{crate_name}")
                 response.raise_for_status()
                 data = response.json()
-
-            self._last_request_time = time.time()
 
             crate = data.get("crate", {})
             version = data.get("versions", [{}])[0] if data.get("versions") else {}
