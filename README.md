@@ -43,39 +43,56 @@ RTFD helps in scenarios like:
 *   **Pluggable Architecture:** Easily add new documentation providers by creating a single provider module.
 *   **Error Resilience:** Failures in one provider do not crash the server; the system is designed to degrade gracefully.
 
+## Installation
+
+### From PyPI (Recommended)
+
+```bash
+pip install rtfd-mcp
+```
+
+Or with `uv`:
+```bash
+uv pip install rtfd-mcp
+```
+
+### From source
+
+Clone the repository and install:
+```bash
+git clone https://github.com/aserper/RTFD.git
+cd RTFD
+pip install .
+# or: uv pip install -e .
+```
+
 ## Quickstart
 
-1.  Install dependencies (Python 3.10+):
-    ```bash
-    pip install .
-    # or: uv pip install -e .
-    ```
-
-2.  Export a GitHub token to avoid strict rate limits (optional but recommended):
+1.  Export a GitHub token to avoid strict rate limits (optional but recommended):
     ```bash
     export GITHUB_TOKEN=ghp_your_token_here
     ```
 
-3.  Run the server:
+2.  Run the server:
     ```bash
     rtfd
     ```
 
-4.  **Configure Documentation Fetching (Optional):**
+3.  **Configure Documentation Fetching (Optional):**
     Content fetching tools are enabled by default. To disable them and only use metadata tools:
     ```bash
     export RTFD_FETCH=false
     rtfd
     ```
 
-5.  **Configure Token Counting (Optional):**
+4.  **Configure Token Counting (Optional):**
     To enable token counting in response metadata (useful for debugging usage):
     ```bash
     export RTFD_TRACK_TOKENS=true
     rtfd
     ```
 
-6.  **Configure Caching (Optional):**
+5.  **Configure Caching (Optional):**
     Caching is enabled by default to improve performance and reduce load on providers.
     -   **Enable/Disable:** `export RTFD_CACHE_ENABLED=false` (default: `true`)
     -   **TTL:** `export RTFD_CACHE_TTL=3600` (default: `604800` seconds / 1 week)
