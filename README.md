@@ -33,6 +33,12 @@ A developer wants to use a library that was released yesterday and is not yet pa
 ### Scenario 4: Inspecting Docker Base Images
 You are building a containerized application and want to understand how the `python:3.11-slim` image is built to optimize your own Dockerfile. Using `fetch_dockerfile`, the agent retrieves the actual Dockerfile used to build the official image, revealing the underlying Debian version, installed system packages, and environment variables.
 
+### Scenario 5: Auditing Project Dependencies
+
+You want to keep your project's dependencies up to date but don't want to manually check each package registry. You ask an agent to audit your dependencies and identify available updates. Using RTFD, the agent queries PyPI, npm, and other registries to fetch the latest versions for all your key packages. It returns a comprehensive report showing which packages have major, minor, or patch updates available—making it easy to prioritize upgrades based on their scope and impact.
+
+![Dependency audit example](Antigravity.png)
+
 ## Features
 
 *   **Documentation Content Fetching:** Retrieve actual documentation content (README and key sections) from PyPI, npm, and GitHub rather than just URLs.
