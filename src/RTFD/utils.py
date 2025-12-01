@@ -101,3 +101,18 @@ def serialize_response_with_meta(data: Any) -> CallToolResult:
             content=[TextContent(type="text", text=response_text)],
             _meta={"token_stats": {"error": f"Token counting failed: {str(e)}"}}
         )
+
+
+def get_cache_config() -> tuple[bool, float]:
+    """
+    Get cache configuration.
+
+    Returns:
+        Tuple of (enabled, ttl_seconds)
+    """
+    enabled = os.getenv("RTFD_CACHE_ENABLED", "true").lower() not in ("false", "0", "no")
+    try:
+        ttl = float(os.getenv("RTFD_CACHE_TTL", "604800"))  # Default 1 week
+    except ValueError:
+        ttl = 604800.0
+    return enabled, ttl

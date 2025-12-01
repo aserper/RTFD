@@ -15,10 +15,14 @@ from mcp.types import CallToolResult
 
 from .providers import discover_providers
 from .providers.base import BaseProvider
-from .utils import create_http_client, serialize_response_with_meta
+from .utils import create_http_client, serialize_response_with_meta, get_cache_config
+from .cache import CacheManager
 
 # Initialize FastMCP server
 mcp = FastMCP("rtfd-gateway")
+
+# Initialize Cache
+_cache_manager = CacheManager()
 
 # Provider instances (initialized on first use)
 _provider_instances: Dict[str, BaseProvider] = {}
@@ -80,7 +84,27 @@ async def _locate_library_docs(library: str, limit: int = 5) -> Dict[str, Any]:
 
     This is the aggregator function that combines results from PyPI, GoDocs, and GitHub.
     """
+
     result: Dict[str, Any] = {"library": library}
+
+    # Check cache first
+    cache_enabled, cache_ttl = get_cache_config()
+    cache_key = f"search:{library}:{limit}"
+    
+    if cache_enabled:
+        # Cleanup expired entries occasionally (could be optimized)
+        # For now, we rely on lazy cleanup or external process, 
+        # but let's do a quick check on read if we wanted strict TTL.
+        # The CacheManager.get() returns None if not found.
+        # We can also run cleanup on startup or periodically.
+        # Here we just check if we have a valid entry.
+        cached_entry = _cache_manager.get(cache_key)
+        if cached_entry:
+            # Check TTL
+            age = __import__("time").time() - cached_entry.timestamp
+            if age < cache_ttl:
+                return cached_entry.data
+
     providers = _get_provider_instances()
 
     # Query each provider that supports library search
@@ -107,6 +131,10 @@ async def _locate_library_docs(library: str, limit: int = 5) -> Dict[str, Any]:
             error_key = f"{provider_name}_error"
             result[error_key] = provider_result.error
 
+    # Update cache if enabled
+    if cache_enabled:
+        _cache_manager.set(cache_key, result)
+
     return result
 
 
@@ -117,6 +145,13 @@ async def search_library_docs(library: str, limit: int = 5) -> CallToolResult:
     """Aggregated library documentation search across all providers."""
     result = await _locate_library_docs(library, limit=limit)
     return serialize_response_with_meta(result)
+
+
+@mcp.tool(description="Get information about the current cache usage.")
+async def get_cache_info() -> CallToolResult:
+    """Return cache statistics including entry count and size."""
+    stats = _cache_manager.get_stats()
+    return serialize_response_with_meta(stats)
 
 
 # Auto-register all provider tools
