@@ -98,6 +98,29 @@ pip install .
     -   **TTL:** `export RTFD_CACHE_TTL=3600` (default: `604800` seconds / 1 week)
     -   **Location:** `~/.cache/rtfd/cache.db`
 
+## Releases & Versioning
+
+For maintainers, see [CONTRIBUTING.md](CONTRIBUTING.md) for the automated release process.
+
+To release a new version:
+
+1. Go to **Actions** tab on GitHub
+2. Select **"Release to PyPI"** workflow
+3. Click **"Run workflow"**
+4. Select version bump type (**patch**, **minor**, or **major**)
+5. Done! The workflow will:
+   - Update version in code
+   - Create a git tag and commit
+   - Create a GitHub release
+   - Automatically publish to PyPI
+
+For local version management:
+```bash
+python scripts/bump_version.py patch   # 0.1.0 → 0.1.1
+python scripts/bump_version.py minor   # 0.1.0 → 0.2.0
+python scripts/bump_version.py major   # 0.1.0 → 1.0.0
+```
+
 ## Available Tools
 
 All tool responses are returned in JSON format.

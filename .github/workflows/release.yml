@@ -1,0 +1,78 @@
+name: Release to PyPI
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'Version bump type or specific version'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Configure git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Bump version
+      run: python scripts/bump_version.py ${{ inputs.bump_type }}
+
+    - name: Get new version
+      id: version
+      run: |
+        import re
+        with open('pyproject.toml') as f:
+          content = f.read()
+        match = re.search(r'version\s*=\s*"([^"]+)"', content)
+        version = match.group(1)
+        print(f"version={version}" >> $GITHUB_OUTPUT)
+      shell: python
+
+    - name: Commit version bump
+      run: |
+        git add pyproject.toml src/RTFD/__init__.py
+        git commit -m "chore: bump version to ${{ steps.version.outputs.version }}"
+
+    - name: Create tag
+      run: |
+        git tag v${{ steps.version.outputs.version }}
+
+    - name: Push changes
+      run: |
+        git push origin main
+        git push origin v${{ steps.version.outputs.version }}
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.version.outputs.version }}
+        name: v${{ steps.version.outputs.version }}
+        body: |
+          Version ${{ steps.version.outputs.version }} has been released to PyPI.
+
+          See [the changelog](https://github.com/${{ github.repository }}/commits/main) for changes in this release.
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
