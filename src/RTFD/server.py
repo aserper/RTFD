@@ -154,6 +154,17 @@ async def get_cache_info() -> CallToolResult:
     return serialize_response_with_meta(stats)
 
 
+@mcp.tool(description="Get detailed information about all cached entries.")
+async def get_cache_entries() -> CallToolResult:
+    """Return detailed information about all cached items including age, size, and content preview."""
+    entries = _cache_manager.get_all_entries()
+    result = {
+        "total_entries": len(entries),
+        "entries": entries,
+    }
+    return serialize_response_with_meta(result)
+
+
 # Auto-register all provider tools
 _register_provider_tools()
 

@@ -163,15 +163,74 @@ class CacheManager:
             "db_path": self.db_path,
             "db_size_bytes": 0,
         }
-        
+
         try:
             if os.path.exists(self.db_path):
                 stats["db_size_bytes"] = os.path.getsize(self.db_path)
-                
+
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.execute("SELECT COUNT(*) FROM cache")
                 stats["entry_count"] = cursor.fetchone()[0]
         except Exception as e:
             print(f"Cache stats error: {e}")
-            
+
         return stats
+
+    def get_all_entries(self) -> Dict[str, Dict[str, Any]]:
+        """
+        Get detailed information about all cached entries.
+
+        Returns:
+            Dict mapping cache keys to entry details (age, size, content preview).
+        """
+        entries = {}
+        current_time = time.time()
+
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.execute(
+                    "SELECT key, data, timestamp FROM cache ORDER BY timestamp DESC"
+                )
+                rows = cursor.fetchall()
+
+                for key, data_json, timestamp in rows:
+                    age_seconds = current_time - timestamp
+                    data = json.loads(data_json)
+                    data_size = len(data_json.encode("utf-8"))
+
+                    entries[key] = {
+                        "age_seconds": round(age_seconds, 2),
+                        "size_bytes": data_size,
+                        "timestamp": timestamp,
+                        "content_preview": self._get_preview(data),
+                    }
+        except Exception as e:
+            print(f"Cache get_all_entries error: {e}")
+
+        return entries
+
+    @staticmethod
+    def _get_preview(data: Any, max_length: int = 150) -> str:
+        """
+        Get a preview of cached data.
+
+        Args:
+            data: The data to preview.
+            max_length: Maximum length of preview string.
+
+        Returns:
+            String preview of the data.
+        """
+        if isinstance(data, dict):
+            if "library" in data:
+                library = data.get("library", "")
+                keys = [k for k in data.keys() if k != "library"]
+                return f"search:{library} -> {', '.join(keys[:3])}"
+            # For other dicts, show keys
+            keys = list(data.keys())[:3]
+            return f"dict: {', '.join(keys)}"
+        elif isinstance(data, str):
+            return data[:max_length]
+        else:
+            preview = str(data)[:max_length]
+            return preview
