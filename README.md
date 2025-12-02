@@ -15,7 +15,7 @@ This server solves a common problem where LLMs hallucinate APIs or provide outda
 
 *   **Accuracy:** Agents can access the latest documentation for libraries, ensuring they use the correct version-specific APIs and avoid deprecated methods.
 *   **Context Awareness:** Instead of just getting a raw text dump, the server extracts key sections like installation instructions, quickstart guides, and API references, giving the agent exactly what it needs.
-*   **Privacy:** Unlike cloud-based documentation services, RTFD runs entirely on your local machine. Your queries and the documentation you access never leave your system, ensuring complete privacy and no data collection.
+*   **Privacy:** Unlike cloud-based documentation services, RTFD runs entirely on your local machine. Your queries are sent DIRECTLY to the source (no servers in the middle, no API keys needed, etc) and the documentation you access never leave your system, ensuring complete privacy and no data collection.
 *   **Supported Sources:** PyPI (Python), npm (JavaScript/TypeScript), crates.io (Rust), GoDocs (Go), Zig docs, DockerHub, GitHub repositories, and Google Cloud Platform (GCP). 
 
 ## Use Cases
