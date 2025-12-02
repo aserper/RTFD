@@ -42,11 +42,13 @@ jobs:
       id: version
       run: |
         import re
+        import os
         with open('pyproject.toml') as f:
           content = f.read()
         match = re.search(r'version\s*=\s*"([^"]+)"', content)
         version = match.group(1)
-        print(f"version={version}" >> $GITHUB_OUTPUT)
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+          f.write(f"version={version}\n")
       shell: python
 
     - name: Commit version bump
