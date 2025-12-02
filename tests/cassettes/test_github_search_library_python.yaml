@@ -1,0 +1,111 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/vnd.github+json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.github.com
+      user-agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0
+        Safari/537.36
+      x-github-api-version:
+      - '2022-11-28'
+    method: GET
+    uri: https://api.github.com/search/repositories?per_page=1&q=fastapi+python+language%3APython
+  response:
+    body:
+      string: !!binary |
+        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
+        rGMmgK1Ko9ViqaPzAT6/vnp49R/qrPlU/xgAAA==
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Cache-Control:
+      - no-cache
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '1624'
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 02 Dec 2025 02:07:50 GMT
+      Link:
+      - <https://api.github.com/search/repositories?q=fastapi+python+language%3APython&per_page=1&page=2>;
+        rel="next", <https://api.github.com/search/repositories?q=fastapi+python+language%3APython&per_page=1&page=1000>;
+        rel="last"
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - github.com
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Vary:
+      - Accept,Accept-Encoding, Accept, X-Requested-With
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - 972A:268F65:2B31EE1:C0F9FAE:692E49F6
+      X-RateLimit-Limit:
+      - '10'
+      X-RateLimit-Remaining:
+      - '8'
+      X-RateLimit-Reset:
+      - '1764641329'
+      X-RateLimit-Resource:
+      - search
+      X-RateLimit-Used:
+      - '2'
+      X-XSS-Protection:
+      - '0'
+      x-github-api-version-selected:
+      - '2022-11-28'
+    status:
+      code: 200
+      message: OK
+version: 1

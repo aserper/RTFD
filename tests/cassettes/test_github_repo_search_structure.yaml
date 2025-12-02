@@ -1,0 +1,122 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/vnd.github+json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.github.com
+      user-agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0
+        Safari/537.36
+      x-github-api-version:
+      - '2022-11-28'
+    method: GET
+    uri: https://api.github.com/search/repositories?per_page=2&q=django+python+language%3APython
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Cache-Control:
+      - no-cache
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '2278'
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 02 Dec 2025 02:07:50 GMT
+      Link:
+      - <https://api.github.com/search/repositories?q=django+python+language%3APython&per_page=2&page=2>;
+        rel="next", <https://api.github.com/search/repositories?q=django+python+language%3APython&per_page=2&page=500>;
+        rel="last"
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - github.com
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Vary:
+      - Accept,Accept-Encoding, Accept, X-Requested-With
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - 9736:1E2C5E:486ACFC:145427BE:692E49F6
+      X-RateLimit-Limit:
+      - '10'
+      X-RateLimit-Remaining:
+      - '7'
+      X-RateLimit-Reset:
+      - '1764641329'
+      X-RateLimit-Resource:
+      - search
+      X-RateLimit-Used:
+      - '3'
+      X-XSS-Protection:
+      - '0'
+      x-github-api-version-selected:
+      - '2022-11-28'
+    status:
+      code: 200
+      message: OK
+version: 1

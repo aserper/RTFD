@@ -1,0 +1,82 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - crates.io
+      user-agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0
+        Safari/537.36
+    method: GET
+    uri: https://crates.io/api/v1/crates?page=1&per_page=1&q=tokio
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAE/6pWSi5KLEktVrKKrlbKTFGyUirJz87MV9JRykvMTUXilhakJJakpsQnlihZKRkZ
+        GJnqGhroGpqEGFpYGZlaGRvqmZqbmloaRynpKJWlFhVn5ucVK1nllebk6Chlp1aW5xelwPnJiSWp
+        6flFmSBbISqSElPSQbzoWB2l5KJUZIsMzXQNzHUNDEOMDKyMLa0MzPVMLM3NzcxAFqXkl+fl5CeC
+        TDYxNTU0trQwM9dRKkpNTs0riUeSNDMzNbEwMjTXUUpJTUsszSmJhzpRyUrJUM/EQs8A5N/SXJhw
+        sZKVobm5jlJlYl52aoqSVVpiTnGqjlJuYgVMBYrG1PLUYjQjzfWMlCAaiksSk3JSselLSS1OLsos
+        KMnMz1OyUnLMU0gtS80r0U0pyixLzdNRyMvP003KyU/OzsxLV/DU91coyEksScsvylVIyy9SKC/K
+        LAFJJBZX5iVnFOXn5ZcWg1TF5CUlJmenpigkFhTkZCYngkwv1ovJU9JRysjPTS1ITAdFakZJSUGx
+        lb4+OK71ioqVdJRS8pNLc1PzSsA6YDFXlFqQX5xZkl9UqWSlBNOUnlmSUZqkl5yfC9GvW1QMYSjp
+        KOVk5mUXK1lVw9IAciwo6ScWZOqXGepDUhxEjz4impATDna10FgDOTe/PC+1qFjJCrtCqKyOEpgR
+        X5KamItXKWAQFTDlpcWpRfiVg1WAUhrIRanxKakFqXkpqXnJ4CSN3UlFqVjU1uoopVYkJpfE5yaW
+        JGcoWZUUlabqKJUUlRaXFJQmxefn5VRCU19trI5SbmpJIihsS/JLEnOUrAwNzY1MdZTyUitK4qHx
+        al9oC45StYLUIrCYraEaSMoWlBoLilLLwIKQ2K2tBQDjwZ/1/AMAAA==
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '667'
+      Content-Security-Policy:
+      - default-src 'self'; connect-src 'self' *.ingest.sentry.io https://docs.rs
+        https://play.rust-lang.org https://raw.githubusercontent.com https://gitlab.com
+        https://static.crates.io; script-src 'self' 'unsafe-eval' 'sha256-n1+BB7Ckjcal1Pr7QNBh/dKRTtBQsIytFodRiIosXdE='
+        'sha256-dbf9FMl76C7BnK1CC3eWb3pvsQAUaTYSHAlBy9tNTG0='; style-src 'self' 'unsafe-inline'
+        https://code.cdn.mozilla.net; font-src https://code.cdn.mozilla.net; img-src
+        *; object-src 'none'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 02 Dec 2025 02:07:49 GMT
+      Nel:
+      - '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}'
+      Report-To:
+      - '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=am6qfJUGTcKp8qQelxUYUK0YQyQqcBSEQN7%2BSG3Dm8w%3D\u0026sid=af571f24-03ee-46d1-9f90-ab9030c2c74c\u0026ts=1764641267"}],"max_age":3600}'
+      Reporting-Endpoints:
+      - heroku-nel="https://nel.heroku.com/reports?s=am6qfJUGTcKp8qQelxUYUK0YQyQqcBSEQN7%2BSG3Dm8w%3D&sid=af571f24-03ee-46d1-9f90-ab9030c2c74c&ts=1764641267"
+      Server:
+      - Heroku
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept,Accept-Encoding,Cookie
+      Via:
+      - 1.1 heroku-router, 1.1 5c7ee37b1cd85c8e6f3e6b902d2491d6.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - e23PEfokfFyedzgzO0V7kE3_-8gWpaobnNeJwi2s3EKQVswSgEfiIQ==
+      X-Amz-Cf-Pop:
+      - BOS50-P6
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

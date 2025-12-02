@@ -1,0 +1,86 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - pypi.org
+      user-agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0
+        Safari/537.36
+    method: GET
+    uri: https://pypi.org/pypi/this-package-definitely-does-not-exist-12345/json
+  response:
+    body:
+      string: '{"message": "Not Found"}'
+    headers:
+      Accept-Ranges:
+      - bytes
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '24'
+      Date:
+      - Tue, 02 Dec 2025 02:07:52 GMT
+      Permissions-Policy:
+      - publickey-credentials-create=(self),publickey-credentials-get=(self),accelerometer=(),ambient-light-sensor=(),autoplay=(),battery=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),execution-while-not-rendered=(),execution-while-out-of-viewport=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),hid=(),identity-credentials-get=(),idle-detection=(),local-fonts=(),magnetometer=(),microphone=(),midi=(),otp-credentials=(),payment=(),picture-in-picture=(),screen-wake-lock=(),serial=(),speaker-selection=(),storage-access=(),usb=(),web-share=(),xr-spatial-tracking=()
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - MISS, MISS, MISS
+      X-Cache-Hits:
+      - 0, 0, 0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Served-By:
+      - cache-iad-kiad7000030-IAD, cache-iad-kiad7000062-IAD, cache-bos4655-BOS
+      X-Timer:
+      - S1764641272.969121,VS0,VE218
+      X-XSS-Protection:
+      - 1; mode=block
+      access-control-allow-headers:
+      - Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since
+      access-control-allow-methods:
+      - GET
+      access-control-allow-origin:
+      - '*'
+      access-control-expose-headers:
+      - X-PyPI-Last-Serial
+      access-control-max-age:
+      - '86400'
+      content-security-policy:
+      - base-uri 'self'; connect-src 'self' https://api.github.com/repos/ https://api.github.com/search/issues
+        https://gitlab.com/api/ https://analytics.python.org fastly-insights.com *.fastly-insights.com
+        *.ethicalads.io https://api.pwnedpasswords.com https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/sre/mathmaps/
+        https://2p66nmmycsj3.statuspage.io; default-src 'none'; font-src 'self' fonts.gstatic.com;
+        form-action 'self' https://checkout.stripe.com https://billing.stripe.com;
+        frame-ancestors 'none'; frame-src https://www.youtube-nocookie.com; img-src
+        'self' https://pypi-camo.freetls.fastly.net/ *.fastly-insights.com *.ethicalads.io
+        ethicalads.blob.core.windows.net; script-src 'self' https://analytics.python.org
+        *.fastly-insights.com *.ethicalads.io 'sha256-U3hKDidudIaxBDEzwGJApJgPEf2mWk6cfMWghrAa6i0='
+        https://cdn.jsdelivr.net/npm/mathjax@3.2.2/ 'sha256-1CldwzdEg2k1wTmf7s5RWVd7NMXI/7nxxjJM2C4DqII='
+        'sha256-0POaN8stWYQxhzjKS+/eOfbbJ/u4YHO5ZagJvLpMypo=' https://www.youtube.com
+        https://s.ytimg.com; style-src 'self' fonts.googleapis.com *.ethicalads.io
+        'sha256-2YHqZokjiizkHi1Zt+6ar0XJ0OeEy/egBnlm+MDMtrM=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='
+        'sha256-JLEjeN9e5dGsz5475WyRaoA4eQOdNPxDIeUhclnJDCE=' 'sha256-mQyxHEuwZJqpxCw3SLmc4YOySNKXunyu2Oiz1r3/wAE='
+        'sha256-OCf+kv5Asiwp++8PIevKBYSgnNLNUZvxAp4a7wMLuKA=' 'sha256-h5LOiLhk6wiJrGsG5ItM0KimwzWQH/yAcmoJDJL//bY=';
+        worker-src *.fastly-insights.com
+      content-type:
+      - application/json
+      referrer-policy:
+      - origin-when-cross-origin
+    status:
+      code: 404
+      message: Not Found
+version: 1

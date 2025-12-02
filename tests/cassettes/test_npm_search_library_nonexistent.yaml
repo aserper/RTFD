@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - registry.npmjs.org
+      user-agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0
+        Safari/537.36
+    method: GET
+    uri: https://registry.npmjs.org/this-npm-package-definitely-does-not-exist-99999
+  response:
+    body:
+      string: '{"error":"Not found"}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      CF-Ray:
+      - 9a7745e8fab39041-BOS
+      Cache-Control:
+      - public, max-age=300
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '21'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 02 Dec 2025 02:07:51 GMT
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - _cfuvid=_hRzu0NQJn2HjgLGjecRNhKSIKvUM3pIaLtihNU2T1E-1764641271499-0.0.1.1-604800000;
+        path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None
+      Vary:
+      - Accept-Encoding
+    status:
+      code: 404
+      message: Not Found
+version: 1
