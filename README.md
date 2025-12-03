@@ -1,9 +1,10 @@
 # ![RTFD Logo](logo.png) RTFD (Read The F*****g Docs) MCP Server
 
-[![Tests](https://github.com/aserper/rtfd/actions/workflows/test.yml/badge.svg)](https://github.com/aserper/rtfd/actions/workflows/test.yml)
-[![PyPI](https://img.shields.io/pypi/v/rtfd-mcp.svg)](https://pypi.org/project/rtfd-mcp/)
-[![Supported Python versions](https://img.shields.io/badge/supported%20python%20versions-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://img.shields.io/github/actions/workflow/status/aserper/rtfd/test.yml?style=for-the-badge&logo=github&label=Tests)](https://github.com/aserper/rtfd/actions/workflows/test.yml)
+[![PyPI](https://img.shields.io/pypi/v/rtfd-mcp.svg?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/rtfd-mcp/)
+[![Supported Python versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
 [![GitHub stars](https://img.shields.io/github/stars/aserper/rtfd.svg?style=social)](https://github.com/aserper/rtfd)
 [![GitHub forks](https://img.shields.io/github/forks/aserper/rtfd.svg?style=social)](https://github.com/aserper/rtfd/fork)
 
