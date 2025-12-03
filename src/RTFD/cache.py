@@ -11,6 +11,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Optional
+import sys
 
 
 @dataclass
@@ -84,7 +85,7 @@ class CacheManager:
                         metadata=json.loads(metadata_json) if metadata_json else {},
                     )
         except Exception as e:
-            print(f"Cache read error: {e}")
+            sys.stderr.write(f"Cache read error: {e}\n")
         
         return None
 
@@ -113,7 +114,7 @@ class CacheManager:
                 )
                 conn.commit()
         except Exception as e:
-            print(f"Cache write error: {e}")
+            sys.stderr.write(f"Cache write error: {e}\n")
 
     def invalidate(self, key: str) -> None:
         """
@@ -127,7 +128,7 @@ class CacheManager:
                 conn.execute("DELETE FROM cache WHERE key = ?", (key,))
                 conn.commit()
         except Exception as e:
-            print(f"Cache invalidate error: {e}")
+            sys.stderr.write(f"Cache invalidate error: {e}\n")
 
     def cleanup(self, ttl: float) -> int:
         """
@@ -148,7 +149,7 @@ class CacheManager:
                 conn.commit()
                 return cursor.rowcount
         except Exception as e:
-            print(f"Cache cleanup error: {e}")
+            sys.stderr.write(f"Cache cleanup error: {e}\n")
             return 0
 
     def get_stats(self) -> Dict[str, Any]:
@@ -172,7 +173,7 @@ class CacheManager:
                 cursor = conn.execute("SELECT COUNT(*) FROM cache")
                 stats["entry_count"] = cursor.fetchone()[0]
         except Exception as e:
-            print(f"Cache stats error: {e}")
+            sys.stderr.write(f"Cache stats error: {e}\n")
 
         return stats
 
@@ -205,7 +206,7 @@ class CacheManager:
                         "content_preview": self._get_preview(data),
                     }
         except Exception as e:
-            print(f"Cache get_all_entries error: {e}")
+            sys.stderr.write(f"Cache get_all_entries error: {e}\n")
 
         return entries
 

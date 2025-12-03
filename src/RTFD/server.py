@@ -8,6 +8,7 @@ in the aggregated search_library_docs tool.
 
 from __future__ import annotations
 
+import sys
 from typing import Any, Dict
 
 from mcp.server.fastmcp import FastMCP
@@ -45,7 +46,7 @@ def _get_provider_instances() -> Dict[str, BaseProvider]:
             _provider_instances[name] = instance
         except Exception as e:
             # Log but don't crash - defensive initialization
-            print(f"Warning: Failed to initialize provider {name}: {e}")
+            sys.stderr.write(f"Warning: Failed to initialize provider {name}: {e}\n")
 
     return _provider_instances
 

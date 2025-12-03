@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import importlib
 import inspect
+import sys
 from pathlib import Path
 from typing import Dict, Type
 
@@ -44,7 +45,7 @@ def discover_providers() -> Dict[str, Type[BaseProvider]]:
             module = importlib.import_module(module_name)
         except ImportError as e:
             # Log warning but don't crash - defensive loading
-            print(f"Warning: Failed to import provider module {module_name}: {e}")
+            sys.stderr.write(f"Warning: Failed to import provider module {module_name}: {e}\n")
             continue
 
         # Find BaseProvider subclasses
@@ -61,7 +62,7 @@ def discover_providers() -> Dict[str, Type[BaseProvider]]:
                     metadata = temp_instance.get_metadata()
                     _provider_classes[metadata.name] = obj
                 except Exception as e:
-                    print(f"Warning: Failed to load provider {name}: {e}")
+                    sys.stderr.write(f"Warning: Failed to load provider {name}: {e}\n")
 
     return _provider_classes
 
