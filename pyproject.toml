@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rtfd-mcp"
-version = "0.2.4"
+version = "0.2.5"
 description = "MCP server for real-time library documentation access across multiple package ecosystems."
 authors = [{ name = "Amit Serper", email = "amit@example.com" }]
 license = "MIT"

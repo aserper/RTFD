@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+### Changed
+
+### Fixed
+
+## [0.2.5] - 2025-12-03
+
+### Added
 - Enhanced all tool descriptions with detailed usage guidance across all providers
   - Added "USE THIS WHEN" sections to help LLMs choose the right tool
   - Added "BEST FOR" sections highlighting key strengths
@@ -148,7 +156,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Error-resilient design (one provider failure doesn't crash server)
   - Privacy-focused (runs entirely locally, no data collection)
 
-[Unreleased]: https://github.com/aserper/rtfd/compare/v0.2.4...HEAD
+[Unreleased]: https://github.com/aserper/rtfd/compare/v0.2.5...HEAD
+[0.2.5]: https://github.com/aserper/rtfd/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/aserper/rtfd/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/aserper/rtfd/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/aserper/rtfd/compare/v0.2.1...v0.2.2
