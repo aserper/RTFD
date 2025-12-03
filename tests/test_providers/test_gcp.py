@@ -71,13 +71,16 @@ async def test_gcp_search_services_direct_match(provider):
 @pytest.mark.asyncio
 async def test_gcp_search_services_partial_match(provider):
     """Test searching for services with partial match."""
-    result = await provider._search_services("big", limit=5)
-
-    assert isinstance(result, list)
-    assert len(result) >= 1
-    # Should match BigQuery and Bigtable
-    service_names = [r["name"] for r in result]
-    assert "BigQuery" in service_names or "Cloud Bigtable" in service_names
+    # Mock cloud search to return empty so we test local mapping fallback
+    with patch.object(provider, '_search_cloud_google_com', new_callable=AsyncMock) as mock_cloud:
+        mock_cloud.return_value = []
+        result = await provider._search_services("big", limit=5)
+    
+        assert isinstance(result, list)
+        assert len(result) >= 1
+        # Should match BigQuery and Bigtable
+        service_names = [r["name"] for r in result]
+        assert "BigQuery" in service_names or "Cloud Bigtable" in service_names
 
 
 @pytest.mark.asyncio
