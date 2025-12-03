@@ -72,35 +72,85 @@ pip install .
 
 ## Quickstart
 
-1.  Export a GitHub token to avoid strict rate limits (optional but recommended):
-    ```bash
-    export GITHUB_TOKEN=ghp_your_token_here
-    ```
+RTFD is an MCP server that needs to be configured in your AI agent of choice.
 
-2.  Run the server:
-    ```bash
-    rtfd
-    ```
+### 1. Install RTFD
+```bash
+pip install rtfd-mcp
+# or with uv:
+uv pip install rtfd-mcp
+```
 
-3.  **Configure Documentation Fetching (Optional):**
-    Content fetching tools are enabled by default. To disable them and only use metadata tools:
-    ```bash
-    export RTFD_FETCH=false
-    rtfd
-    ```
+### 2. Configure your Agent
 
-4.  **Configure Token Counting (Optional):**
-    To enable token counting in response metadata (useful for debugging usage):
-    ```bash
-    export RTFD_TRACK_TOKENS=true
-    rtfd
-    ```
+#### Claude Code
+Run the following command to automatically add RTFD to your configuration:
+```bash
+claude mcp add rtfd -- command="rtfd"
+```
+Or manually edit `~/.claude.json`:
+```json
+{
+  "mcpServers": {
+    "rtfd": {
+      "command": "rtfd"
+    }
+  }
+}
+```
 
-5.  **Configure Caching (Optional):**
-    Caching is enabled by default to improve performance and reduce load on providers.
-    -   **Enable/Disable:** `export RTFD_CACHE_ENABLED=false` (default: `true`)
-    -   **TTL:** `export RTFD_CACHE_TTL=3600` (default: `604800` seconds / 1 week)
-    -   **Location:** `~/.cache/rtfd/cache.db`
+#### Cursor
+1. Go to **Settings** > **Cursor Settings** > **MCP Servers**
+2. Click **"Add new MCP server"**
+3. Name: `rtfd`
+4. Type: `stdio`
+5. Command: `rtfd`
+
+Or manually edit `~/.cursor/mcp.json`:
+```json
+{
+  "mcpServers": {
+    "rtfd": {
+      "command": "rtfd"
+    }
+  }
+}
+```
+
+#### Windsurf
+1. Open **Settings** > **Advanced Settings** > **Model Context Protocol**
+2. Edit `~/.codeium/windsurf/mcp_config.json`:
+```json
+{
+  "mcpServers": {
+    "rtfd": {
+      "command": "rtfd"
+    }
+  }
+}
+```
+
+#### Gemini CLI
+Edit `~/.gemini/settings.json`:
+```json
+{
+  "mcpServers": {
+    "rtfd": {
+      "command": "rtfd"
+    }
+  }
+}
+```
+
+#### Codex
+Edit `~/.codex/config.toml`:
+```toml
+[mcpServers.rtfd]
+command = "rtfd"
+```
+
+### 3. Verify
+Ask your agent: *"What tools do you have available?"* or *"Search for documentation on pandas"*.
 
 ## Configuration
 
