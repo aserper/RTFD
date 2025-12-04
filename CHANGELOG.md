@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
+## [0.3.1] - 2025-12-04
+
 ### Fixed
 - Provider tools are now properly registered with MCP, fixing the issue where tools like `get_commit_diff`, `list_repo_contents`, `get_file_content`, and `get_repo_tree` were not appearing in the tools list
 
@@ -171,7 +179,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Error-resilient design (one provider failure doesn't crash server)
   - Privacy-focused (runs entirely locally, no data collection)
 
-[Unreleased]: https://github.com/aserper/rtfd/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/aserper/rtfd/compare/v0.3.1...HEAD
+[0.3.1]: https://github.com/aserper/rtfd/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/aserper/rtfd/compare/v0.2.6...v0.3.0
 [0.2.6]: https://github.com/aserper/rtfd/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/aserper/rtfd/compare/v0.2.4...v0.2.5
