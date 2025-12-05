@@ -11,7 +11,6 @@ import importlib
 import inspect
 import sys
 from pathlib import Path
-from typing import Dict, Type
 
 from .base import BaseProvider, ProviderMetadata
 

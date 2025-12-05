@@ -72,7 +72,8 @@ class PyPIProvider(BaseProvider):
             if not is_verified:
                 return {
                     "name": package,
-                    "error": f"Project '{package}' is not verified by PyPI. Please ask the user if they want to trust this project.",
+                    "error": f"Project '{package}' is not verified by PyPI. "
+                    "Please ask the user if they want to trust this project.",
                     "is_unverified": True,
                 }
 
