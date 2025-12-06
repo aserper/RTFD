@@ -12,6 +12,7 @@ To run without network access (using existing cassettes):
 """
 
 import pytest
+
 from RTFD.providers.pypi import PyPIProvider
 from RTFD.utils import create_http_client
 

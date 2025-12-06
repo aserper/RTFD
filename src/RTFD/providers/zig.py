@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict
+from collections.abc import Callable
+from typing import Any
 
 import httpx
 from bs4 import BeautifulSoup
@@ -34,7 +35,7 @@ class ZigProvider(BaseProvider):
             provider_name="zig",
         )
 
-    def get_tools(self) -> Dict[str, Callable]:
+    def get_tools(self) -> dict[str, Callable]:
         """Return MCP tool functions."""
 
         async def zig_docs(query: str) -> CallToolResult:
@@ -69,7 +70,7 @@ class ZigProvider(BaseProvider):
 
         return {"zig_docs": zig_docs}
 
-    async def _search_zig_docs(self, query: str) -> Dict[str, Any]:
+    async def _search_zig_docs(self, query: str) -> dict[str, Any]:
         """Search Zig documentation and return relevant sections."""
         try:
             # Fetch the master documentation page
@@ -105,7 +106,7 @@ class ZigProvider(BaseProvider):
                 "source": "https://ziglang.org/documentation/master/",
             }
 
-    def _extract_doc_sections(self, soup: BeautifulSoup) -> list[Dict[str, str]]:
+    def _extract_doc_sections(self, soup: BeautifulSoup) -> list[dict[str, str]]:
         """Extract documentation sections from the page."""
         sections = []
 
@@ -141,9 +142,7 @@ class ZigProvider(BaseProvider):
 
         return sections
 
-    def _search_sections(
-        self, sections: list[Dict[str, str]], query: str
-    ) -> list[Dict[str, Any]]:
+    def _search_sections(self, sections: list[dict[str, str]], query: str) -> list[dict[str, Any]]:
         """Search sections for matches based on query string."""
         matches = []
         query_words = query.lower().split()

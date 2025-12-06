@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict
+from collections.abc import Callable
+from typing import Any
 
 import httpx
 from mcp.types import CallToolResult
 
-from ..utils import serialize_response_with_meta, is_fetch_enabled
 from ..content_utils import extract_sections, prioritize_sections
+from ..utils import is_fetch_enabled, serialize_response_with_meta
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -45,7 +46,7 @@ class NpmProvider(BaseProvider):
             error_msg = f"npm registry request failed: {exc}"
             return ProviderResult(success=False, error=error_msg, provider_name="npm")
 
-    async def _fetch_metadata(self, package: str) -> Dict[str, Any]:
+    async def _fetch_metadata(self, package: str) -> dict[str, Any]:
         """Pull package metadata from the npm registry JSON API."""
         url = f"https://registry.npmjs.org/{package}"
         async with await self._http_client() as client:
@@ -96,9 +97,7 @@ class NpmProvider(BaseProvider):
             "readme": payload.get("readme", ""),  # Include README for fetch_npm_docs
         }
 
-    async def _fetch_npm_docs(
-        self, package: str, max_bytes: int = 20480
-    ) -> Dict[str, Any]:
+    async def _fetch_npm_docs(self, package: str, max_bytes: int = 20480) -> dict[str, Any]:
         """
         Fetch documentation content for npm package.
 
@@ -123,26 +122,27 @@ class NpmProvider(BaseProvider):
             # If no README or very short, note it
             source = "npm"
             if not content or len(content.strip()) < 100:
-                content = f"# {package}\n\n{data.get('description', 'No description available.')}\n\n"
+                content = (
+                    f"# {package}\n\n{data.get('description', 'No description available.')}\n\n"
+                )
                 source = "npm_minimal"
 
             # Extract and prioritize sections
             sections = extract_sections(content)
             if sections:
                 final_content = prioritize_sections(sections, max_bytes)
+            # Fallback: simple truncation
+            elif len(content.encode("utf-8")) > max_bytes:
+                encoded = content.encode("utf-8")[:max_bytes]
+                # Handle multi-byte characters
+                while len(encoded) > 0:
+                    try:
+                        final_content = encoded.decode("utf-8")
+                        break
+                    except UnicodeDecodeError:
+                        encoded = encoded[:-1]
             else:
-                # Fallback: simple truncation
-                if len(content.encode("utf-8")) > max_bytes:
-                    encoded = content.encode("utf-8")[:max_bytes]
-                    # Handle multi-byte characters
-                    while len(encoded) > 0:
-                        try:
-                            final_content = encoded.decode("utf-8")
-                            break
-                        except UnicodeDecodeError:
-                            encoded = encoded[:-1]
-                else:
-                    final_content = content
+                final_content = content
 
             return {
                 "package": package,
@@ -165,12 +165,12 @@ class NpmProvider(BaseProvider):
             return {
                 "package": package,
                 "content": "",
-                "error": f"Failed to fetch docs: {str(exc)}",
+                "error": f"Failed to fetch docs: {exc!s}",
                 "size_bytes": 0,
                 "source": None,
             }
 
-    def get_tools(self) -> Dict[str, Callable]:
+    def get_tools(self) -> dict[str, Callable]:
         """Return MCP tool functions."""
 
         async def npm_metadata(package: str) -> CallToolResult:

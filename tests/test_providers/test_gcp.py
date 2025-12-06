@@ -1,9 +1,10 @@
 """Tests for GCP provider."""
 
-import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from src.RTFD.providers.gcp import GcpProvider, GCP_SERVICE_DOCS
+import pytest
+
+from src.RTFD.providers.gcp import GCP_SERVICE_DOCS, GcpProvider
 from src.RTFD.utils import create_http_client
 
 
@@ -72,10 +73,10 @@ async def test_gcp_search_services_direct_match(provider):
 async def test_gcp_search_services_partial_match(provider):
     """Test searching for services with partial match."""
     # Mock cloud search to return empty so we test local mapping fallback
-    with patch.object(provider, '_search_cloud_google_com', new_callable=AsyncMock) as mock_cloud:
+    with patch.object(provider, "_search_cloud_google_com", new_callable=AsyncMock) as mock_cloud:
         mock_cloud.return_value = []
         result = await provider._search_services("big", limit=5)
-    
+
         assert isinstance(result, list)
         assert len(result) >= 1
         # Should match BigQuery and Bigtable
@@ -121,7 +122,9 @@ async def test_gcp_search_library_no_match(provider):
 async def test_gcp_search_github_failure_graceful(provider):
     """Test that GitHub API failures are handled gracefully."""
     # Mock the GitHub API to raise an exception
-    with patch.object(provider, '_search_github_googleapis', side_effect=Exception("GitHub API error")):
+    with patch.object(
+        provider, "_search_github_googleapis", side_effect=Exception("GitHub API error")
+    ):
         # Should still return results from local mapping
         result = await provider._search_services("storage", limit=5)
         assert isinstance(result, list)
@@ -178,14 +181,15 @@ async def test_gcp_fetch_service_docs_404(provider):
     # Mock HTTP client to return 404
     mock_response = MagicMock()
     mock_response.status_code = 404
-    mock_response.raise_for_status = MagicMock(
-        side_effect=Exception("404 Not Found")
-    )
+    mock_response.raise_for_status = MagicMock(side_effect=Exception("404 Not Found"))
 
     # Import httpx to use the actual exception
     import httpx
+
     mock_response.raise_for_status = MagicMock(
-        side_effect=httpx.HTTPStatusError("404 Not Found", request=MagicMock(), response=mock_response)
+        side_effect=httpx.HTTPStatusError(
+            "404 Not Found", request=MagicMock(), response=mock_response
+        )
     )
 
     mock_client = AsyncMock()
@@ -249,8 +253,14 @@ async def test_gcp_search_services_tool(provider):
 async def test_gcp_service_mapping_completeness():
     """Test that service mapping contains expected services."""
     required_services = [
-        "storage", "compute", "bigquery", "cloudfunctions",
-        "run", "pubsub", "firestore", "gke"
+        "storage",
+        "compute",
+        "bigquery",
+        "cloudfunctions",
+        "run",
+        "pubsub",
+        "firestore",
+        "gke",
     ]
 
     for service in required_services:
@@ -289,25 +299,20 @@ async def test_gcp_fetch_with_normalized_name(provider):
 
 def test_gcp_github_headers_without_token(provider):
     """Test GitHub headers generation without token."""
-    import os
-    # Temporarily remove token if it exists
-    old_token = os.environ.pop("GITHUB_TOKEN", None)
-
-    try:
+    # Patch get_github_token to return None, ensuring no token is retrieved
+    # even if gh CLI is installed and authenticated
+    with patch("src.RTFD.providers.gcp.get_github_token", return_value=None):
         headers = provider._get_github_headers()
         assert "User-Agent" in headers
         assert "Accept" in headers
         assert "X-GitHub-Api-Version" in headers
         assert "Authorization" not in headers
-    finally:
-        # Restore token if it existed
-        if old_token:
-            os.environ["GITHUB_TOKEN"] = old_token
 
 
 def test_gcp_github_headers_with_token(provider):
     """Test GitHub headers generation with token."""
     import os
+
     # Temporarily set a fake token
     old_token = os.environ.get("GITHUB_TOKEN")
     os.environ["GITHUB_TOKEN"] = "fake_token_123"

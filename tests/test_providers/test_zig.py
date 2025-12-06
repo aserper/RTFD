@@ -1,10 +1,9 @@
 """Tests for Zig provider."""
 
-import asyncio
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
-import pytest
 import httpx
+import pytest
 from bs4 import BeautifulSoup
 
 from src.RTFD.providers.zig import ZigProvider
@@ -127,7 +126,9 @@ async def test_zig_docs_search_tool(provider, mock_html_content):
 async def test_zig_docs_http_error(provider):
     """Test handling of HTTP errors."""
     mock_client = AsyncMock()
-    mock_client.get.side_effect = httpx.HTTPStatusError("404 Not Found", request=None, response=None)
+    mock_client.get.side_effect = httpx.HTTPStatusError(
+        "404 Not Found", request=None, response=None
+    )
     mock_client.__aenter__.return_value = mock_client
     mock_client.__aexit__.return_value = None
 
@@ -145,6 +146,7 @@ async def test_zig_docs_http_error(provider):
 @pytest.mark.asyncio
 async def test_zig_docs_general_error(provider):
     """Test handling of general exceptions."""
+
     async def mock_factory():
         raise Exception("Something bad")
 

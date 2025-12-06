@@ -1,11 +1,10 @@
 """Tests for Crates provider."""
 
-import asyncio
-from unittest.mock import AsyncMock, MagicMock, patch
 import time
+from unittest.mock import AsyncMock, MagicMock, patch
 
-import pytest
 import httpx
+import pytest
 
 from src.RTFD.providers.crates import CratesProvider
 from src.RTFD.utils import create_http_client
@@ -31,7 +30,7 @@ def mock_crates_search_response():
                 "downloads": 1000000,
             }
         ],
-        "meta": {"total": 1}
+        "meta": {"total": 1},
     }
 
 
@@ -49,7 +48,7 @@ def mock_crate_metadata_response():
             "categories": ["encoding"],
             "keywords": ["json"],
         },
-        "versions": [{"license": "MIT OR Apache-2.0", "rust_version": "1.31"}]
+        "versions": [{"license": "MIT OR Apache-2.0", "rust_version": "1.31"}],
     }
 
 
@@ -141,7 +140,9 @@ async def test_crates_search_tool(provider, mock_crates_search_response):
 async def test_crates_http_error(provider):
     """Test handling of HTTP errors."""
     mock_client = AsyncMock()
-    mock_client.get.side_effect = httpx.HTTPStatusError("500 Error", request=None, response=MagicMock(status_code=500))
+    mock_client.get.side_effect = httpx.HTTPStatusError(
+        "500 Error", request=None, response=MagicMock(status_code=500)
+    )
     mock_client.__aenter__.return_value = mock_client
     mock_client.__aexit__.return_value = None
 
@@ -153,10 +154,16 @@ async def test_crates_http_error(provider):
     # We patch _search_crates to simulate an exception that propagates to search_library
     # This is necessary because _search_crates handles exceptions internally, but we want
     # to test search_library's error handling for other potential failures.
-    with patch.object(provider, '_search_crates', side_effect=httpx.HTTPStatusError("500 Error", request=None, response=MagicMock(status_code=500))):
-         result = await provider.search_library("error")
-         assert result.success is False
-         assert "returned 500" in result.error
+    with patch.object(
+        provider,
+        "_search_crates",
+        side_effect=httpx.HTTPStatusError(
+            "500 Error", request=None, response=MagicMock(status_code=500)
+        ),
+    ):
+        result = await provider.search_library("error")
+        assert result.success is False
+        assert "returned 500" in result.error
 
 
 @pytest.mark.asyncio

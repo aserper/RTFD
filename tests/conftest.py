@@ -1,6 +1,7 @@
 """Pytest configuration and fixtures for RTFD tests."""
 
 import os
+
 import pytest
 
 
@@ -17,24 +18,20 @@ def vcr_config():
     return {
         # Where to store cassette files
         "cassette_library_dir": "tests/cassettes",
-
         # Filter sensitive information from cassettes
         "filter_headers": [
             "authorization",
             "x-api-key",
             "x-auth-token",
         ],
-
         # Filter query parameters that might contain secrets
         "filter_query_parameters": [
             "api_key",
             "apikey",
             "token",
         ],
-
         # Match requests by method, scheme, host, port, path, and query
         "match_on": ["method", "scheme", "host", "port", "path", "query"],
-
         # Record mode is controlled by --record-mode CLI option
         # Default: 'none' (only use cassettes, fail if missing)
         # Use: pytest --record-mode=once (record if cassette missing)

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import tiktoken
 
-
 # Use cl100k_base encoding (used by GPT-4, Claude, and most modern LLMs)
 _encoding = tiktoken.get_encoding("cl100k_base")
 

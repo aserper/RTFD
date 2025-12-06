@@ -18,20 +18,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
 
       - name: Install dependencies
+        run: uv sync --python ${{ matrix.python-version }} --extra dev
+
+      - name: Run Ruff linter and formatter
         run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+          uv run ruff check .
+          uv run ruff format --check .
 
       - name: Run unit tests with coverage
         run: |
-          pytest tests -v --cov=src/RTFD --cov-report=term-missing -m "not integration"
+          uv run pytest tests -v --cov=src/RTFD --cov-report=term-missing -m "not integration"
 
       - name: Run integration tests with cassettes
         run: |
-          pytest tests/test_integration -v --record-mode=none -m "integration"
+          uv run pytest tests/test_integration -v --record-mode=none -m "integration"

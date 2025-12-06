@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import time
-from typing import Any, Callable, Dict
+from collections.abc import Callable
+from typing import Any
 
 import httpx
 from mcp.types import CallToolResult
@@ -73,9 +74,7 @@ class CratesProvider(BaseProvider):
 
         await asyncio.sleep(seconds)
 
-    async def _search_crates(
-        self, query: str, per_page: int = 5
-    ) -> Dict[str, Any]:
+    async def _search_crates(self, query: str, per_page: int = 5) -> dict[str, Any]:
         """Search for crates by name/keyword."""
         await self._rate_limit()
 
@@ -125,7 +124,7 @@ class CratesProvider(BaseProvider):
                 "source": "https://crates.io/",
             }
 
-    async def _get_crate_metadata(self, crate_name: str) -> Dict[str, Any]:
+    async def _get_crate_metadata(self, crate_name: str) -> dict[str, Any]:
         """Get detailed metadata for a specific crate."""
         await self._rate_limit()
 
@@ -164,7 +163,7 @@ class CratesProvider(BaseProvider):
                 "url": f"https://crates.io/crates/{crate_name}",
             }
 
-    def get_tools(self) -> Dict[str, Callable]:
+    def get_tools(self) -> dict[str, Callable]:
         """Return MCP tool functions."""
 
         async def search_crates(query: str, limit: int = 5) -> CallToolResult:

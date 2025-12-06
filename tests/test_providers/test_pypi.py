@@ -1,7 +1,5 @@
 """Tests for PyPI provider."""
 
-import asyncio
-
 import pytest
 
 from src.RTFD.providers.pypi import PyPIProvider

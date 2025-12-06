@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
+from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
-from typing import Any, Awaitable, Callable, Dict, List, Optional
+from typing import Any
 
 import httpx
 
@@ -19,14 +20,14 @@ class ProviderMetadata:
 
     # MCP tool exposure control
     expose_as_tool: bool = True  # If False, only available through aggregator
-    tool_names: List[str] = field(default_factory=list)  # Tool names to register
+    tool_names: list[str] = field(default_factory=list)  # Tool names to register
 
     # Aggregator integration
     supports_library_search: bool = False  # Can participate in search_library_docs
 
     # Configuration
-    required_env_vars: List[str] = field(default_factory=list)  # e.g., ["GITHUB_TOKEN"]
-    optional_env_vars: List[str] = field(default_factory=list)
+    required_env_vars: list[str] = field(default_factory=list)  # e.g., ["GITHUB_TOKEN"]
+    optional_env_vars: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -34,8 +35,8 @@ class ProviderResult:
     """Standardized result from a provider operation."""
 
     success: bool
-    data: Optional[Any] = None  # Dict or List for successful results
-    error: Optional[str] = None  # Error message if failed
+    data: Any | None = None  # Dict or List for successful results
+    error: str | None = None  # Error message if failed
     provider_name: str = ""  # Name of provider that generated this result
 
 
@@ -72,7 +73,7 @@ class BaseProvider(ABC):
         """
         pass
 
-    def get_tools(self) -> Dict[str, Callable]:
+    def get_tools(self) -> dict[str, Callable]:
         """
         Return dict of tool_name -> async_function for MCP registration.
 

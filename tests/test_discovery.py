@@ -23,7 +23,7 @@ def test_all_providers_are_base_provider_subclasses():
     """Test that all discovered providers are BaseProvider subclasses."""
     providers = discover_providers()
 
-    for name, provider_class in providers.items():
+    for _name, provider_class in providers.items():
         assert issubclass(provider_class, BaseProvider)
         assert provider_class is not BaseProvider
 
@@ -51,7 +51,16 @@ def test_get_provider_metadata_all():
     assert len(metadata_list) == 8
 
     metadata_names = {m.name for m in metadata_list}
-    assert metadata_names == {"pypi", "godocs", "github", "npm", "crates", "zig", "dockerhub", "gcp"}
+    assert metadata_names == {
+        "pypi",
+        "godocs",
+        "github",
+        "npm",
+        "crates",
+        "zig",
+        "dockerhub",
+        "gcp",
+    }
 
 
 def test_discovery_caches_results():
@@ -67,7 +76,7 @@ def test_provider_tools_metadata():
     """Test that providers with expose_as_tool=True have tool_names."""
     providers = discover_providers()
 
-    for name, provider_class in providers.items():
+    for _name, provider_class in providers.items():
         instance = provider_class(lambda: None)
         metadata = instance.get_metadata()
 

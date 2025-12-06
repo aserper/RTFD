@@ -1,6 +1,7 @@
 """Integration tests for GitHub provider using VCR cassettes."""
 
 import pytest
+
 from RTFD.providers.github import GitHubProvider
 from RTFD.utils import create_http_client
 

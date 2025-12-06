@@ -1,16 +1,16 @@
 """Tests for content utilities."""
 
-import pytest
 from unittest.mock import patch
+
 from src.RTFD.content_utils import (
-    html_to_markdown,
+    Section,
+    convert_relative_urls,
     convert_rst_to_markdown,
     extract_sections,
-    Section,
-    score_section,
+    html_to_markdown,
     prioritize_sections,
+    score_section,
     smart_truncate,
-    convert_relative_urls,
 )
 
 
@@ -91,9 +91,9 @@ def test_prioritize_sections():
     c2 = "Install content"
     c3 = "API content"
 
-    s1 = Section(1, "Intro", c1, 100, len(c1))   # 13 bytes
+    s1 = Section(1, "Intro", c1, 100, len(c1))  # 13 bytes
     s2 = Section(2, "Install", c2, 90, len(c2))  # 15 bytes
-    s3 = Section(2, "API", c3, 70, len(c3))      # 11 bytes
+    s3 = Section(2, "API", c3, 70, len(c3))  # 11 bytes
 
     sections = [s1, s2, s3]
 
@@ -140,13 +140,20 @@ def test_convert_relative_urls():
     base = "https://example.com/docs"
 
     # Relative link
-    assert convert_relative_urls("[Link](page.html)", base) == "[Link](https://example.com/docs/page.html)"
+    assert (
+        convert_relative_urls("[Link](page.html)", base)
+        == "[Link](https://example.com/docs/page.html)"
+    )
 
     # Absolute link (should not change)
     assert convert_relative_urls("[Link](http://google.com)", base) == "[Link](http://google.com)"
 
     # Root relative link
-    assert convert_relative_urls("[Link](/root.html)", base) == "[Link](https://example.com/root.html)"
+    assert (
+        convert_relative_urls("[Link](/root.html)", base) == "[Link](https://example.com/root.html)"
+    )
 
     # Image
-    assert convert_relative_urls("![Img](img.png)", base) == "![Img](https://example.com/docs/img.png)"
+    assert (
+        convert_relative_urls("![Img](img.png)", base) == "![Img](https://example.com/docs/img.png)"
+    )

@@ -9,15 +9,15 @@ in the aggregated search_library_docs tool.
 from __future__ import annotations
 
 import sys
-from typing import Any, Dict
+from typing import Any
 
 from mcp.server.fastmcp import FastMCP
 from mcp.types import CallToolResult
 
+from .cache import CacheManager
 from .providers import discover_providers
 from .providers.base import BaseProvider
-from .utils import create_http_client, serialize_response_with_meta, get_cache_config
-from .cache import CacheManager
+from .utils import create_http_client, get_cache_config, serialize_response_with_meta
 
 # Initialize FastMCP server
 mcp = FastMCP("RTFD!")
@@ -26,10 +26,10 @@ mcp = FastMCP("RTFD!")
 _cache_manager = CacheManager()
 
 # Provider instances (initialized on first use)
-_provider_instances: Dict[str, BaseProvider] = {}
+_provider_instances: dict[str, BaseProvider] = {}
 
 
-def _get_provider_instances() -> Dict[str, BaseProvider]:
+def _get_provider_instances() -> dict[str, BaseProvider]:
     """
     Get or create provider instances.
 
@@ -71,7 +71,7 @@ def _register_provider_tools() -> None:
         tools = provider.get_tools()
 
         # Register each tool with FastMCP
-        for tool_name, tool_fn in tools.items():
+        for _tool_name, tool_fn in tools.items():
             # Extract description from docstring
             description = tool_fn.__doc__ or f"{provider_name} tool"
 
@@ -79,22 +79,22 @@ def _register_provider_tools() -> None:
             mcp.tool(description=description)(tool_fn)
 
 
-async def _locate_library_docs(library: str, limit: int = 5) -> Dict[str, Any]:
+async def _locate_library_docs(library: str, limit: int = 5) -> dict[str, Any]:
     """
     Try to find documentation links for a given library using all available providers.
 
     This is the aggregator function that combines results from PyPI, GoDocs, and GitHub.
     """
 
-    result: Dict[str, Any] = {"library": library}
+    result: dict[str, Any] = {"library": library}
 
     # Check cache first
     cache_enabled, cache_ttl = get_cache_config()
     cache_key = f"search:{library}:{limit}"
-    
+
     if cache_enabled:
         # Cleanup expired entries occasionally (could be optimized)
-        # For now, we rely on lazy cleanup or external process, 
+        # For now, we rely on lazy cleanup or external process,
         # but let's do a quick check on read if we wanted strict TTL.
         # The CacheManager.get() returns None if not found.
         # We can also run cleanup on startup or periodically.

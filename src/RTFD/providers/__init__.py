@@ -11,15 +11,14 @@ import importlib
 import inspect
 import sys
 from pathlib import Path
-from typing import Dict, Type
 
 from .base import BaseProvider, ProviderMetadata
 
 # Registry of discovered providers
-_provider_classes: Dict[str, Type[BaseProvider]] = {}
+_provider_classes: dict[str, type[BaseProvider]] = {}
 
 
-def discover_providers() -> Dict[str, Type[BaseProvider]]:
+def discover_providers() -> dict[str, type[BaseProvider]]:
     """
     Auto-discover provider classes from the providers directory.
 

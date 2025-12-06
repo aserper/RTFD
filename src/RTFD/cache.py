@@ -7,20 +7,21 @@ from __future__ import annotations
 import json
 import os
 import sqlite3
+import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Optional
-import sys
+from typing import Any
 
 
 @dataclass
 class CacheEntry:
     """Represents a cached item."""
+
     key: str
     data: Any
     timestamp: float
-    metadata: Dict[str, Any]
+    metadata: dict[str, Any]
 
 
 class CacheManager:
@@ -28,7 +29,7 @@ class CacheManager:
     Manages a SQLite-based cache for search results.
     """
 
-    def __init__(self, db_path: Optional[str] = None):
+    def __init__(self, db_path: str | None = None):
         """
         Initialize the cache manager.
 
@@ -59,7 +60,7 @@ class CacheManager:
             )
             conn.commit()
 
-    def get(self, key: str) -> Optional[CacheEntry]:
+    def get(self, key: str) -> CacheEntry | None:
         """
         Retrieve an item from the cache.
 
@@ -86,10 +87,10 @@ class CacheManager:
                     )
         except Exception as e:
             sys.stderr.write(f"Cache read error: {e}\n")
-        
+
         return None
 
-    def set(self, key: str, data: Any, metadata: Optional[Dict[str, Any]] = None) -> None:
+    def set(self, key: str, data: Any, metadata: dict[str, Any] | None = None) -> None:
         """
         Store an item in the cache.
 
@@ -143,16 +144,14 @@ class CacheManager:
         cutoff = time.time() - ttl
         try:
             with sqlite3.connect(self.db_path) as conn:
-                cursor = conn.execute(
-                    "DELETE FROM cache WHERE timestamp < ?", (cutoff,)
-                )
+                cursor = conn.execute("DELETE FROM cache WHERE timestamp < ?", (cutoff,))
                 conn.commit()
                 return cursor.rowcount
         except Exception as e:
             sys.stderr.write(f"Cache cleanup error: {e}\n")
             return 0
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """
         Get cache statistics.
 
@@ -177,7 +176,7 @@ class CacheManager:
 
         return stats
 
-    def get_all_entries(self) -> Dict[str, Dict[str, Any]]:
+    def get_all_entries(self) -> dict[str, dict[str, Any]]:
         """
         Get detailed information about all cached entries.
 
@@ -225,31 +224,37 @@ class CacheManager:
         if isinstance(data, dict):
             if "library" in data:
                 library = data.get("library", "")
-                
+
                 # Try to find a description in provider results
                 description = ""
-                
+
                 # Check PyPI
                 if "pypi" in data and isinstance(data["pypi"], dict):
-                    description = data["pypi"].get("summary") or data["pypi"].get("description") or ""
-                
+                    description = (
+                        data["pypi"].get("summary") or data["pypi"].get("description") or ""
+                    )
+
                 # Check NPM
                 if not description and "npm" in data and isinstance(data["npm"], dict):
                     description = data["npm"].get("summary") or data["npm"].get("description") or ""
-                    
+
                 # Check Crates
                 if not description and "crates" in data and isinstance(data["crates"], dict):
-                     description = data["crates"].get("description") or ""
+                    description = data["crates"].get("description") or ""
 
                 # Check GoDocs
                 if not description and "godocs" in data and isinstance(data["godocs"], dict):
                     description = data["godocs"].get("synopsis") or ""
 
                 # Check GitHub
-                if not description and "github_repos" in data and isinstance(data["github_repos"], list):
+                if (
+                    not description
+                    and "github_repos" in data
+                    and isinstance(data["github_repos"], list)
+                ):
                     if len(data["github_repos"]) > 0:
-                         description = data["github_repos"][0].get("description") or ""
-                
+                        description = data["github_repos"][0].get("description") or ""
+
                 if description:
                     if len(description) > 100:
                         description = description[:100] + "..."

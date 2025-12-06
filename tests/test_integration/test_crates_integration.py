@@ -1,6 +1,7 @@
 """Integration tests for Rust Crates provider using VCR cassettes."""
 
 import pytest
+
 from RTFD.providers.crates import CratesProvider
 from RTFD.utils import create_http_client
 

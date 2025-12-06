@@ -1,10 +1,9 @@
 """Tests for NPM provider."""
 
-import asyncio
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
-import pytest
 import httpx
+import pytest
 
 from src.RTFD.providers.npm import NpmProvider
 from src.RTFD.utils import create_http_client
@@ -69,7 +68,9 @@ async def test_npm_search_success(provider, mock_npm_data):
 async def test_npm_search_404(provider):
     """Test searching for non-existent package."""
     mock_client = AsyncMock()
-    mock_client.get.side_effect = httpx.HTTPStatusError("404 Not Found", request=None, response=MagicMock(status_code=404))
+    mock_client.get.side_effect = httpx.HTTPStatusError(
+        "404 Not Found", request=None, response=MagicMock(status_code=404)
+    )
     mock_client.__aenter__.return_value = mock_client
     mock_client.__aexit__.return_value = None
 
@@ -161,7 +162,9 @@ async def test_fetch_npm_docs_minimal(provider, mock_npm_data):
 async def test_fetch_npm_docs_error(provider):
     """Test error handling in fetch_npm_docs."""
     mock_client = AsyncMock()
-    mock_client.get.side_effect = httpx.HTTPStatusError("500 Error", request=None, response=MagicMock(status_code=500))
+    mock_client.get.side_effect = httpx.HTTPStatusError(
+        "500 Error", request=None, response=MagicMock(status_code=500)
+    )
     mock_client.__aenter__.return_value = mock_client
     mock_client.__aexit__.return_value = None
 

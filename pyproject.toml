@@ -28,7 +28,8 @@ dependencies = [
     "beautifulsoup4>=4.14.3",
     "markdownify>=1.2.2",
     "docutils>=0.22.3",
-    "tiktoken>=0.12.0"
+    "tiktoken>=0.12.0",
+    "loguru>=0.7.3",
 ]
 
 [project.urls]
@@ -46,6 +47,7 @@ dev = [
     "pytest-asyncio>=0.21.0",
     "pytest-cov>=4.0",
     "pytest-recording>=0.13.0",
+    "ruff>=0.2.0",
 ]
 
 [tool.setuptools]
@@ -60,4 +62,31 @@ asyncio_mode = "auto"
 markers = [
     "integration: marks tests as integration tests (deselect with '-m \"not integration\"')",
     "requires_auth: marks tests that require API authentication",
+]
+
+[tool.ruff]
+# Enable pycodestyle (E), Pyflakes (F), isort (I), and more
+lint.select = ["E", "F", "I", "N", "B", "UP", "PL", "RUF"]
+lint.ignore = ["E501", "PLR2004", "PLR0915","PLR0912","N999","PLR0911","PLC0415"]
+target-version = "py310"
+line-length = 100
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["RTFD"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+exclude = ["PLC0415"]
+[dependency-groups]
+dev = [
+    "ruff>=0.14.8",
 ]

@@ -12,14 +12,12 @@ Thank you for your interest in contributing to RTFD! This document outlines how 
 
 2. Install in development mode:
    ```bash
-   pip install -e .
-   # or with uv:
-   uv pip install -e .
+   uv sync --extra dev
    ```
 
 3. Run tests:
    ```bash
-   pytest
+   uv run pytest
    ```
 
 ## Making Changes

@@ -72,8 +72,7 @@ Clone the repository and install:
 ```bash
 git clone https://github.com/aserper/RTFD.git
 cd RTFD
-pip install .
-# or: uv pip install -e .
+uv sync --extra dev
 ```
 
 ## Quickstart
@@ -92,7 +91,14 @@ uv pip install rtfd-mcp
 #### Claude Code
 Run the following command to automatically add RTFD to your configuration:
 ```bash
+# Using GITHUB_TOKEN for authentication (default)
 claude mcp add rtfd -- command="rtfd" --env GITHUB_TOKEN=your_token_here --env RTFD_FETCH=true
+
+# Or using GitHub CLI for authentication
+claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=cli --env RTFD_FETCH=true
+
+# Or using both methods with fallback
+claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=auto --env GITHUB_TOKEN=your_token_here --env RTFD_FETCH=true
 ```
 Or manually edit `~/.claude.json`:
 ```json
@@ -101,6 +107,7 @@ Or manually edit `~/.claude.json`:
     "rtfd": {
       "command": "rtfd",
       "env": {
+        "GITHUB_AUTH": "token", // Options: "token", "cli", "auto", or "disabled"
         "GITHUB_TOKEN": "your_token_here",
         "RTFD_FETCH": "true"
       }
@@ -179,12 +186,36 @@ RTFD_FETCH = "true"
 ### 3. Verify
 Ask your agent: *"What tools do you have available?"* or *"Search for documentation on pandas"*.
 
+### Testing with MCP Inspector
+
+The MCP Inspector tool allows you to test the RTFD MCP server directly without requiring an IDE or agent integration. This is useful for development and debugging.
+
+#### Installation
+
+```bash
+# Install the MCP Inspector tool globally
+npm install -g @modelcontextprotocol/inspector
+```
+
+#### Usage
+
+```bash
+# Run RTFD with the MCP Inspector
+npx @modelcontextprotocol/inspector rtfd
+
+# If you need to pass environment variables
+npx @modelcontextprotocol/inspector rtfd -e GITHUB_AUTH=auto
+```
+
+The Inspector tool will open an interactive terminal where you can directly call the RTFD tools and see their responses.
+
 ## Configuration
 
 RTFD can be configured using the following environment variables:
 
 | Variable | Default | Description |
 | :--- | :--- | :--- |
+| `GITHUB_AUTH` | `token` | GitHub authentication method: `token` (use GITHUB_TOKEN only), `cli` (use gh CLI auth only), `auto` (try GITHUB_TOKEN, then gh CLI), or `disabled` (no GitHub access). |
 | `GITHUB_TOKEN` | `None` | GitHub API token. Highly recommended to increase rate limits (60 -> 5000 requests/hour). |
 | `RTFD_FETCH` | `true` | Enable/disable content fetching tools. Set to `false` to only allow metadata lookups. |
 | `RTFD_CACHE_ENABLED` | `true` | Enable/disable caching. Set to `false` to disable. |
@@ -273,6 +304,7 @@ To add a custom provider, create a new file in the providers directory inheritin
 ### GCP (Google Cloud Platform)
 *   **Service Discovery:** Uses a local service mapping (20+ common services), direct search on `cloud.google.com` (for general queries), and GitHub API search of the googleapis/googleapis repository.
 *   **Documentation Source:** Fetches documentation by scraping docs.cloud.google.com and converting to Markdown.
+*   **GitHub Authentication:** Configure using `GITHUB_AUTH` environment variable. Options are `token` (default), `cli`, `auto`, or `disabled`.
 *   **GitHub Token:** Optional but recommended. Without a `GITHUB_TOKEN`, GitHub API search is limited to 60 requests/hour. With a token, the limit increases to 5,000 requests/hour.
 *   **Supported Services:** Cloud Storage, Compute Engine, BigQuery, Cloud Functions, Cloud Run, Pub/Sub, Firestore, GKE, App Engine, Cloud Vision, Cloud Speech, IAM, Secret Manager, and more.
 *   **Service Name Formats:** Accepts various formats (e.g., "storage", "cloud storage", "Cloud Storage", "kubernetes", "k8s" for GKE).

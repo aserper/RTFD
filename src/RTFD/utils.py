@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
+import json
+import os
+import shutil
+import subprocess
 from typing import Any
 
 import httpx
-import json
-import os
+from loguru import logger
 from mcp.types import CallToolResult, TextContent
+
 from .token_counter import count_tokens
 
 USER_AGENT = (
@@ -74,15 +78,13 @@ def serialize_response_with_meta(data: Any) -> CallToolResult:
 
     # If token tracking is disabled, just serialize to JSON
     if not track_tokens:
-        return CallToolResult(
-            content=[TextContent(type="text", text=response_text)]
-        )
+        return CallToolResult(content=[TextContent(type="text", text=response_text)])
 
     # Token tracking enabled
     try:
         # Calculate token statistics
         token_count = count_tokens(response_text)
-        
+
         token_stats = {
             "tokens_json": token_count,
             "tokens_sent": token_count,
@@ -93,13 +95,13 @@ def serialize_response_with_meta(data: Any) -> CallToolResult:
         # Return CallToolResult with content and metadata
         return CallToolResult(
             content=[TextContent(type="text", text=response_text)],
-            _meta={"token_stats": token_stats}
+            _meta={"token_stats": token_stats},
         )
     except Exception as e:
         # Fallback: still return response, but with error in metadata
         return CallToolResult(
             content=[TextContent(type="text", text=response_text)],
-            _meta={"token_stats": {"error": f"Token counting failed: {str(e)}"}}
+            _meta={"token_stats": {"error": f"Token counting failed: {e!s}"}},
         )
 
 
@@ -116,3 +118,48 @@ def get_cache_config() -> tuple[bool, float]:
     except ValueError:
         ttl = 604800.0
     return enabled, ttl
+
+
+def get_github_token() -> str | None:
+    """
+    Get GitHub token based on configured authentication method.
+
+    Authentication method is configured via GITHUB_AUTH environment variable:
+    - "token": Only use GITHUB_TOKEN environment variable (default)
+    - "cli": Only use gh CLI auth token
+    - "auto": Try GITHUB_TOKEN first, then fall back to gh CLI
+    - "disabled": Disable GitHub authentication entirely
+
+    Returns:
+        GitHub token as string or None if not available or disabled
+    """
+    auth_method = os.getenv("GITHUB_AUTH", "token").lower()
+
+    # GitHub authentication disabled
+    if auth_method == "disabled":
+        return None
+
+    # Try token from environment variable
+    if auth_method in ("token", "auto"):
+        token = os.getenv("GITHUB_TOKEN")
+        if token:
+            return token
+        # If method is just "token" and we didn't find one, don't try other methods
+        if auth_method == "token":
+            logger.error("GitHub token not found in environment")
+            return None
+
+    # Try gh CLI if allowed by auth method
+    if auth_method in ("cli", "auto") and shutil.which("gh"):
+        try:
+            result = subprocess.run(
+                ["gh", "auth", "token"], capture_output=True, text=True, check=False
+            )
+            if result.returncode == 0 and result.stdout.strip():
+                return result.stdout.strip()
+        except Exception:
+            # If gh command fails for any reason, continue to return None
+            pass
+
+    logger.error("GitHub token not found via configured methods")
+    return None

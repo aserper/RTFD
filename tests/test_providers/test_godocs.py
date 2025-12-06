@@ -1,10 +1,9 @@
 """Tests for GoDocs provider."""
 
-import asyncio
 from unittest.mock import AsyncMock, MagicMock
 
-import pytest
 import httpx
+import pytest
 
 from src.RTFD.providers.godocs import GoDocsProvider
 from src.RTFD.utils import create_http_client
@@ -96,7 +95,9 @@ async def test_godocs_search_success(provider, mock_html_content):
 async def test_godocs_search_404(provider):
     """Test searching for non-existent package (returns success=False but no error)."""
     mock_client = AsyncMock()
-    mock_client.get.side_effect = httpx.HTTPStatusError("404 Not Found", request=None, response=MagicMock(status_code=404))
+    mock_client.get.side_effect = httpx.HTTPStatusError(
+        "404 Not Found", request=None, response=MagicMock(status_code=404)
+    )
     mock_client.__aenter__.return_value = mock_client
     mock_client.__aexit__.return_value = None
 
@@ -115,7 +116,9 @@ async def test_godocs_search_404(provider):
 async def test_godocs_search_http_error(provider):
     """Test searching with other HTTP errors."""
     mock_client = AsyncMock()
-    mock_client.get.side_effect = httpx.HTTPStatusError("500 Server Error", request=None, response=MagicMock(status_code=500))
+    mock_client.get.side_effect = httpx.HTTPStatusError(
+        "500 Server Error", request=None, response=MagicMock(status_code=500)
+    )
     mock_client.__aenter__.return_value = mock_client
     mock_client.__aexit__.return_value = None
 
@@ -237,7 +240,9 @@ async def test_fetch_godocs_docs_with_max_bytes(mock_html_with_docs):
 async def test_fetch_godocs_docs_404(provider):
     """Test fetching docs for non-existent package."""
     mock_client = AsyncMock()
-    mock_client.get.side_effect = httpx.HTTPStatusError("404 Not Found", request=None, response=MagicMock(status_code=404))
+    mock_client.get.side_effect = httpx.HTTPStatusError(
+        "404 Not Found", request=None, response=MagicMock(status_code=404)
+    )
     mock_client.__aenter__.return_value = mock_client
     mock_client.__aexit__.return_value = None
 

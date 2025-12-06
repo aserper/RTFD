@@ -15,7 +15,7 @@ from pathlib import Path
 
 def parse_version(version_str: str) -> tuple[int, int, int]:
     """Parse semantic version string into (major, minor, patch) tuple."""
-    match = re.match(r'^(\d+)\.(\d+)\.(\d+)$', version_str.strip())
+    match = re.match(r"^(\d+)\.(\d+)\.(\d+)$", version_str.strip())
     if not match:
         raise ValueError(f"Invalid version format: {version_str}")
     return tuple(int(x) for x in match.groups())
@@ -32,7 +32,7 @@ def bump_version(current: str, bump_type: str) -> str:
         New version string
     """
     # If bump_type looks like a version, use it directly
-    if '.' in bump_type and bump_type[0].isdigit():
+    if "." in bump_type and bump_type[0].isdigit():
         try:
             parse_version(bump_type)
             return bump_type
@@ -48,7 +48,9 @@ def bump_version(current: str, bump_type: str) -> str:
     elif bump_type == "patch":
         return f"{major}.{minor}.{patch + 1}"
     else:
-        raise ValueError(f"Invalid bump type: {bump_type}. Use 'major', 'minor', 'patch', or a version like '0.2.0'")
+        raise ValueError(
+            f"Invalid bump type: {bump_type}. Use 'major', 'minor', 'patch', or a version like '0.2.0'"
+        )
 
 
 def update_pyproject_toml(new_version: str) -> str:
@@ -66,7 +68,7 @@ def update_pyproject_toml(new_version: str) -> str:
 
     # Match the version line in [project] section
     pattern = r'(version\s*=\s*")[^"]*(")'
-    new_content = re.sub(pattern, rf'\g<1>{new_version}\g<2>', content)
+    new_content = re.sub(pattern, rf"\g<1>{new_version}\g<2>", content)
 
     if new_content == content:
         raise ValueError("Could not find version in pyproject.toml")
@@ -89,9 +91,9 @@ def update_init_py(new_version: str) -> str:
     content = init_path.read_text()
 
     # If __version__ exists, update it
-    if '__version__' in content:
+    if "__version__" in content:
         pattern = r'(__version__\s*=\s*")[^"]*(")'
-        new_content = re.sub(pattern, rf'\g<1>{new_version}\g<2>', content)
+        new_content = re.sub(pattern, rf"\g<1>{new_version}\g<2>", content)
     else:
         # Add __version__ at the top
         new_content = f'__version__ = "{new_version}"\n\n{content}'

@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Any, Callable, Dict
+from collections.abc import Callable
+from typing import Any
 
 import httpx
 from bs4 import BeautifulSoup
 from mcp.types import CallToolResult
 
-from ..utils import serialize_response_with_meta, is_fetch_enabled
+from ..utils import is_fetch_enabled, serialize_response_with_meta
 from .base import BaseProvider, ProviderMetadata, ProviderResult
 
 
@@ -48,7 +49,7 @@ class GoDocsProvider(BaseProvider):
             # Parsing errors - silent fail
             return ProviderResult(success=False, error=None, provider_name="godocs")
 
-    async def _fetch_metadata(self, package: str) -> Dict[str, Any]:
+    async def _fetch_metadata(self, package: str) -> dict[str, Any]:
         """Scrape package metadata from godocs.io."""
         # Handle full URLs or just package paths
         if package.startswith("https://godocs.io/"):
@@ -83,7 +84,7 @@ class GoDocsProvider(BaseProvider):
                     if sibling.name == "p":
                         text = sibling.get_text(strip=True)
                         # Skip the import statement
-                        if text.startswith("import \""):
+                        if text.startswith('import "'):
                             continue
                         description = text
                         break
@@ -95,9 +96,7 @@ class GoDocsProvider(BaseProvider):
             "source_url": f"https://pkg.go.dev/{package}",  # godocs often mirrors standard paths
         }
 
-    async def _fetch_godocs_docs(
-        self, package: str, max_bytes: int = 20480
-    ) -> Dict[str, Any]:
+    async def _fetch_godocs_docs(self, package: str, max_bytes: int = 20480) -> dict[str, Any]:
         """
         Fetch full documentation content for a Go package from godocs.io.
 
@@ -132,7 +131,7 @@ class GoDocsProvider(BaseProvider):
                         break
                     if sibling.name in ("p", "pre"):
                         text = sibling.get_text(strip=True)
-                        if text and not text.startswith("import \""):
+                        if text and not text.startswith('import "'):
                             content_parts.append(text)
 
             # 2. Get function/type documentation (first few entries)
@@ -195,12 +194,12 @@ class GoDocsProvider(BaseProvider):
             return {
                 "package": package,
                 "content": "",
-                "error": f"Failed to fetch docs: {str(exc)}",
+                "error": f"Failed to fetch docs: {exc!s}",
                 "size_bytes": 0,
                 "source": None,
             }
 
-    def get_tools(self) -> Dict[str, Callable]:
+    def get_tools(self) -> dict[str, Callable]:
         """Return MCP tool functions."""
 
         async def godocs_metadata(package: str) -> CallToolResult:
@@ -225,9 +224,7 @@ class GoDocsProvider(BaseProvider):
             result = await self._fetch_metadata(package)
             return serialize_response_with_meta(result)
 
-        async def fetch_godocs_docs(
-            package: str, max_bytes: int = 20480
-        ) -> CallToolResult:
+        async def fetch_godocs_docs(package: str, max_bytes: int = 20480) -> CallToolResult:
             """
             Fetch actual Go package documentation from godocs.io.
 
