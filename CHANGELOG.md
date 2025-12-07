@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 ### Fixed
+
+## [0.4.1] - 2025-12-07
+
+### Added
+
+### Changed
+
+### Fixed
 - Fixed `ruff` configuration in `pyproject.toml` to use valid `target-version` (fixes CI failure)
 
 ## [0.4.0] - 2025-12-07
@@ -192,7 +200,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Error-resilient design (one provider failure doesn't crash server)
   - Privacy-focused (runs entirely locally, no data collection)
 
-[Unreleased]: https://github.com/aserper/rtfd/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/aserper/rtfd/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/aserper/rtfd/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/aserper/rtfd/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/aserper/rtfd/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/aserper/rtfd/compare/v0.2.6...v0.3.0
