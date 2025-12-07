@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Configurable GitHub authentication via `GITHUB_AUTH` environment variable
+  - Supports `token` (default), `cli`, `auto`, or `disabled` modes
+  - Allows authentication via GitHub CLI (`gh auth token`) without manual token management
 
 ### Changed
 
