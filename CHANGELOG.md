@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Allows authentication via GitHub CLI (`gh auth token`) without manual token management
 
 ### Changed
+- Updated documentation examples to include `GITHUB_AUTH` configuration for all supported clients (Cursor, Windsurf, Gemini, Codex)
 
 ### Fixed
 

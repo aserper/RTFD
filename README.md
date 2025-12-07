@@ -92,7 +92,7 @@ uv pip install rtfd-mcp
 Run the following command to automatically add RTFD to your configuration:
 ```bash
 # Using GITHUB_TOKEN for authentication (default)
-claude mcp add rtfd -- command="rtfd" --env GITHUB_TOKEN=your_token_here --env RTFD_FETCH=true
+claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=token --env GITHUB_TOKEN=your_token_here --env RTFD_FETCH=true
 
 # Or using GitHub CLI for authentication
 claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=cli --env RTFD_FETCH=true
@@ -122,8 +122,9 @@ Or manually edit `~/.claude.json`:
 3. Name: `rtfd`
 4. Type: `stdio`
 5. Command: `rtfd`
-6. Add Environment Variable: `GITHUB_TOKEN` = `your_token_here`
-7. Add Environment Variable: `RTFD_FETCH` = `true`
+6. Add Environment Variable: `GITHUB_AUTH` = `token` (Options: `token`, `cli`, `auto`, `disabled`)
+7. Add Environment Variable: `GITHUB_TOKEN` = `your_token_here`
+8. Add Environment Variable: `RTFD_FETCH` = `true`
 
 Or manually edit `~/.cursor/mcp.json`:
 ```json
@@ -132,6 +133,7 @@ Or manually edit `~/.cursor/mcp.json`:
     "rtfd": {
       "command": "rtfd",
       "env": {
+        "GITHUB_AUTH": "token", // Options: "token", "cli", "auto", or "disabled"
         "GITHUB_TOKEN": "your_token_here",
         "RTFD_FETCH": "true"
       }
@@ -149,6 +151,7 @@ Or manually edit `~/.cursor/mcp.json`:
     "rtfd": {
       "command": "rtfd",
       "env": {
+        "GITHUB_AUTH": "token", // Options: "token", "cli", "auto", or "disabled"
         "GITHUB_TOKEN": "your_token_here",
         "RTFD_FETCH": "true"
       }
@@ -165,6 +168,7 @@ Edit `~/.gemini/settings.json`:
     "rtfd": {
       "command": "rtfd",
       "env": {
+        "GITHUB_AUTH": "token", // Options: "token", "cli", "auto", or "disabled"
         "GITHUB_TOKEN": "your_token_here",
         "RTFD_FETCH": "true"
       }
@@ -179,6 +183,7 @@ Edit `~/.codex/config.toml`:
 [mcpServers.rtfd]
 command = "rtfd"
 [mcpServers.rtfd.env]
+GITHUB_AUTH = "token" # Options: "token", "cli", "auto", or "disabled"
 GITHUB_TOKEN = "your_token_here"
 RTFD_FETCH = "true"
 ```
@@ -273,7 +278,11 @@ Add the following to your `~/.claude/settings.json`:
   "mcpServers": {
     "rtfd": {
       "command": "rtfd",
-      "type": "stdio"
+      "env": {
+        "GITHUB_AUTH": "token",
+        "GITHUB_TOKEN": "your_token_here",
+        "RTFD_FETCH": "true"
+      }
     }
   }
 }
@@ -286,7 +295,7 @@ Or with environment variables:
   "mcpServers": {
     "rtfd": {
       "command": "bash",
-      "args": ["-c", "export GITHUB_TOKEN=your_token_here && rtfd"],
+      "args": ["-c", "export GITHUB_AUTH=token && export GITHUB_TOKEN=your_token_here && rtfd"],
       "type": "stdio"
     }
   }
