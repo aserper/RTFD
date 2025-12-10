@@ -75,6 +75,17 @@ cd RTFD
 uv sync --extra dev
 ```
 
+### Docker (GHCR)
+
+You can run RTFD directly from the GitHub Container Registry without installing Python or dependencies locally.
+
+```bash
+docker run -i --rm \
+  -e GITHUB_AUTH=token \
+  -e GITHUB_TOKEN=your_token_here \
+  ghcr.io/aserper/rtfd:latest
+```
+
 ## Quickstart
 
 RTFD is an MCP server that needs to be configured in your AI agent of choice.
@@ -99,6 +110,9 @@ claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=cli --env RTFD_FETCH=tru
 
 # Or using both methods with fallback
 claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=auto --env GITHUB_TOKEN=your_token_here --env RTFD_FETCH=true
+
+# Or using Docker
+claude mcp add rtfd -- type=docker -- image=ghcr.io/aserper/rtfd:latest --env GITHUB_AUTH=token --env GITHUB_TOKEN=your_token_here
 ```
 Or manually edit `~/.claude.json`:
 ```json

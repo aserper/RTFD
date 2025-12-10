@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Docker Support**: Official Docker container available on GHCR (`ghcr.io/aserper/rtfd`)
+  - Runs independently with all dependencies pre-installed
+  - Supports all environment variables for configuration
+  - Optimized image size using `uv` and multi-stage builds
 
 ### Changed
 
