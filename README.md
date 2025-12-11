@@ -1,7 +1,7 @@
 # ![RTFD Logo](logo.png) RTFD (Read The F*****g Docs) MCP Server
 
 [![Tests](https://img.shields.io/github/actions/workflow/status/aserper/rtfd/test.yml?style=for-the-badge&logo=github&label=Tests)](https://github.com/aserper/rtfd/actions/workflows/test.yml)
-[![GHCR](https://img.shields.io/github/actions/workflow/status/aserper/rtfd/docker-publish.yml?style=for-the-badge&logo=docker&label=GHCR)](https://github.com/aserper/rtfd/pkgs/container/rtfd)
+[![GHCR](https://img.shields.io/badge/ghcr.io-rtfd-blue?style=for-the-badge&logo=docker&logoColor=white)](https://github.com/aserper/rtfd/pkgs/container/rtfd)
 [![PyPI](https://img.shields.io/pypi/v/rtfd-mcp.svg?style=for-the-badge&logo=pypi&logoColor=white)](https://pypi.org/project/rtfd-mcp/)
 [![Supported Python versions](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
