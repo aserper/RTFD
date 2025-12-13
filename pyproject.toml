@@ -68,7 +68,7 @@ markers = [
 # Enable pycodestyle (E), Pyflakes (F), isort (I), and more
 lint.select = ["E", "F", "I", "N", "B", "UP", "PL", "RUF"]
 lint.ignore = ["E501", "PLR2004", "PLR0915","PLR0912","N999","PLR0911","PLC0415"]
-target-version = "0.5.0"
+target-version = "py310"
 line-length = 100
 exclude = [
     ".git",
