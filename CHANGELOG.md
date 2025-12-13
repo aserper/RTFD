@@ -37,6 +37,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.4.0] - 2025-12-07
 
 ### Added
+- GitHub Container Registry (GHCR) support tools:
+  - `list_github_packages`: List packages for a user or organization
+  - `get_package_versions`: Get versions for a specific package
 - Configurable GitHub authentication via `GITHUB_AUTH` environment variable
   - Supports `token` (default), `cli`, `auto`, or `disabled` modes
   - Allows authentication via GitHub CLI (`gh auth token`) without manual token management
