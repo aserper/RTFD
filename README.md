@@ -24,7 +24,7 @@ This server solves a common problem where LLMs hallucinate APIs or provide outda
 *   **Accuracy:** Agents can access the latest documentation for libraries, ensuring they use the correct version-specific APIs and avoid deprecated methods.
 *   **Context Awareness:** Instead of just getting a raw text dump, the server extracts key sections like installation instructions, quickstart guides, and API references, giving the agent exactly what it needs.
 *   **Privacy:** Unlike cloud-based documentation services, RTFD runs entirely on your local machine. Your queries are sent DIRECTLY to the source (no servers in the middle, no API keys needed, etc) and the documentation you access never leave your system, ensuring complete privacy and no data collection.
-*   **Supported Sources:** PyPI (Python), npm (JavaScript/TypeScript), crates.io (Rust), GoDocs (Go), Zig docs, DockerHub, GitHub repositories, and Google Cloud Platform (GCP). 
+*   **Supported Sources:** PyPI (Python), npm (JavaScript/TypeScript), crates.io (Rust), GoDocs (Go), Zig docs, DockerHub, GitHub Container Registry (GHCR), GitHub repositories, and Google Cloud Platform (GCP).
 
 ## Use Cases
 
@@ -47,8 +47,9 @@ RTFD helps in scenarios like:
 *   **Documentation Content Fetching:** Retrieve actual documentation content (README and key sections) from PyPI, npm, and GitHub rather than just URLs.
 *   **Smart Section Extraction:** Automatically prioritizes and extracts relevant sections such as "Installation", "Usage", and "API Reference" to reduce noise.
 *   **Format Conversion:** Automatically converts reStructuredText and HTML to Markdown for consistent formatting and easier consumption by LLMs.
-*   **Multi-Source Search:** Aggregates results from PyPI, npm, crates.io, GoDocs, Zig docs, DockerHub, GitHub, and GCP.
+*   **Multi-Source Search:** Aggregates results from PyPI, npm, crates.io, GoDocs, Zig docs, DockerHub, GHCR, GitHub, and GCP.
 *   **GitHub Repository Browsing:** Browse repository file trees (`list_repo_contents`, `get_repo_tree`) and read source code files (`get_file_content`) directly.
+*   **GitHub Packages (GHCR):** List packages and get versions for any GitHub user or organization to find the right image tag.
 *   **PyPI Verification:** Optional security feature (`VERIFIED_BY_PYPI`) to ensure packages are verified by PyPI before fetching documentation.
 *   **Smart GCP Search:** Hybrid search approach combining local service mapping with `cloud.google.com` search to find documentation for any Google Cloud service.
 *   **Pluggable Architecture:** Easily add new documentation providers by creating a single provider module.
