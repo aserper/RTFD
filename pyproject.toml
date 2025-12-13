@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rtfd-mcp"
-version = "0.5.0"
+version = "0.5.1"
 description = "MCP server for real-time library documentation access across multiple package ecosystems."
 authors = [{ name = "Amit Serper", email = "amit@example.com" }]
 license = "MIT"
@@ -68,7 +68,7 @@ markers = [
 # Enable pycodestyle (E), Pyflakes (F), isort (I), and more
 lint.select = ["E", "F", "I", "N", "B", "UP", "PL", "RUF"]
 lint.ignore = ["E501", "PLR2004", "PLR0915","PLR0912","N999","PLR0911","PLC0415"]
-target-version = "py310"
+target-version = "0.5.1"
 line-length = 100
 exclude = [
     ".git",
