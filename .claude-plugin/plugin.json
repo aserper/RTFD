@@ -8,10 +8,7 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/aserper/RTFD",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aserper/RTFD.git"
-  },
+  "repository": "https://github.com/aserper/RTFD.git",
   "keywords": [
     "mcp",
     "documentation",
@@ -22,22 +19,5 @@
     "docker",
     "github",
     "gcp"
-  ],
-  "category": "documentation",
-  "mcp_servers": [
-    {
-      "name": "rtfd",
-      "command": "python",
-      "args": [
-        "-m",
-        "RTFD.server"
-      ],
-      "env": {
-        "RTFD_FETCH": "${RTFD_FETCH:true}",
-        "VERIFIED_BY_PYPI": "${VERIFIED_BY_PYPI:false}",
-        "GITHUB_AUTH": "${GITHUB_AUTH:false}",
-        "GITHUB_TOKEN": "${GITHUB_TOKEN:}"
-      }
-    }
   ]
 }
