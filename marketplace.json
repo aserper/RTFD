@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    {
+      "name": "rtfd-mcp",
+      "version": "0.5.1",
+      "description": "MCP server for real-time library documentation access across multiple package ecosystems (PyPI, npm, crates.io, GoDocs, DockerHub, GitHub, GCP, and more).",
+      "author": "Amit Serper",
+      "license": "MIT",
+      "homepage": "https://github.com/aserper/RTFD",
+      "source": {
+        "type": "github",
+        "repo": "aserper/RTFD"
+      },
+      "keywords": [
+        "mcp",
+        "documentation",
+        "pypi",
+        "npm",
+        "crates",
+        "godocs",
+        "docker",
+        "github",
+        "gcp"
+      ],
+      "category": "documentation"
+    }
+  ]
+}

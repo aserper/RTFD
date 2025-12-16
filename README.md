@@ -57,6 +57,16 @@ RTFD helps in scenarios like:
 
 ## Installation
 
+### Claude Code Plugin (For Claude Code Users)
+
+Install RTFD as a plugin directly from the GitHub repository:
+
+```bash
+claude plugin install aserper/RTFD
+```
+
+For detailed configuration options and documentation, see [PLUGIN.md](PLUGIN.md).
+
 ### From PyPI (Recommended)
 
 ```bash
@@ -108,6 +118,14 @@ uv pip install rtfd-mcp
 ### 2. Configure your Agent
 
 #### Claude Code
+
+**Simplest Method (Recommended):** Use the plugin installation:
+```bash
+claude plugin install aserper/RTFD
+```
+
+**Alternative Methods:**
+
 Run the following command to automatically add RTFD to your configuration:
 ```bash
 # Using GITHUB_TOKEN for authentication (default)
@@ -122,6 +140,7 @@ claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=auto --env GITHUB_TOKEN=
 # Or using Docker
 claude mcp add rtfd -- type=docker -- image=ghcr.io/aserper/rtfd:latest --env GITHUB_AUTH=token --env GITHUB_TOKEN=your_token_here
 ```
+
 Or manually edit `~/.claude.json`:
 ```json
 {

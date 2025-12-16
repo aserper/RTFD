@@ -102,6 +102,53 @@ def update_init_py(new_version: str) -> str:
     return str(init_path)
 
 
+def update_plugin_json(new_version: str) -> str:
+    """Update version in plugin.json.
+
+    Args:
+        new_version: New version string
+
+    Returns:
+        Path to the updated file
+    """
+    import json
+
+    plugin_path = Path(__file__).parent.parent / "plugin.json"
+
+    content = plugin_path.read_text()
+    data = json.loads(content)
+
+    data["version"] = new_version
+
+    plugin_path.write_text(json.dumps(data, indent=2) + "\n")
+    return str(plugin_path)
+
+
+def update_marketplace_json(new_version: str) -> str:
+    """Update version in marketplace.json.
+
+    Args:
+        new_version: New version string
+
+    Returns:
+        Path to the updated file
+    """
+    import json
+
+    marketplace_path = Path(__file__).parent.parent / "marketplace.json"
+
+    content = marketplace_path.read_text()
+    data = json.loads(content)
+
+    # Update version in all plugins
+    if "plugins" in data:
+        for plugin in data["plugins"]:
+            plugin["version"] = new_version
+
+    marketplace_path.write_text(json.dumps(data, indent=2) + "\n")
+    return str(marketplace_path)
+
+
 def get_current_version() -> str:
     """Get current version from pyproject.toml."""
     pyproject_path = Path(__file__).parent.parent / "pyproject.toml"
@@ -135,6 +182,12 @@ def main():
 
         init_updated = update_init_py(new_version)
         print(f"✓ Updated {init_updated}")
+
+        plugin_updated = update_plugin_json(new_version)
+        print(f"✓ Updated {plugin_updated}")
+
+        marketplace_updated = update_marketplace_json(new_version)
+        print(f"✓ Updated {marketplace_updated}")
 
         print(f"\n✓ Version bumped from {current_version} to {new_version}")
         print("\nNext steps:")
