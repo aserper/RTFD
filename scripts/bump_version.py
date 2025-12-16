@@ -66,9 +66,26 @@ def update_pyproject_toml(new_version: str) -> str:
 
     content = pyproject_path.read_text()
 
-    # Match the version line in [project] section
-    pattern = r'(version\s*=\s*")[^"]*(")'
-    new_content = re.sub(pattern, rf"\g<1>{new_version}\g<2>", content)
+    # Find and replace only the version in [project] section, not in [tool.ruff]
+    # Split at [project] section to ensure we only modify the correct section
+    lines = content.split("\n")
+    in_project_section = False
+    new_lines = []
+
+    for line in lines:
+        if line.startswith("[project]"):
+            in_project_section = True
+        elif line.startswith("["):  # New section started
+            in_project_section = False
+
+        if in_project_section and line.startswith("version"):
+            pattern = r'(version\s*=\s*")[^"]*(")'
+            new_line = re.sub(pattern, rf"\g<1>{new_version}\g<2>", line)
+            new_lines.append(new_line)
+        else:
+            new_lines.append(line)
+
+    new_content = "\n".join(new_lines)
 
     if new_content == content:
         raise ValueError("Could not find version in pyproject.toml")
