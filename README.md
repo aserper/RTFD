@@ -59,13 +59,17 @@ RTFD helps in scenarios like:
 
 ### Claude Code Plugin (For Claude Code Users)
 
-Install RTFD as a plugin directly from the GitHub repository:
+Install RTFD as a Claude Code plugin in two steps:
 
 ```bash
-claude plugin install aserper/RTFD
+# Step 1: Add the RTFD marketplace
+claude plugin marketplace add aserper/RTFD
+
+# Step 2: Install the plugin
+claude plugin install rtfd-mcp@aserper/RTFD
 ```
 
-For detailed configuration options and documentation, see [PLUGIN.md](PLUGIN.md).
+For detailed configuration options and installation alternatives, see [PLUGIN.md](PLUGIN.md).
 
 ### From PyPI (Recommended)
 
@@ -119,14 +123,18 @@ uv pip install rtfd-mcp
 
 #### Claude Code
 
-**Simplest Method (Recommended):** Use the plugin installation:
+**Simplest Method (Recommended):** Use Claude Code plugin marketplace:
 ```bash
-claude plugin install aserper/RTFD
+# Step 1: Add the RTFD marketplace
+claude plugin marketplace add aserper/RTFD
+
+# Step 2: Install the plugin
+claude plugin install rtfd-mcp@aserper/RTFD
 ```
 
 **Alternative Methods:**
 
-Run the following command to automatically add RTFD to your configuration:
+Manually add RTFD as an MCP server using the following command to automatically add it to your configuration:
 ```bash
 # Using GITHUB_TOKEN for authentication (default)
 claude mcp add rtfd -- command="rtfd" --env GITHUB_AUTH=token --env GITHUB_TOKEN=your_token_here --env RTFD_FETCH=true

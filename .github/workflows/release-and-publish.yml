@@ -65,7 +65,7 @@ jobs:
 
     - name: Commit version bump
       run: |
-        git add pyproject.toml src/RTFD/__init__.py plugin.json marketplace.json CHANGELOG.md
+        git add pyproject.toml src/RTFD/__init__.py .claude-plugin/plugin.json .claude-plugin/marketplace.json CHANGELOG.md
         git commit -m "chore: release v${{ steps.version.outputs.version }}"
 
     - name: Create tag

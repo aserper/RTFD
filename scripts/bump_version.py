@@ -120,7 +120,7 @@ def update_init_py(new_version: str) -> str:
 
 
 def update_plugin_json(new_version: str) -> str:
-    """Update version in plugin.json.
+    """Update version in .claude-plugin/plugin.json.
 
     Args:
         new_version: New version string
@@ -130,7 +130,7 @@ def update_plugin_json(new_version: str) -> str:
     """
     import json
 
-    plugin_path = Path(__file__).parent.parent / "plugin.json"
+    plugin_path = Path(__file__).parent.parent / ".claude-plugin" / "plugin.json"
 
     content = plugin_path.read_text()
     data = json.loads(content)
@@ -142,7 +142,7 @@ def update_plugin_json(new_version: str) -> str:
 
 
 def update_marketplace_json(new_version: str) -> str:
-    """Update version in marketplace.json.
+    """Update version in .claude-plugin/marketplace.json.
 
     Args:
         new_version: New version string
@@ -152,7 +152,7 @@ def update_marketplace_json(new_version: str) -> str:
     """
     import json
 
-    marketplace_path = Path(__file__).parent.parent / "marketplace.json"
+    marketplace_path = Path(__file__).parent.parent / ".claude-plugin" / "marketplace.json"
 
     content = marketplace_path.read_text()
     data = json.loads(content)

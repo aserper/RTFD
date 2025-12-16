@@ -4,37 +4,59 @@ This document explains how to use RTFD as a Claude Code plugin to enable real-ti
 
 ## Installation
 
-### Option 1: From GitHub Marketplace (Recommended)
+### Step 1: Add the RTFD Plugin Marketplace
 
-Install RTFD directly from GitHub through Claude Code:
-
-```bash
-claude plugin install aserper/RTFD
-```
-
-### Option 2: Local Installation
-
-If you're developing or testing locally, you can install from your local repository:
+First, add the RTFD repository as a Claude Code plugin marketplace:
 
 ```bash
-claude plugin install /path/to/RTFD
+claude plugin marketplace add aserper/RTFD
 ```
 
-### Option 3: Manual Configuration
+Or with a full GitHub URL:
 
-If you prefer to configure it manually in your Claude Code configuration, add the following to your `claude.json`:
+```bash
+claude plugin marketplace add https://github.com/aserper/RTFD
+```
+
+### Step 2: Install the Plugin
+
+Once the marketplace is added, install the RTFD plugin:
+
+```bash
+claude plugin install rtfd-mcp@aserper/RTFD
+```
+
+### Alternative: Local Installation (For Development)
+
+If you're developing locally, you can add a local marketplace:
+
+```bash
+claude plugin marketplace add /path/to/RTFD
+```
+
+Then install:
+
+```bash
+claude plugin install rtfd-mcp
+```
+
+### Alternative: Manual Configuration
+
+If you prefer to configure it manually, add the following to your Claude Code settings (`~/.claude/settings.json`):
 
 ```json
 {
-  "plugins": [
-    {
-      "name": "rtfd-mcp",
+  "extraKnownMarketplaces": {
+    "aserper-rtfd": {
       "source": {
-        "type": "github",
+        "source": "github",
         "repo": "aserper/RTFD"
       }
     }
-  ]
+  },
+  "enabledPlugins": {
+    "rtfd-mcp@aserper-rtfd": true
+  }
 }
 ```
 
