@@ -13,6 +13,7 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .cache/
+.coverage
 
 # Builds and distributions
 build/
