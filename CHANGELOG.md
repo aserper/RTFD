@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [0.5.3] - 2025-01-06
+
+### Fixed
+- Fixed MCP config to use `rtfd` entry point instead of `python -m rtfd`
+
 ## [0.5.2] - 2025-12-16
 
 ### Added

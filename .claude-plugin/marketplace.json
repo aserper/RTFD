@@ -9,7 +9,7 @@
       "name": "rtfd-mcp",
       "source": "./.claude-plugin",
       "description": "MCP server for real-time library documentation access across multiple package ecosystems (PyPI, npm, crates.io, GoDocs, DockerHub, GitHub, GCP, and more).",
-      "version": "0.5.2",
+      "version": "0.5.3",
       "author": {
         "name": "Amit Serper",
         "email": "aserper+noreply@github.com"
