@@ -87,6 +87,7 @@ class ChunkingManager:
                 conn.commit()
         except Exception as e:
             import sys
+
             sys.stderr.write(f"Chunking storage error: {e}\n")
             raise
 
@@ -110,7 +111,7 @@ class ChunkingManager:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.execute(
                     "SELECT remaining_content, metadata, timestamp FROM continuations WHERE token = ?",
-                    (token,)
+                    (token,),
                 )
                 row = cursor.fetchone()
 
@@ -175,6 +176,7 @@ class ChunkingManager:
 
         except Exception as e:
             import sys
+
             sys.stderr.write(f"Chunking retrieval error: {e}\n")
             return None
 
@@ -188,14 +190,12 @@ class ChunkingManager:
         cutoff = time.time() - self.ttl
         try:
             with sqlite3.connect(self.db_path) as conn:
-                cursor = conn.execute(
-                    "DELETE FROM continuations WHERE timestamp < ?",
-                    (cutoff,)
-                )
+                cursor = conn.execute("DELETE FROM continuations WHERE timestamp < ?", (cutoff,))
                 conn.commit()
                 return cursor.rowcount
         except Exception as e:
             import sys
+
             sys.stderr.write(f"Chunking cleanup error: {e}\n")
             return 0
 

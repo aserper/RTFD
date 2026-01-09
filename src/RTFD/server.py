@@ -170,7 +170,6 @@ async def get_cache_entries() -> CallToolResult:
     return serialize_response_with_meta(result)
 
 
-
 @mcp.tool(
     description="Retrieve the next chunk of a large response using a continuation token. "
     "When a response is chunked, it includes a continuation_token. Pass that token here to get the next chunk."
@@ -190,23 +189,23 @@ async def get_next_chunk(continuation_token: str) -> CallToolResult:
     chunk_size = get_chunk_size()
 
     if chunk_size == 0:
-        return serialize_response_with_meta({
-            "error": "Chunking is disabled (RTFD_CHUNK_TOKENS=0)"
-        })
+        return serialize_response_with_meta({"error": "Chunking is disabled (RTFD_CHUNK_TOKENS=0)"})
 
     result = _chunking_manager.get_next_chunk(continuation_token, chunk_size)
 
     if result is None:
-        return serialize_response_with_meta({
-            "error": "Invalid or expired continuation token. Tokens expire after 10 minutes."
-        })
+        return serialize_response_with_meta(
+            {"error": "Invalid or expired continuation token. Tokens expire after 10 minutes."}
+        )
 
     # Reconstruct the full response with chunking metadata
     chunk_data = result.copy()
 
     # Add helpful hint if there are more chunks
     if chunk_data.get("has_more"):
-        chunk_data["hint"] = f"Call get_next_chunk('{chunk_data['continuation_token']}') for more content"
+        chunk_data["hint"] = (
+            f"Call get_next_chunk('{chunk_data['continuation_token']}') for more content"
+        )
 
     return serialize_response_with_meta(chunk_data)
 

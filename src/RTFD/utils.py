@@ -136,10 +136,12 @@ def chunk_and_serialize_response(
     if chunking_manager is None:
         try:
             from . import server
+
             chunking_manager = server._chunking_manager
         except (ImportError, AttributeError):
             # Fallback if chunking manager not available
             import sys
+
             sys.stderr.write("Warning: chunking_manager not available\n")
             return serialize_response_with_meta(data)
 
