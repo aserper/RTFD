@@ -47,7 +47,7 @@ If you prefer to configure it manually, add the following to your Claude Code se
 ```json
 {
   "extraKnownMarketplaces": {
-    "aserper-rtfd": {
+    "rtfd-marketplace": {
       "source": {
         "source": "github",
         "repo": "aserper/RTFD"
@@ -55,7 +55,7 @@ If you prefer to configure it manually, add the following to your Claude Code se
     }
   },
   "enabledPlugins": {
-    "rtfd-mcp@aserper-rtfd": true
+    "rtfd-mcp@rtfd-marketplace": true
   }
 }
 ```

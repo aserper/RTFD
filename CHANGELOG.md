@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Continuation tokens expire after 10 minutes (stored in SQLite with automatic cleanup)
 
 ### Changed
+- **Claude Code Plugin**: Updated to use `uvx` for automatic package management
+  - Plugin now automatically downloads and manages `rtfd-mcp` via `uvx`
+  - Removes need for manual `pip install rtfd-mcp` when using the plugin
+  - Fixed marketplace name in PLUGIN.md documentation from `aserper-rtfd` to `rtfd-marketplace`
+  - Corrected manual configuration examples to use actual marketplace identifier
 
 ### Fixed
 
