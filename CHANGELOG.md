@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Plugin now uses Python package's built-in defaults
   - Users can customize via `~/.claude/settings.json` global `env` section
   - Fixes "Missing environment variables" error on plugin installation
+- Bumped plugin version to 1.0.1 to force cache refresh and ensure users get the corrected configuration
 
 ## [0.5.3] - 2025-01-06
 
