@@ -175,49 +175,23 @@ class NpmProvider(BaseProvider):
 
         async def npm_metadata(package: str) -> CallToolResult:
             """
-            Get npm package metadata (name, version, URLs, maintainers).
+            Get npm package metadata (name, version, URLs). For docs content, use fetch_npm_docs.
 
-            USE THIS WHEN: You need basic package info, version numbers, or links to external documentation.
-
-            RETURNS: Package metadata ONLY - does NOT include actual documentation content.
-            For full documentation, use fetch_npm_docs instead.
-
-            The response includes:
-            - Package name, version, description
-            - Documentation URL (docs_url/homepage) - can be passed to WebFetch for external docs
-            - Repository URL (usually GitHub)
-            - License, keywords, maintainers
-
-            Args:
-                package: npm package name (e.g., "express", "react", "lodash")
-
-            Example: npm_metadata("express") → Returns metadata with links to expressjs.com
+            When: Need package info, version, or external doc links
+            Args: package="express"
+            Ex: npm_metadata("react") → {name, version, docs_url, repository}
             """
             result = await self._fetch_metadata(package)
             return serialize_response_with_meta(result)
 
         async def fetch_npm_docs(package: str, max_bytes: int = 20480) -> CallToolResult:
             """
-            Fetch actual npm package documentation from npm registry README.
+            Fetch npm package README docs. Already in Markdown format.
 
-            USE THIS WHEN: You need installation instructions, usage examples, API reference, or quickstart guides.
-
-            BEST FOR: Getting complete, formatted documentation for JavaScript/Node.js packages.
-            Better than using curl or WebFetch because it:
-            - Automatically extracts relevant sections (Installation, Usage, Examples, API)
-            - Prioritizes most useful content sections
-            - Already in Markdown format (npm requires Markdown READMEs)
-
-            NOT SUITABLE FOR: External documentation sites (use docs_url from npm_metadata + WebFetch)
-
-            Args:
-                package: npm package name (e.g., "express", "react", "axios")
-                max_bytes: Maximum content size, default 20KB (increase for large packages)
-
-            Returns:
-                JSON with actual documentation content, size, truncation status, version
-
-            Example: fetch_npm_docs("express") → Returns formatted README with installation and usage
+            When: Need installation, usage examples, or API quickstart
+            Not for: External doc sites (use npm_metadata docs_url + WebFetch)
+            Args: package="express", max_bytes=20480
+            Ex: fetch_npm_docs("axios") → formatted README content
             """
             result = await self._fetch_npm_docs(package, max_bytes)
             return chunk_and_serialize_response(result)

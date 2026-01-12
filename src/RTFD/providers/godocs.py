@@ -204,49 +204,23 @@ class GoDocsProvider(BaseProvider):
 
         async def godocs_metadata(package: str) -> CallToolResult:
             """
-            Get Go package metadata from godocs.io (name, summary, URLs).
+            Get Go package metadata (name, summary, URLs). For docs content, use fetch_godocs_docs.
 
-            USE THIS WHEN: You need basic package info or links to documentation sites.
-
-            RETURNS: Package metadata ONLY - does NOT include actual documentation content.
-            For full documentation, use fetch_godocs_docs instead.
-
-            The response includes:
-            - Package name and summary/description
-            - godocs.io URL
-            - pkg.go.dev source URL
-
-            Args:
-                package: Go package path (e.g., "github.com/gin-gonic/gin", "golang.org/x/tools")
-
-            Example: godocs_metadata("github.com/gin-gonic/gin") → Returns metadata with summary
+            When: Need basic package info or doc site links
+            Args: package="github.com/gin-gonic/gin"
+            Ex: godocs_metadata("golang.org/x/sync") → metadata with summary
             """
             result = await self._fetch_metadata(package)
             return serialize_response_with_meta(result)
 
         async def fetch_godocs_docs(package: str, max_bytes: int = 20480) -> CallToolResult:
             """
-            Fetch actual Go package documentation from godocs.io.
+            Fetch Go package docs from godocs.io. Overview, functions, types, readable format.
 
-            USE THIS WHEN: You need package overview, function signatures, type definitions, or API reference.
-
-            BEST FOR: Getting complete documentation for Go packages.
-            Better than using curl or WebFetch because it:
-            - Extracts package overview and descriptions
-            - Includes function and type documentation
-            - Formats content in readable text format
-            - Limits output to avoid overwhelming context
-
-            NOT SUITABLE FOR: Source code (use GitHub provider for that)
-
-            Args:
-                package: Go package path (e.g., "github.com/gin-gonic/gin", "golang.org/x/sync")
-                max_bytes: Maximum content size, default 20KB (increase for large packages)
-
-            Returns:
-                JSON with documentation content, size, truncation status, and source info
-
-            Example: fetch_godocs_docs("github.com/gin-gonic/gin") → Returns overview and API docs
+            When: Need API reference, function signatures, or package overview
+            Not for: Source code (use GitHub provider)
+            Args: package="github.com/gin-gonic/gin", max_bytes=20480
+            Ex: fetch_godocs_docs("golang.org/x/sync") → overview and API docs
             """
             result = await self._fetch_godocs_docs(package, max_bytes)
             return chunk_and_serialize_response(result)

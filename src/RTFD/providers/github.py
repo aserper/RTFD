@@ -633,24 +633,12 @@ class GitHubProvider(BaseProvider):
             query: str, limit: int = 5, language: str | None = "Python"
         ) -> CallToolResult:
             """
-            Search for GitHub repositories by keyword or topic.
+            Search GitHub repos by keyword. Returns names, descriptions, stars, URLs (not code).
 
-            USE THIS WHEN: You need to find repositories for a library, framework, or topic.
-
-            BEST FOR: Discovering which repository contains a specific project.
-            Returns repository names, descriptions, stars, and URLs - but NOT the code itself.
-
-            To explore code after finding a repo, use:
-            - get_repo_tree() to see all files
-            - list_repo_contents() to browse directories
-            - get_file_content() to read specific files
-
-            Args:
-                query: Search keywords (e.g., "machine learning", "web framework")
-                limit: Maximum number of results (default 5)
-                language: Filter by programming language (default "Python")
-
-            Example: github_repo_search("requests") → Finds psf/requests repository
+            When: Finding repos for a library or topic
+            See also: get_repo_tree, get_file_content
+            Args: query="web framework", limit=5, language="Python"
+            Ex: github_repo_search("requests") → psf/requests
             """
             result = await self._search_repos(query, limit=limit, language=language)
             return serialize_response_with_meta(result)
@@ -659,21 +647,13 @@ class GitHubProvider(BaseProvider):
             query: str, repo: str | None = None, limit: int = 5
         ) -> CallToolResult:
             """
-            Search for code snippets across GitHub or within a specific repository.
+            Search for code patterns across GitHub. Returns file paths, not content.
 
-            USE THIS WHEN: You need to find code examples, function definitions, or usage patterns.
-
-            RETURNS: File paths and locations where code was found - NOT the actual file contents.
-            To read the files, use get_file_content() with the returned paths.
-
-            NOTE: Requires authentication - rate limited without GITHUB_TOKEN.
-
-            Args:
-                query: Code search query (e.g., "def parse_args", "class HTTPClient")
-                repo: Optional repository filter in "owner/repo" format
-                limit: Maximum number of results (default 5)
-
-            Example: github_code_search("async def fetch", repo="psf/requests")
+            When: Finding code examples or function definitions
+            See also: get_file_content (to read found files)
+            Note: Rate limited without GITHUB_TOKEN
+            Args: query="def parse_args", repo="owner/repo", limit=5
+            Ex: github_code_search("async def fetch", repo="psf/requests")
             """
             result = await self._search_code(query, repo=repo, limit=limit)
             return serialize_response_with_meta(result)
@@ -682,18 +662,11 @@ class GitHubProvider(BaseProvider):
             owner: str, package_type: str = "container"
         ) -> CallToolResult:
             """
-            List packages (including GHCR images) for a GitHub user or organization.
+            List GHCR/GitHub packages for a user/org. No global search - owner required.
 
-            USE THIS WHEN: You want to find Docker images or other packages hosted on GitHub for a specific user/org.
-            Note: GitHub does not support global package search; you must provide an owner.
-
-            Args:
-                owner: GitHub username or organization name (e.g. "github", "octocat")
-                package_type: Type of package to list. Defaults to "container" (GHCR).
-                              Options: "container", "npm", "maven", "rubygems", "nuget", "docker" (legacy)
-
-            Returns:
-                JSON list of packages with metadata (name, repository, version count, etc.)
+            When: Finding Docker images or packages on GitHub
+            Args: owner="github", package_type="container|npm|maven|rubygems|nuget"
+            Ex: list_github_packages("octocat") → container packages list
             """
             try:
                 data = await self._list_github_packages(owner, package_type)
@@ -713,17 +686,11 @@ class GitHubProvider(BaseProvider):
             owner: str, package_type: str, package_name: str
         ) -> CallToolResult:
             """
-            Get versions for a specific GitHub package.
+            Get available versions/tags for a GitHub package.
 
-            USE THIS WHEN: You found a package using list_github_packages and want to see available tags/versions.
-
-            Args:
-                owner: GitHub username or organization name
-                package_type: Type of package (e.g., "container")
-                package_name: Name of the package (e.g., "rtfd")
-
-            Returns:
-                JSON list of versions/tags.
+            When: Need version list after finding package via list_github_packages
+            Args: owner="github", package_type="container", package_name="rtfd"
+            Ex: get_package_versions("octocat", "container", "app") → version list
             """
             try:
                 data = await self._get_package_versions(owner, package_type, package_name)
@@ -745,24 +712,12 @@ class GitHubProvider(BaseProvider):
 
         async def fetch_github_readme(repo: str, max_bytes: int = 20480) -> CallToolResult:
             """
-            Fetch README file from a GitHub repository.
+            Fetch README from GitHub repo. Contains project overview and usage.
 
-            USE THIS WHEN: You need the project overview, quick start, or basic documentation.
-
-            BEST FOR: Getting a high-level understanding of a project.
-            The README typically contains installation, usage examples, and project description.
-
-            For deeper code exploration, use:
-            - get_repo_tree() to see the complete file structure
-            - get_file_content() to read specific source files
-
-            Args:
-                repo: Repository in "owner/repo" format (e.g., "psf/requests")
-                max_bytes: Maximum content size, default 20KB
-
-            Returns: JSON with README content, size, and metadata
-
-            Example: fetch_github_readme("psf/requests") → Returns the requests README
+            When: Need quick project understanding
+            See also: get_repo_tree, get_file_content (for deeper exploration)
+            Args: repo="owner/repo", max_bytes=20480
+            Ex: fetch_github_readme("psf/requests") → README content
             """
             # Parse owner/repo format
             parts = repo.split("/", 1)
@@ -782,27 +737,12 @@ class GitHubProvider(BaseProvider):
 
         async def list_repo_contents(repo: str, path: str = "") -> CallToolResult:
             """
-            List contents of a directory in a GitHub repository.
+            List files/dirs in a GitHub repo directory.
 
-            USE THIS WHEN: You need to browse or explore the structure of a repository directory.
-
-            BEST FOR: Discovering what files and folders exist in a specific location.
-            Returns names, paths, types (file/dir), sizes for each item.
-
-            Common workflow:
-            1. Use github_repo_search() to find the repository
-            2. Use get_repo_tree() to see the overall structure
-            3. Use list_repo_contents() to browse specific directories
-            4. Use get_file_content() to read individual files
-
-            Args:
-                repo: Repository in format "owner/repo" (e.g., "psf/requests")
-                path: Path to directory (empty string for root, e.g., "src/utils")
-
-            Returns:
-                JSON with list of files and directories with metadata
-
-            Example: list_repo_contents("psf/requests", "requests") → Lists files in requests/ directory
+            When: Browsing specific directory contents
+            See also: get_repo_tree (full structure), get_file_content (read files)
+            Args: repo="owner/repo", path="src/utils"
+            Ex: list_repo_contents("psf/requests", "requests") → dir listing
             """
             parts = repo.split("/", 1)
             if len(parts) != 2:
@@ -820,27 +760,11 @@ class GitHubProvider(BaseProvider):
 
         async def get_file_content(repo: str, path: str, max_bytes: int = 102400) -> CallToolResult:
             """
-            Get content of a specific file from a GitHub repository.
+            Read file from GitHub repo. UTF-8 only, rejects binary.
 
-            USE THIS WHEN: You need to read the actual source code or contents of a specific file.
-
-            BEST FOR: Examining implementation details, understanding how code works, or reading configuration files.
-            Returns the full file content (UTF-8 text only, binary files are rejected).
-
-            Automatically handles:
-            - Base64 decoding from GitHub API
-            - UTF-8 conversion with safe truncation
-            - Binary file detection
-
-            Args:
-                repo: Repository in format "owner/repo" (e.g., "psf/requests")
-                path: Path to file (e.g., "requests/api.py")
-                max_bytes: Maximum content size (default 100KB, increase for large files)
-
-            Returns:
-                JSON with file content, size, truncation status, and metadata
-
-            Example: get_file_content("psf/requests", "requests/api.py") → Returns source code of api.py
+            When: Need source code or config file content
+            Args: repo="owner/repo", path="src/file.py", max_bytes=102400
+            Ex: get_file_content("psf/requests", "requests/api.py") → file content
             """
             parts = repo.split("/", 1)
             if len(parts) != 2:
@@ -860,29 +784,12 @@ class GitHubProvider(BaseProvider):
             repo: str, recursive: bool = False, max_items: int = 1000
         ) -> CallToolResult:
             """
-            Get the full file tree of a GitHub repository.
+            Get full file tree of a GitHub repo.
 
-            USE THIS WHEN: You need to see the overall structure and organization of a repository.
-
-            BEST FOR: Understanding project layout, finding specific files, or getting a complete directory listing.
-            Returns all file paths, types (file/directory), and sizes in a single call.
-
-            Use recursive=True for complete tree (all files in all subdirectories).
-            Use recursive=False for just top-level overview (faster, less data).
-
-            After getting the tree, use:
-            - get_file_content() to read specific files you identified
-            - list_repo_contents() to browse specific directories in detail
-
-            Args:
-                repo: Repository in format "owner/repo" (e.g., "psf/requests")
-                recursive: Whether to get full tree recursively (default False)
-                max_items: Maximum number of items to return (default 1000)
-
-            Returns:
-                JSON with complete file tree structure, branch, and count
-
-            Example: get_repo_tree("psf/requests", recursive=True) → Returns complete file listing
+            When: Need project structure overview
+            See also: get_file_content, list_repo_contents
+            Args: repo="owner/repo", recursive=True (for full tree), max_items=1000
+            Ex: get_repo_tree("psf/requests", recursive=True) → complete file listing
             """
             parts = repo.split("/", 1)
             if len(parts) != 2:
@@ -899,22 +806,11 @@ class GitHubProvider(BaseProvider):
 
         async def get_commit_diff(repo: str, base: str, head: str) -> CallToolResult:
             """
-            Get the diff between two commits, branches, or tags in a GitHub repository.
+            Get diff between commits/branches/tags in a GitHub repo.
 
-            USE THIS WHEN: You need to see what changed between two versions of code.
-
-            BEST FOR: Analyzing changes, reviewing pull requests (by comparing branches), or checking version differences.
-            Returns the raw git diff output.
-
-            Args:
-                repo: Repository in format "owner/repo" (e.g., "psf/requests")
-                base: Base commit SHA, branch name, or tag (e.g., "main", "v1.0.0", "a1b2c3d")
-                head: Head commit SHA, branch name, or tag (e.g., "feature-branch", "v1.1.0", "e5f6g7h")
-
-            Returns:
-                JSON with the raw git diff content.
-
-            Example: get_commit_diff("psf/requests", "v2.28.0", "v2.28.1") → Returns diff between versions
+            When: Comparing versions or reviewing changes
+            Args: repo="owner/repo", base="main|v1.0.0|sha", head="feature|v1.1.0|sha"
+            Ex: get_commit_diff("psf/requests", "v2.28.0", "v2.28.1") → diff output
             """
             parts = repo.split("/", 1)
             if len(parts) != 2:

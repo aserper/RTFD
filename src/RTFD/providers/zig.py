@@ -40,30 +40,13 @@ class ZigProvider(BaseProvider):
 
         async def zig_docs(query: str) -> CallToolResult:
             """
-            Search Zig programming language documentation.
+            Search official Zig documentation for language features, stdlib, concepts.
 
-            USE THIS WHEN: You need information about Zig language features, syntax, stdlib, or concepts.
-
-            BEST FOR: Learning Zig language specifics and finding relevant documentation sections.
-            Searches the official Zig documentation (ziglang.org/documentation/master/) and returns
-            matching sections with titles, summaries, and relevance scores.
-
-            Good for queries about:
-            - Language features (e.g., "comptime", "async", "optionals")
-            - Standard library (e.g., "ArrayList", "HashMap", "allocators")
-            - Memory management (e.g., "allocator", "defer", "errdefer")
-            - Error handling (e.g., "error sets", "try", "catch")
-            - Build system (e.g., "build.zig", "zig build")
-
-            NOT SUITABLE FOR: Third-party Zig packages (use GitHub provider for that)
-
-            Args:
-                query: Search keywords (e.g., "comptime", "async", "ArrayList", "error handling")
-
-            Returns:
-                JSON with matching documentation sections, relevance scores, and source URL
-
-            Example: zig_docs("comptime") → Returns sections about compile-time code execution
+            When: Learning Zig language or finding documentation
+            Good for: comptime, async, optionals, ArrayList, allocators, defer, error handling, build.zig
+            Not for: Third-party Zig packages (use GitHub)
+            Args: query="comptime"
+            Ex: zig_docs("defer") → sections about defer mechanism
             """
             result = await self._search_zig_docs(query)
             return serialize_response_with_meta(result)

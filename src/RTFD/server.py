@@ -144,7 +144,7 @@ async def _locate_library_docs(library: str, limit: int = 5) -> dict[str, Any]:
 
 
 @mcp.tool(
-    description="Find docs for a library using PyPI metadata and GitHub repos combined. Returns data in JSON format with token statistics."
+    description="Search for library docs across PyPI, GoDocs, GitHub. Returns metadata with stats."
 )
 async def search_library_docs(library: str, limit: int = 5) -> CallToolResult:
     """Aggregated library documentation search across all providers."""
@@ -152,14 +152,14 @@ async def search_library_docs(library: str, limit: int = 5) -> CallToolResult:
     return serialize_response_with_meta(result)
 
 
-@mcp.tool(description="Get information about the current cache usage.")
+@mcp.tool(description="Get cache statistics: entry count, size, memory usage.")
 async def get_cache_info() -> CallToolResult:
     """Return cache statistics including entry count and size."""
     stats = _cache_manager.get_stats()
     return serialize_response_with_meta(stats)
 
 
-@mcp.tool(description="Get detailed information about all cached entries.")
+@mcp.tool(description="Get details for all cached entries: age, size, content preview.")
 async def get_cache_entries() -> CallToolResult:
     """Return detailed information about all cached items including age, size, and content preview."""
     entries = _cache_manager.get_all_entries()
@@ -171,8 +171,7 @@ async def get_cache_entries() -> CallToolResult:
 
 
 @mcp.tool(
-    description="Retrieve the next chunk of a large response using a continuation token. "
-    "When a response is chunked, it includes a continuation_token. Pass that token here to get the next chunk."
+    description="Get next chunk of large response using continuation token from previous chunked response."
 )
 async def get_next_chunk(continuation_token: str) -> CallToolResult:
     """

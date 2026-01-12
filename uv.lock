@@ -1455,7 +1455,7 @@ wheels = [
 
 [[package]]
 name = "rtfd-mcp"
-version = "1.0.0"
+version = "1.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "beautifulsoup4" },

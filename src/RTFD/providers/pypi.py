@@ -192,23 +192,11 @@ class PyPIProvider(BaseProvider):
 
         async def pypi_metadata(package: str, ignore_verification: bool = False) -> CallToolResult:
             """
-            Get Python package metadata from PyPI (name, version, URLs, summary).
+            Get PyPI package metadata (name, version, URLs). For docs content, use fetch_pypi_docs.
 
-            USE THIS WHEN: You need basic package info, version numbers, or links to external documentation.
-
-            RETURNS: Package metadata ONLY - does NOT include actual documentation content.
-            For full documentation, use fetch_pypi_docs instead.
-
-            The response includes:
-            - Package name, version, summary
-            - Documentation URL (docs_url) - can be passed to WebFetch for external docs
-            - Project URLs (homepage, repository, etc.)
-
-            Args:
-                package: PyPI package name (e.g., "requests", "flask", "django")
-                ignore_verification: Skip PyPI verification check if VERIFIED_BY_PYPI is enabled
-
-            Example: pypi_metadata("requests") → Returns metadata with docs_url pointing to readthedocs
+            When: Need package info or external doc links
+            Args: package="requests", ignore_verification=False
+            Ex: pypi_metadata("flask") → {name, version, docs_url, homepage}
             """
             result = await self._fetch_metadata(package, ignore_verification)
             return serialize_response_with_meta(result)
@@ -217,27 +205,12 @@ class PyPIProvider(BaseProvider):
             package: str, max_bytes: int = 20480, ignore_verification: bool = False
         ) -> CallToolResult:
             """
-            Fetch actual Python package documentation from PyPI README/description.
+            Fetch Python package docs from PyPI README. Extracts relevant sections, converts RST to MD.
 
-            USE THIS WHEN: You need installation instructions, usage examples, API reference, or quickstart guides.
-
-            BEST FOR: Getting complete, formatted documentation for Python packages.
-            Better than using curl or WebFetch because it:
-            - Automatically extracts relevant sections (Installation, Usage, Examples)
-            - Converts reStructuredText to Markdown
-            - Prioritizes most useful content sections
-            - Falls back to GitHub README if PyPI description is minimal
-
-            NOT SUITABLE FOR: External documentation sites (use docs_url from pypi_metadata + WebFetch)
-
-            Args:
-                package: PyPI package name (e.g., "requests", "numpy", "pandas")
-                max_bytes: Maximum content size, default 20KB (increase for large packages)
-                ignore_verification: Skip PyPI verification check if VERIFIED_BY_PYPI is enabled
-
-            Returns: JSON with actual documentation content, size, truncation status
-
-            Example: fetch_pypi_docs("requests") → Returns formatted README with installation and usage
+            When: Need installation, usage examples, or API quickstart
+            Not for: External doc sites (use pypi_metadata docs_url + WebFetch)
+            Args: package="requests", max_bytes=20480, ignore_verification=False
+            Ex: fetch_pypi_docs("numpy") → formatted README content
             """
             result = await self._fetch_pypi_docs(package, max_bytes, ignore_verification)
             return chunk_and_serialize_response(result)
