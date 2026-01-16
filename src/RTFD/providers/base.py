@@ -13,7 +13,7 @@ import httpx
 @dataclass
 class ToolTierInfo:
     """Tool tier information for defer_loading recommendations.
-    
+
     Tiers indicate how commonly used a tool is:
     - Tier 1 (Core): Always loaded, essential for basic functionality
     - Tier 2 (Frequent): Commonly used tools
@@ -22,6 +22,7 @@ class ToolTierInfo:
     - Tier 5 (Niche): Specialized tools for rare needs
     - Tier 6 (Admin): Cache and admin utilities
     """
+
     tier: int  # 1-6, lower = more commonly used
     defer_recommended: bool  # True if tool should be deferred by default
     category: str  # "search", "metadata", "fetch", "admin"

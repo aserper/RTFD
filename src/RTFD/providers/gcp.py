@@ -155,7 +155,9 @@ class GcpProvider(BaseProvider):
         # Tool tier classification for defer_loading recommendations
         tool_tiers = {
             "search_gcp_services": ToolTierInfo(tier=4, defer_recommended=True, category="search"),
-            "fetch_gcp_service_docs": ToolTierInfo(tier=4, defer_recommended=True, category="fetch"),
+            "fetch_gcp_service_docs": ToolTierInfo(
+                tier=4, defer_recommended=True, category="fetch"
+            ),
         }
 
         return ProviderMetadata(

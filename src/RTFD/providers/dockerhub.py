@@ -26,8 +26,12 @@ class DockerHubProvider(BaseProvider):
         # Tool tier classification for defer_loading recommendations
         tool_tiers = {
             "search_docker_images": ToolTierInfo(tier=2, defer_recommended=True, category="search"),
-            "docker_image_metadata": ToolTierInfo(tier=3, defer_recommended=True, category="metadata"),
-            "fetch_docker_image_docs": ToolTierInfo(tier=3, defer_recommended=True, category="fetch"),
+            "docker_image_metadata": ToolTierInfo(
+                tier=3, defer_recommended=True, category="metadata"
+            ),
+            "fetch_docker_image_docs": ToolTierInfo(
+                tier=3, defer_recommended=True, category="fetch"
+            ),
             "fetch_dockerfile": ToolTierInfo(tier=4, defer_recommended=True, category="fetch"),
         }
 
