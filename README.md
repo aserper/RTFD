@@ -404,6 +404,12 @@ All tool responses are returned in JSON format.
 *   `get_repo_tree(repo, recursive=False, max_items=1000)`: Get the complete file tree of a GitHub repository.
 *   `get_commit_diff(repo, base, head)`: Get the diff between two commits, branches, or tags.
 
+### LogScale (Humio) Query Language
+*   `search_logscale_docs(query, limit=10)`: Search LogScale query language documentation for syntax topics, functions, and operators.
+*   `list_logscale_functions(category=None)`: List LogScale functions by category (aggregate, string, math, regex, etc.), or list all categories when no category is specified.
+*   `logscale_syntax(topic, max_bytes=20480)`: Fetch detailed syntax documentation for a topic (filters, operators, fields, regex, time, macros, etc.).
+*   `logscale_function(function_name, max_bytes=20480)`: Fetch documentation for a specific LogScale function (e.g., "regex", "splitString", "array:append").
+
 ## Provider-Specific Notes
 
 ### GCP (Google Cloud Platform)
@@ -413,6 +419,12 @@ All tool responses are returned in JSON format.
 *   **GitHub Token:** Optional but recommended. Without a `GITHUB_TOKEN`, GitHub API search is limited to 60 requests/hour. With a token, the limit increases to 5,000 requests/hour.
 *   **Supported Services:** Cloud Storage, Compute Engine, BigQuery, Cloud Functions, Cloud Run, Pub/Sub, Firestore, GKE, App Engine, Cloud Vision, Cloud Speech, IAM, Secret Manager, and more.
 *   **Service Name Formats:** Accepts various formats (e.g., "storage", "cloud storage", "Cloud Storage", "kubernetes", "k8s" for GKE).
+
+### LogScale (Humio)
+*   **Documentation Source:** Fetches documentation from the [LogScale library](https://library.humio.com/data-analysis/).
+*   **Syntax Topics:** Comments, filters, operators, fields, user-input, conditional, array, expressions, user-functions, function-calls, time, timezones, relative-time, macros, regex, regex-syntax, regex-flags, and regex-engines.
+*   **Function Categories:** Aggregate, array, comparison, conditional, data-manipulation, event, filter, formatting, geolocation, hash, join, math, network, parsing, regex, security, statistics, string, time-date, and widget.
+*   **No Authentication Required:** All documentation is publicly accessible.
 
 ### Other Providers
 *   **Token Counting:** Disabled by default. Set `RTFD_TRACK_TOKENS=true` to see token stats in Claude Code logs.
