@@ -15,6 +15,8 @@ import uuid
 from pathlib import Path
 from typing import Any
 
+from .utils import safe_json_loads
+
 
 class ChunkingManager:
     """
@@ -119,7 +121,7 @@ class ChunkingManager:
                     return None
 
                 remaining_content, metadata_json, timestamp = row
-                metadata = json.loads(metadata_json)
+                metadata = safe_json_loads(metadata_json)
 
                 # Check if expired
                 if time.time() - timestamp > self.ttl:

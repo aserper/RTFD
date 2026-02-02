@@ -9,7 +9,12 @@ import httpx
 from mcp.types import CallToolResult
 
 from ..content_utils import extract_sections, prioritize_sections
-from ..utils import chunk_and_serialize_response, is_fetch_enabled, serialize_response_with_meta
+from ..utils import (
+    chunk_and_serialize_response,
+    is_fetch_enabled,
+    safe_json_loads,
+    serialize_response_with_meta,
+)
 from .base import BaseProvider, ProviderMetadata, ProviderResult, ToolTierInfo
 
 
@@ -59,7 +64,7 @@ class NpmProvider(BaseProvider):
         async with await self._http_client() as client:
             resp = await client.get(url)
             resp.raise_for_status()
-            payload = resp.json()
+            payload = safe_json_loads(resp.text)
 
         # Extract repository URL
         repo_url = None
@@ -121,7 +126,7 @@ class NpmProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(url)
                 resp.raise_for_status()
-                data = resp.json()
+                data = safe_json_loads(resp.text)
 
             # npm registry includes README in "readme" field (already Markdown)
             content = data.get("readme", "")

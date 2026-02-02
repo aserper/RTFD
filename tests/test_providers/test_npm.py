@@ -1,5 +1,6 @@
 """Tests for NPM provider."""
 
+import json
 from unittest.mock import AsyncMock, MagicMock
 
 import httpx
@@ -44,6 +45,7 @@ async def test_npm_search_success(provider, mock_npm_data):
     """Test successful search on NPM."""
     mock_response = MagicMock()
     mock_response.json.return_value = mock_npm_data
+    mock_response.text = json.dumps(mock_npm_data)
     mock_response.raise_for_status.return_value = None
 
     mock_client = AsyncMock()
@@ -90,6 +92,7 @@ async def test_npm_metadata_tool(provider, mock_npm_data):
     """Test the npm_metadata tool."""
     mock_response = MagicMock()
     mock_response.json.return_value = mock_npm_data
+    mock_response.text = json.dumps(mock_npm_data)
 
     mock_client = AsyncMock()
     mock_client.get.return_value = mock_response
@@ -113,6 +116,7 @@ async def test_fetch_npm_docs(provider, mock_npm_data):
     """Test fetching NPM docs (README)."""
     mock_response = MagicMock()
     mock_response.json.return_value = mock_npm_data
+    mock_response.text = json.dumps(mock_npm_data)
     mock_response.raise_for_status.return_value = None
 
     mock_client = AsyncMock()
@@ -140,6 +144,7 @@ async def test_fetch_npm_docs_minimal(provider, mock_npm_data):
 
     mock_response = MagicMock()
     mock_response.json.return_value = mock_data
+    mock_response.text = json.dumps(mock_data)
 
     mock_client = AsyncMock()
     mock_client.get.return_value = mock_response

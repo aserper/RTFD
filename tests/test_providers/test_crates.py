@@ -1,5 +1,6 @@
 """Tests for Crates provider."""
 
+import json
 import time
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -66,6 +67,7 @@ async def test_crates_search_success(provider, mock_crates_search_response):
     """Test successful search on crates.io."""
     mock_response = MagicMock()
     mock_response.json.return_value = mock_crates_search_response
+    mock_response.text = json.dumps(mock_crates_search_response)
     mock_response.raise_for_status.return_value = None
 
     mock_client = AsyncMock()
@@ -92,6 +94,7 @@ async def test_crates_metadata_tool(provider, mock_crate_metadata_response):
     """Test the crates_metadata tool."""
     mock_response = MagicMock()
     mock_response.json.return_value = mock_crate_metadata_response
+    mock_response.text = json.dumps(mock_crate_metadata_response)
     mock_response.raise_for_status.return_value = None
 
     mock_client = AsyncMock()
@@ -118,6 +121,7 @@ async def test_crates_search_tool(provider, mock_crates_search_response):
     """Test the search_crates tool."""
     mock_response = MagicMock()
     mock_response.json.return_value = mock_crates_search_response
+    mock_response.text = json.dumps(mock_crates_search_response)
 
     mock_client = AsyncMock()
     mock_client.get.return_value = mock_response
@@ -171,6 +175,7 @@ async def test_crates_rate_limiting(provider, mock_crates_search_response):
     """Test that rate limiting sleeps appropriately."""
     mock_response = MagicMock()
     mock_response.json.return_value = mock_crates_search_response
+    mock_response.text = json.dumps(mock_crates_search_response)
 
     mock_client = AsyncMock()
     mock_client.get.return_value = mock_response

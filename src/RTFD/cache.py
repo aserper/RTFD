@@ -13,6 +13,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from .utils import safe_json_loads
+
 
 @dataclass
 class CacheEntry:
@@ -81,9 +83,9 @@ class CacheManager:
                     data_json, timestamp, metadata_json = row
                     return CacheEntry(
                         key=key,
-                        data=json.loads(data_json),
+                        data=safe_json_loads(data_json),
                         timestamp=timestamp,
-                        metadata=json.loads(metadata_json) if metadata_json else {},
+                        metadata=safe_json_loads(metadata_json) if metadata_json else {},
                     )
         except Exception as e:
             sys.stderr.write(f"Cache read error: {e}\n")
@@ -195,7 +197,7 @@ class CacheManager:
 
                 for key, data_json, timestamp in rows:
                     age_seconds = current_time - timestamp
-                    data = json.loads(data_json)
+                    data = safe_json_loads(data_json)
                     data_size = len(data_json.encode("utf-8"))
 
                     entries[key] = {
