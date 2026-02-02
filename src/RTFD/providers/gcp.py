@@ -15,6 +15,7 @@ from ..utils import (
     chunk_and_serialize_response,
     get_github_token,
     is_fetch_enabled,
+    safe_json_loads,
     serialize_response_with_meta,
 )
 from .base import BaseProvider, ProviderMetadata, ProviderResult, ToolTierInfo
@@ -366,7 +367,7 @@ class GcpProvider(BaseProvider):
                 headers=headers,
             )
             resp.raise_for_status()
-            payload = resp.json()
+            payload = safe_json_loads(resp.text)
 
         results: list[dict[str, Any]] = []
         for item in payload.get("items", []):

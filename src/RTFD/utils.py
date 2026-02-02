@@ -14,6 +14,15 @@ from mcp.types import CallToolResult, TextContent
 
 from .token_counter import count_tokens
 
+
+def safe_json_loads(text: str) -> Any:
+    """Parse JSON with tolerance for control characters in strings."""
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        return json.loads(text, strict=False)
+
+
 USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/118.0 Safari/537.36"

@@ -1,3 +1,4 @@
+import json
 from unittest.mock import AsyncMock, MagicMock
 
 import pytest
@@ -23,14 +24,14 @@ def provider(mock_http_client):
 @pytest.mark.asyncio
 async def test_fetch_dockerfile_success(provider, mock_http_client):
     # Mock DockerHub metadata response with a GitHub link in full_description
+    metadata_data = {
+        "name": "python",
+        "full_description": "Some text\n- [Dockerfile](https://github.com/docker-library/python/blob/master/3.11/slim/Dockerfile)\nMore text",
+    }
     metadata_response = MagicMock(
         status_code=200,
-        json=MagicMock(
-            return_value={
-                "name": "python",
-                "full_description": "Some text\n- [Dockerfile](https://github.com/docker-library/python/blob/master/3.11/slim/Dockerfile)\nMore text",
-            }
-        ),
+        text=json.dumps(metadata_data),
+        json=MagicMock(return_value=metadata_data),
         raise_for_status=MagicMock(),
     )
 
@@ -64,14 +65,14 @@ async def test_fetch_dockerfile_success(provider, mock_http_client):
 @pytest.mark.asyncio
 async def test_fetch_dockerfile_no_link(provider, mock_http_client):
     # Mock DockerHub metadata response WITHOUT a GitHub link
+    no_link_data = {
+        "name": "python",
+        "full_description": "Just some description without links.",
+    }
     response = MagicMock(
         status_code=200,
-        json=MagicMock(
-            return_value={
-                "name": "python",
-                "full_description": "Just some description without links.",
-            }
-        ),
+        text=json.dumps(no_link_data),
+        json=MagicMock(return_value=no_link_data),
         raise_for_status=MagicMock(),
     )
     mock_http_client.get.side_effect = [response, response]

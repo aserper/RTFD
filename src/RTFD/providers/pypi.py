@@ -10,7 +10,12 @@ import httpx
 from mcp.types import CallToolResult
 
 from ..content_utils import convert_rst_to_markdown, extract_sections, prioritize_sections
-from ..utils import chunk_and_serialize_response, is_fetch_enabled, serialize_response_with_meta
+from ..utils import (
+    chunk_and_serialize_response,
+    is_fetch_enabled,
+    safe_json_loads,
+    serialize_response_with_meta,
+)
 from .base import BaseProvider, ProviderMetadata, ProviderResult, ToolTierInfo
 
 
@@ -88,7 +93,7 @@ class PyPIProvider(BaseProvider):
         async with await self._http_client() as client:
             resp = await client.get(url)
             resp.raise_for_status()
-            payload = resp.json()
+            payload = safe_json_loads(resp.text)
 
         info = payload.get("info", {})
         return {

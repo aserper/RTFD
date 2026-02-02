@@ -15,6 +15,7 @@ from ..utils import (
     chunk_and_serialize_response,
     get_github_token,
     is_fetch_enabled,
+    safe_json_loads,
     serialize_response_with_meta,
 )
 from .base import BaseProvider, ProviderMetadata, ProviderResult, ToolTierInfo
@@ -93,7 +94,7 @@ class GitHubProvider(BaseProvider):
                 headers=headers,
             )
             resp.raise_for_status()
-            payload = resp.json()
+            payload = safe_json_loads(resp.text)
 
         repos: list[dict[str, Any]] = []
         for item in payload.get("items", []):
@@ -128,7 +129,7 @@ class GitHubProvider(BaseProvider):
                 headers=headers,
             )
             resp.raise_for_status()
-            payload = resp.json()
+            payload = safe_json_loads(resp.text)
 
         code_hits: list[dict[str, Any]] = []
         for item in payload.get("items", []):
@@ -177,7 +178,7 @@ class GitHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(url, headers=headers)
                 resp.raise_for_status()
-                data = resp.json()
+                data = safe_json_loads(resp.text)
 
             # Decode base64 content
             content = base64.b64decode(data["content"]).decode("utf-8")
@@ -256,7 +257,7 @@ class GitHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(url, headers=headers)
                 resp.raise_for_status()
-                data = resp.json()
+                data = safe_json_loads(resp.text)
 
             # Handle single file vs directory
             if isinstance(data, dict):
@@ -323,7 +324,7 @@ class GitHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(url, headers=headers)
                 resp.raise_for_status()
-                data = resp.json()
+                data = safe_json_loads(resp.text)
 
             # Check if it's a file
             if data.get("type") != "file":
@@ -408,7 +409,7 @@ class GitHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 repo_resp = await client.get(repo_url, headers=headers)
                 repo_resp.raise_for_status()
-                repo_data = repo_resp.json()
+                repo_data = safe_json_loads(repo_resp.text)
                 default_branch = repo_data.get("default_branch", "main")
 
             # Get the tree
@@ -419,7 +420,7 @@ class GitHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(tree_url, headers=headers)
                 resp.raise_for_status()
-                data = resp.json()
+                data = safe_json_loads(resp.text)
 
             tree_items = data.get("tree", [])[:max_items]
 
@@ -541,7 +542,7 @@ class GitHubProvider(BaseProvider):
                     try:
                         resp = await client.get(url, headers=headers)
                         if resp.status_code == 200:
-                            data = resp.json()
+                            data = safe_json_loads(resp.text)
                             error = None
                             break
                         elif resp.status_code == 404:
@@ -604,7 +605,7 @@ class GitHubProvider(BaseProvider):
                     try:
                         resp = await client.get(url, headers=headers)
                         if resp.status_code == 200:
-                            data = resp.json()
+                            data = safe_json_loads(resp.text)
                             error = None
                             break
                         elif resp.status_code == 404:

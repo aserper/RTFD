@@ -1,3 +1,3 @@
 """RTFD - Real-time library documentation access for AI coding agents."""
 
-__version__ = "1.2.2"
+__version__ = "1.2.3"

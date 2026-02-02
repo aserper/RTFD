@@ -8,7 +8,12 @@ from typing import Any
 import httpx
 from mcp.types import CallToolResult
 
-from ..utils import chunk_and_serialize_response, is_fetch_enabled, serialize_response_with_meta
+from ..utils import (
+    chunk_and_serialize_response,
+    is_fetch_enabled,
+    safe_json_loads,
+    serialize_response_with_meta,
+)
 from .base import BaseProvider, ProviderMetadata, ProviderResult, ToolTierInfo
 
 
@@ -67,7 +72,7 @@ class DockerHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(url, params=params)
                 resp.raise_for_status()
-                payload = resp.json()
+                payload = safe_json_loads(resp.text)
 
             # Transform results
             results = []
@@ -135,7 +140,7 @@ class DockerHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(url)
                 resp.raise_for_status()
-                data = resp.json()
+                data = safe_json_loads(resp.text)
 
             return {
                 "name": data.get("name"),
@@ -278,7 +283,7 @@ class DockerHubProvider(BaseProvider):
             async with await self._http_client() as client:
                 resp = await client.get(url)
                 resp.raise_for_status()
-                data = resp.json()
+                data = safe_json_loads(resp.text)
 
             full_desc = data.get("full_description", "")
 

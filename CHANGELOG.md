@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Corrected manual configuration examples to use actual marketplace identifier
 
 ### Fixed
+- Fixed "Invalid control character" JSON parsing errors when upstream APIs return unescaped control characters in JSON strings
+  - Added `safe_json_loads()` helper that falls back to `strict=False` parsing on `JSONDecodeError`
+  - Applied to all provider HTTP responses and cache/chunking deserialization
+  - Fixes failures in `search_library_docs`, `npm_metadata`, and other tools when content contains control characters
 - Fixed `.mcp.json` to use correct uvx syntax: `uvx --from rtfd-mcp rtfd` (the package is `rtfd-mcp` but the executable is `rtfd`)
 - Removed environment variable defaults from `.mcp.json` that were incompatible with Claude Code's plugin system
   - Plugin now uses Python package's built-in defaults

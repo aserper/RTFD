@@ -9,7 +9,7 @@ from typing import Any
 import httpx
 from mcp.types import CallToolResult
 
-from ..utils import serialize_response_with_meta
+from ..utils import safe_json_loads, serialize_response_with_meta
 from .base import BaseProvider, ProviderMetadata, ProviderResult, ToolTierInfo
 
 
@@ -92,7 +92,7 @@ class CratesProvider(BaseProvider):
                     params={"q": query, "per_page": min(per_page, 100), "page": 1},
                 )
                 response.raise_for_status()
-                data = response.json()
+                data = safe_json_loads(response.text)
 
             # Format the response
             crates = data.get("crates", [])
@@ -139,7 +139,7 @@ class CratesProvider(BaseProvider):
             async with await self._http_client() as client:
                 response = await client.get(f"{self.BASE_URL}/crates/{crate_name}")
                 response.raise_for_status()
-                data = response.json()
+                data = safe_json_loads(response.text)
 
             crate = data.get("crate", {})
             version = data.get("versions", [{}])[0] if data.get("versions") else {}
