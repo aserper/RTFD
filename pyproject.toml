@@ -69,6 +69,7 @@ markers = [
 [tool.semantic_release]
 version_variables = ["src/RTFD/__init__.py:__version__"]
 version_toml = ["pyproject.toml:project.version"]
+assets = [".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"]
 build_command = "python scripts/sync_json_versions.py && uv run --with build python -m build"
 commit_parser = "angular"
 major_on_zero = false
