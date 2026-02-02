@@ -16,7 +16,7 @@ def provider_instances():
 
 def test_get_provider_instances_returns_all(provider_instances):
     """Test that server loads all providers."""
-    assert len(provider_instances) == 8
+    assert len(provider_instances) == 9
     assert "pypi" in provider_instances
     assert "godocs" in provider_instances
     assert "github" in provider_instances
@@ -25,6 +25,7 @@ def test_get_provider_instances_returns_all(provider_instances):
     assert "zig" in provider_instances
     assert "dockerhub" in provider_instances
     assert "gcp" in provider_instances
+    assert "logscale" in provider_instances
 
 
 def test_get_provider_instances_caches():
