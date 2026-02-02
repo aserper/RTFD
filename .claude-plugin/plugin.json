@@ -1,6 +1,6 @@
 {
   "name": "rtfd-mcp",
-  "version": "1.2.2",
+  "version": "1.2.5",
   "description": "MCP server for real-time library documentation access across multiple package ecosystems (PyPI, npm, crates.io, GoDocs, DockerHub, GitHub, GCP, and more).",
   "author": {
     "name": "Amit Serper",
