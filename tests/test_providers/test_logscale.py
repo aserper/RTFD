@@ -263,7 +263,7 @@ async def test_fetch_function_docs_namespaced(provider, mock_html_content):
     provider = LogscaleProvider(mock_factory)
 
     # Should normalize array:append to array-append for URL
-    result = await provider._fetch_function_docs("array:append", max_bytes=20480)
+    await provider._fetch_function_docs("array:append", max_bytes=20480)
 
     # Verify the URL was constructed correctly (via the mock call)
     call_args = mock_client.get.call_args
@@ -366,7 +366,7 @@ def test_syntax_topics_mapping():
     """Test that syntax topics mapping is properly defined."""
     assert len(SYNTAX_TOPICS) > 0
 
-    for key, info in SYNTAX_TOPICS.items():
+    for _key, info in SYNTAX_TOPICS.items():
         assert "page" in info
         assert "description" in info
         assert info["page"].endswith(".html")
@@ -376,7 +376,7 @@ def test_function_categories_mapping():
     """Test that function categories mapping is properly defined."""
     assert len(FUNCTION_CATEGORIES) > 0
 
-    for key, info in FUNCTION_CATEGORIES.items():
+    for _key, info in FUNCTION_CATEGORIES.items():
         assert "page" in info
         assert "description" in info
         assert info["page"].startswith("functions-")

@@ -1,0 +1,1190 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Host:
+      - library.humio.com
+      User-Agent:
+      - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0
+        Safari/537.36
+    method: GET
+    uri: https://library.humio.com/data-analysis/functions-math.html
+  response:
+    body:
+      string: "<!DOCTYPE html><html lang=\"en\"><head><title>Math Query Functions
+        | Data Analysis 1.208.0-1.225.0 | LogScale Documentation</title><link rel=\"stylesheet\"
+        type=\"text/css\" href=\"theme.css\"><meta name=\"generator\" content=\"DocBook
+        XSL Stylesheets V1.78.0\"><meta http-equiv=\"Content-Type\" content=\"text/html;
+        charset=UTF-8\"><meta name=\"buildepoch\" content=\"1770045806\"><meta name=\"builddatetime\"
+        content=\"2026-02-02 15:23\"><script async=\"\" src=\"https://www.googletagmanager.com/gtag/js?id=G-LBH5FEEQGT\"></script><script>\n
+        \     window.dataLayer = window.dataLayer || [];\n      function gtag(){dataLayer.push(arguments);}\n
+        \     gtag('js', new Date());\n\n      gtag('config', 'G-LBH5FEEQGT');\n    </script><script>\n
+        \         var sidebar_right_default = 1;\n        \n          var sidebar_left_default
+        = 1;\n        \n          var sidebar_right_display = -1;\n        \n          var
+        sidebar_left_display = -1;\n        </script><script src=\"https://library.humio.com/js/document-list.js\"></script><script>var
+        baseloc=\"https://library.humio.com\";</script><script identity=\"sha512-NtMhQgLtivHbCDoIvkQHmINDsH80s24iWcmhtkz6NuwjyZ+MLMHgYdM+FToSovIuY50mxdaaboi9vrNv3iknmA\"
+        src=\"js/search.js\"></script><script identity=\"sha512-8kd/YUaPQNaudBUmvpFDMmP4VhMHtPO9StTyJm4ARj4dOiceJtAa0GXj/nP1oIdTZS/6Uol5o8SZCU9HH/KKZw\"
+        src=\"js/highlight.min.js\"></script><script identity=\"sha512-DAg/qEnFRtQkwIEzOjqHHWwEoHLzKTOWmbH+xDau+G/hS2pAiJM1bLphFgcO3tpluBjdbYsnNRq4ASpXS4ClQA\"
+        src=\"js/logscale.min.js\"></script><script identity=\"sha512-MIDBJJIJbyylCS9xT3gyQ5PFIui/zUUGm9V77+hDUs5iTa/yEIWZUgGfRhG6X2WIVDYUIodTp8JoHdYeyS5ZOg\"
+        src=\"js/http.min.js\"></script><script identity=\"sha512-I2n2M3wONLlHjeqY7gTxE0hgu3AMeKO68+vBtfjp5onoRy/0J6ghcpS6pqtRG4eRessKN8cbH9N2CnYBWCLoGA\"
+        src=\"js/apache.min.js\"></script><script identity=\"sha512-4xzKcnOhXeYySC/PneV7sO832OyA5c0IYis5M6OQ6Bncw3F85K+xJk2uh4WNZSWONWBRKlxMPhJe3MmmgVWccw\"
+        src=\"js/verilog.min.js\"></script><script identity=\"sha512-ZlIsxefOZAw4XoPGEKCBYdRmMn7OQRmYcUEhmuMOiA+bJGMUW16mmeYm2vj53I3cYh2/D9j4WiY3wE/X5zujpA\"
+        src=\"js/accesslog.min.js\"></script><script identity=\"sha512-G6iETlA7Rg1Z7KZFmG68IxKR81lXlDYESQ3wxy/aeKHaowjIHBGG03C79OveDgTsBN6h/2GNtQFNi8QDOAgmHg\"
+        src=\"js/xml.min.js\"></script><script identity=\"sha512-jWH48mwjihORkGHkvD8l0E/MtDgvY0C69eaYitXkI28ZneLUso2I3PgrN8lNnF3esiwHIFy0QODZy7ypmo9Flg\"
+        src=\"js/powershell.min.js\"></script><script identity=\"sha512-f2/ljYb/tG4fTHu6672tyNdoyhTIpt4N1bGrBE8ZjwIgrjDCd+rljLpWCZ2Vym9PBWQy2Tl9O22Pp2rMOMvH4g\"
+        src=\"js/json.min.js\"></script><script identity=\"sha512-bRKovV3RcnRkqQcqFMX0JLT49r/9M6Nkt0hzssWOs2AV4y6/diDH3l57xLUR9o5uvTKKD7r2r9YfO85MsFYrkA\"
+        src=\"js/bnf.min.js\"></script><script identity=\"sha512-nQ9BQEzuov+Ry6EIH8ve7VKKdOG91Ix3SAQcFmOiBR5qG8sJONrph1InWTJOGjfP5QkSTSy4VnkEsPMoFYRsUQ\"
+        src=\"js/bash.min.js\"></script><script identity=\"sha512-y0uGK4Ql/eJrIn2uOu2Hfc/3wnQpAHlEF58pL7akgWaVnuOJ8D5Aal/VPRKyMGADVuAavg1yVdLUpn9PlnGmYA\"
+        src=\"js/dockerfile.min.js\"></script><script identity=\"sha512-0eGbOfnQU+gXihHTbUVKGrJ52sWu9e/9ryao/XeDhQb4EJP1wEVd0jN4G8jImQ/vcEArdv2Kl4mswrEu/xh8pw\"
+        src=\"js/graphql.min.js\"></script><script identity=\"sha512-7OGJTjLbP6mkGuHzs279+Y3WoqYLiB+pdYYabyUq6H2jnm2jFpg4NSiXQwc4RL2GTi1tQd2LyQVrmEmrNxaalw\"
+        src=\"js/ini.min.js\"></script><script identity=\"sha512-DTx6faal3nhEB55v+yn8UnXCxaxCdMR6gBZ0zzXhGD2qvtgf6xbW5iA7G4CUn78R9PoPzTelR7xIQwGNUJAv2w\"
+        src=\"js/java.min.js\"></script><script identity=\"sha512-yfJUrNGEC39mHLjZ37CZG69Ij9Vnan7NHxXVuuBxafgfk4F+n7j/NhNWtyhKGTYEgWfgUqzPYMZJZY1HIsPCbQ\"
+        src=\"js/javascript.min.js\"></script><script identity=\"sha512-lLnMPGLNcEgvwt6f291Bp+WqF3HRxv+8q1t6PA/XTwZH/D1XLB2tUayRAjfAp6AAUrrieJnXQCUtGZtcMhP6ag\"
+        src=\"js/makefile.min.js\"></script><script identity=\"sha512-j4HfSOGvYNRQiq8wvftDi9oVmhSqJuh2dALD+Btn53looHt+e1aaNX9gcQsnUAi42694fFhmmU4fx8nzs6VN7Q\"
+        src=\"js/markdown.min.js\"></script><script identity=\"sha512-YCQiJsKM5yuLJlOS/TsyhMLDbWHDBBkv+oK3yGClUkEh7M2aDIhnZqxjs8P6mLRQGESL5d52oboG5+M5wUXV1g\"
+        src=\"js/objectivec.min.js\"></script><script identity=\"sha512-aldybEGPrrkkzRlf0uzx1dbMLiF84GlYYgGkZuaTUCh2rmTCMII9yFZNUmYhmt42GwTlb4ShkLu5JrOUOv4qkQ\"
+        src=\"js/perl.min.js\"></script><script identity=\"sha512-uSKj9vayq7XKzfzflBQdmCuLIzKtsmsv7jjfr85Z0GQxNyID1anc0GMYHsNMo93A0oaro6696CQ5Q00xvCpoBQ\"
+        src=\"js/php.min.js\"></script><script identity=\"sha512-/uCTceIDOniHf+VUKbCnP/x6GQSRrm4GwUtQYMgKa9yIZPGzlR04flSsD+2or7bPn44VY9inIHI4cwNCcZmJDw\"
+        src=\"js/python.min.js\"></script><script identity=\"sha512-W4zfUSnG/iue7LUx5hV2wF+akM0hVh4afLk8Avl3reONnH2lF5wPrg/D0rMGWHgZE2d+4XTjG5EJWzkyegUd5g\"
+        src=\"js/shell.min.js\"></script><script identity=\"sha512-RzK8J6sL3xE7eyppcm7hjCq6fpW1kDlnKPO5jX+Z++/ChYXqsq5AoFq0z78g3jf/1DV5wMBZukqIyb+0xPkCVw\"
+        src=\"js/sql.min.js\"></script><script identity=\"sha512-Y8GzCpg2u9P2M//u+lBP4ogNs3YtllnXlOlintElAyphfK8vOHAju9MlnDakr64cMa9ARpO1IUs51FjwY33g2Q\"
+        src=\"js/yaml.min.js\"></script><script identity=\"sha512-aX1DvetB2YDGytK0/s67JmDvbxx67Q0Z/fe52O+UM6AQrSjxfXPcrLTRsfUgPgMzt+XqAsZQx9nNqN7pBYsr/w\"
+        src=\"js/default.min.js\"></script><script identity=\"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g\"
+        src=\"js/jquery.js\"></script><script>var archivebuild = 0;</script><script
+        identity=\"sha512-xpTVsZBIW8N5zh/+NKd0TvbjYaFGIqUzSW2k+rPb9iDFpij1lBT+mSVcgFX+B9XFCj4yoG+yVB8vKdXEnNt4ww\"
+        src=\"js/corp.js\"></script><script identity=\"sha512-wY05aMS8gxJKWHWrDfvuhaiTIFZChgSWk00fHT+zKUWXKqqxhfSsmKjbDxIqtgPXhjIX0uyy887eRa3hSnw6fw\"
+        src=\"js/htmllinkhelp.js\"></script><script identity=\"sha512-5K8NZAbFrJhHS+8T7zl0MiBkj42o7PFhh+hNf0/RCWVwlTZhYSrMZx4U/AJZPU3w7HkP/oBF2brzLImncxzKXQ\"
+        src=\"js/sorttable.js\"></script><script identity=\"sha512-AhTK9qSO81qqnAzUALtBJQ0nph5fS8Q/HLBUJxDOJA+dDsmCJhOr9SeLTOI0+Dp/0eM0+K45+LsTipPq9SKfPA\"
+        src=\"js/theme.js\"></script><meta content=\"ie=edge\" http-equiv=\"X-UA-Compatible\"><meta
+        content=\"width=device-width, initial-scale=1.0\" name=\"viewport\"><meta
+        name=\"title\" content=\"Math Query Functions | Data Analysis 1.208.0-1.225.0
+        | LogScale Documentation\"><meta name=\"keywords\" content=\"math functions,math
+        query functions,other-functionbykw-math,query math functions,query-function-groups\"><meta
+        content=\"en-US\" name=\"language\"><meta name=\"copyright\" content=\"Crowdstrike,
+        2026. All Rights Reserved.\"><meta content=\"\" property=\"article:modified_time\"><link
+        rel=\"home\" href=\"index.html\" title=\"Data Analysis 1.208.0-1.225.0\"><link
+        rel=\"up\" href=\"functions.html\" title=\"Query Functions\"><link rel=\"prev\"
+        href=\"functions-join-functions.html\" title=\"Join Query Functions\"><link
+        rel=\"next\" href=\"functions-network-location.html\" title=\"Network and
+        Location Query Functions\"></head><body class=\"antialiased\"><div class=\"h-screen
+        md:grid md:grid-layout\" id=\"page\"><a class=\"block text-xl bg-white px-8
+        py-4 z-20 absolute top-0 inset-x-0 text-center transform -translate-y-full
+        focus:translate-y-0 focus:outline-none transition-transform duration-75\"
+        href=\"#understanding-library-markup\" title=\"Skip navigation links\">Skip
+        to content</a><header class=\"grid-area-header z-10 print\"><div class=\"bg-gray-900
+        shadow-md flex items-center z-10\"><a aria-label=\"Back to homepage\" class=\"w-full
+        md:w-auto tooltipped tooltipped-se homelogo\" href=\"https://library.humio.com\"><span
+        class=\"bondedlogo\"><img alt=\"Logo\" class=\"homelogo\" src=\"css-images/logo-white.svg\"><span
+        class=\"homelogo\">LogScale Documentation</span></span></a><a aria-label=\"Full
+        Library\" id=\"full-library-button\" class=\"header-hover w-full md:w-auto
+        white px-3\">Full Library</a><a aria-label=\"Knowledge Base\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/kb/kb.html\">\n
+        \                 Knowledge Base\n                </a><a aria-label=\"Release
+        Notes\" class=\"header-hover w-full md:w-auto white px-3\" href=\"https://library.humio.com/release-notes/release-notes.html\">\n
+        \               Release Notes</a><a aria-label=\"Integrations\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/integrations/integrations.html\">\n
+        \               Integrations</a><a aria-label=\"Query Examples\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/examples/examples.html\">\n
+        \               Query Examples</a><a aria-label=\"Training\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/training/training.html\">\n
+        \               Training</a><a aria-label=\"API\" class=\"header-hover w-full
+        md:w-auto white px-3\" href=\"https://library.humio.com/logscale-api/api.html\">\n
+        \               API</a><a aria-label=\"GraphQL API\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/logscale-graphql-reference/api-graphql.html\">\n
+        \               GraphQL API</a><a aria-label=\"Full Search\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/search.html\">Search\n
+        \               </a><a aria-label=\"Manual Archives\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/archives/index.html\">Archives\n
+        \                 </a><a aria-label=\"Contacting Support\" class=\"header-hover
+        w-full md:w-auto white px-3\" href=\"https://library.humio.com/kb/kb-contacting-support.html\">\n
+        \               Contacting Support</a><div class=\"searchcontainer justify-between
+        items-center\"><form class=\"hidden md:flex my-auto mx-5 justify-between items-center
+        print:hidden\" id=\"searchbox\" method=\"get\" action=\"https://library.humio.com/search.html\"><input
+        aria-label=\"Search current releases\" spellcheck=\"false\" autocomplete=\"off\"
+        class=\"p-2 focus:bg-yellow-50\" id=\"inlinesearchtext\" name=\"search\" placeholder=\"Find...(Alt-F)\"
+        type=\"search\"><div class=\"humio_searchdropdown\"><button aria-label=\"Get
+        search results\" class=\"p-2 text-white bg-gray-700 hover:bg-gray-200 hover:text-pink-500
+        focus:bg-gray-200 focus:text-pink-500 tooltipped tooltipped-sw\"><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"fill-current stroke-current h-6 w-6\" viewbox=\"0
+        0 24 24\"><path d=\"M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5
+        0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6
+        0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\"></path></svg></button><div
+        class=\"dropdown-search\" id=\"humio_searchresults\"></div></div></form></div><a
+        aria-label=\"Help\" class=\"w-full md:w-auto white px-3 font-semibold\" href=\"https://library.humio.com/metadocs/metadocs.html\"><img
+        src=\"css-images/help-circle-white.svg\" alt=\"Help button for documentation\"></a></div><div
+        class=\"dropdown-library\" id=\"full-library-list\"></div></header><aside
+        class=\"grid-area-sidebar fixed md:relative inset-y-0 left-0 z-20 md:z-0 print:hidden
+        overflow-y-auto transition-all transform transform-gpu -translate-x-full opacity-0
+        duration-300 md:translate-x-0 md:opacity-100 bg-gray-50\" id=\"sidebar\"><button
+        class=\"sidebar-open\" id=\"lsidebar-openclose\" onclick=\"sidebar_toggle(this,'sidebar',1);\"
+        title=\"Hide manual table of contents\">\xAB</button><nav class=\"overflow-y-auto
+        bg-gray-50 text-gray-700 pt-4 px-3 flex flex-col\"><div class=\"nav-container\"
+        id=\"lsidebar-nav\"><div class=\"doccontent\"><link rel=\"stylesheet\" type=\"text/css\"
+        href=\"css/highlight.css\"><div class=\"nav-container\"><div class=\"navigation-home
+        otherversions\"><div class=\"nav-toc fixed-nav\"><label for=\"version\"><h3>Versions
+        of this Page</h3></label><form action=\"#\"><select name=\"version\" id=\"version\"
+        onchange=\"select_version(this)\"><option value=\"\" selected>Data Analysis
+        1.208.0-1.225.0</option><option value=\"../data-analysis-1.208/functions-math.html\">Data
+        Analysis 1.202.0-1.208.0</option><option value=\"../data-analysis-1.207/functions-math.html\">Data
+        Analysis 1.202.0-1.207.0</option><option value=\"../data-analysis-1.201/functions-math.html\">Data
+        Analysis 1.196.0-1.201.0</option><option value=\"../data-analysis-1.195/functions-math.html\">Data
+        Analysis 1.190.0-1.195.0</option><option value=\"../data-analysis-1.189/functions-math.html\">Data
+        Analysis 1.184.0-1.189.0</option><option value=\"../data-analysis-1.183/functions-math.html\">Data
+        Analysis 1.178.0-1.183.0</option><option value=\"../data-analysis-1.177/functions-math.html\">Data
+        Analysis 1.172.0-1.177.0</option><option value=\"../data-analysis-1.176/functions-math.html\">Data
+        Analysis 1.172.0-1.176.0</option><option value=\"../data-analysis-1.171/functions-math.html\">Data
+        Analysis 1.166.0-1.171.2</option><option value=\"../data-analysis-1.165/functions-math.html\">Data
+        Analysis 1.160.0-1.165.2</option></select></form></div></div><div class=\"nav-toc
+        flex-1\"><ul><ul><li><div class=\"nav-link\"><a href=\"data-analysis-docs.html\"><h5>Data
+        Analysis Overview</h5></a></div><li><div class=\"nav-link\"><a href=\"ui.html\"><h5>LogScale
+        Web Interface</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"ui-tabs-falcon.html\">System
+        Tabs and Falcon Icon</a></div><li><div class=\"nav-link\"><a href=\"ui-navigation-icons.html\">Navigation
+        Icons</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"ui-navigation-icons-notifications.html\">Notifications</a></div><li><div
+        class=\"nav-link\"><a href=\"ui-navigation-icons-releases.html\">Releases
+        and Release Notes</a></div><li><div class=\"nav-link\"><a href=\"ui-navigation-icons-help.html\">Help</a></div><li><div
+        class=\"nav-link\"><a href=\"ui-navigation-icons-account.html\">Avatar icon</a></div></ul><li><div
+        class=\"nav-link\"><a href=\"ui-info-panel.html\">Informational Panels</a></div><li><div
+        class=\"nav-link\"><a href=\"ui-left-hand-panel.html\">Left-hand Navigation
+        Panel</a></div><li><div class=\"nav-link\"><a href=\"ui-table.html\">Table
+        Components</a></div><li><div class=\"nav-link\"><a href=\"ui-repo.html\">Repositories
+        and Views</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"ui-repo-menubar.html\">Repositories
+        and Views Menubar</a></div><li><div class=\"nav-link\"><a href=\"ui-repo-search.html\">Search
+        Interface</a></div><li><div class=\"nav-link\"><a href=\"ui-repo-dashboards.html\">Dashboards
+        Interface</a></div><li><div class=\"nav-link\"><a href=\"ui-repo-automation.html\">Automation
+        Interface</a></div><li><div class=\"nav-link\"><a href=\"ui-repo-parsers.html\">Parsers
+        Interface</a></div><li><div class=\"nav-link\"><a href=\"ui-repo-resources.html\">Resources
+        Interface</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"ui-repo-resources-types.html\">Asset
+        Type Interface Elements</a></div></ul><li><div class=\"nav-link\"><a href=\"ui-repo-settings.html\">Settings
+        Interface</a></div></ul><li><div class=\"nav-link\"><a href=\"ui-dashboards.html\">All
+        Dashboards</a></div><li><div class=\"nav-link\"><a href=\"ui-data-ingest.html\">Data
+        Ingest</a></div></ul><li><div class=\"nav-link\"><a href=\"repositories.html\"><h5>Manage
+        Repositories and Views</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"repositories-create.html\">Create
+        Repository or View</a></div><li><div class=\"nav-link\"><a href=\"repositories-settings.html\">Repository
+        and View Settings</a></div><li><div class=\"nav-link\"><a href=\"repositories-falcon-ltr.html\">Falcon
+        LTR Repositories</a></div><li><div class=\"nav-link\"><a href=\"repositories-files-ui.html\">Lookup
+        Files</a></div><li><div class=\"nav-link\"><a href=\"repositories-delete.html\">Delete
+        a Repository or View</a></div></ul><li><div class=\"nav-link\"><a href=\"manage-account.html\"><h5>Manage
+        Account</h5></a></div><li><div class=\"nav-link\"><a href=\"parsers.html\"><h5>Parse
+        Data</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"parsers-built-in.html\">Built-in
+        Parsers</a></div><li><div class=\"nav-link\"><a href=\"parsers-custom.html\">Custom
+        Parsers</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"parsers-create-new-parser.html\">Create
+        a Parser</a></div><li><div class=\"nav-link\"><a href=\"parsers-create-writing.html\">Write
+        a Parser</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"parsers-create-parsing-log-lines.html\">Example:
+        Parsing Log Lines</a></div><li><div class=\"nav-link\"><a href=\"parsers-create-parsing-json.html\">Example:
+        Parsing JSON</a></div><li><div class=\"nav-link\"><a href=\"parsers-create-validation.html\">Parsers
+        Validation Errors</a></div><li><div class=\"nav-link\"><a href=\"parsers-create-writing-start-cpsvalidation.html\">Normalize
+        and Validate Against CPS Schema</a></div></ul></ul><li><div class=\"nav-link\"><a
+        href=\"parsers-manage.html\">Manage Parsers</a></div><li><div class=\"nav-link\"><a
+        href=\"parsers-assigning-to-ingest-tokens.html\">Ingest Tokens</a></div><li><div
+        class=\"nav-link\"><a href=\"parsers-parsing-errors.html\">Parser Errors</a></div><li><div
+        class=\"nav-link\"><a href=\"parsers-remove-field.html\">Removing Fields</a></div><li><div
+        class=\"nav-link\"><a href=\"parsers-tagging.html\">Parsing Event Tags</a></div><li><div
+        class=\"nav-link\"><a href=\"parsers-parsing-timestamps.html\">Parsing Timestamps</a></div></ul><li><div
+        class=\"nav-link\"><a href=\"searching-data.html\"><h5>Search Data</h5></a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"searching-data-searchbox.html\">Query Editor</a></div><li><div
+        class=\"nav-link\"><a href=\"searching-data-event-fields.html\">Event Fields</a></div><li><div
+        class=\"nav-link\"><a href=\"searching-data-displaying-fields.html\">Display
+        Fields</a></div><li><div class=\"nav-link\"><a href=\"searching-data-selecting-fields.html\">Select
+        and Filter Fields</a></div><li><div class=\"nav-link\"><a href=\"searching-data-add-remove-fields.html\">Add
+        and Remove Fields</a></div><li><div class=\"nav-link\"><a href=\"searching-data-changing-the-events-display.html\">Display
+        Results and Events</a></div><li><div class=\"nav-link\"><a href=\"searching-data-inspecting-events.html\">Inspect
+        Events</a></div><li><div class=\"nav-link\"><a href=\"searching-data-copy-rows.html\">Copy
+        Rows</a></div><li><div class=\"nav-link\"><a href=\"searching-data-lookup-events.html\">Look
+        Up Events</a></div><li><div class=\"nav-link\"><a href=\"searching-data-show-context.html\">Show
+        in Context</a></div><li><div class=\"nav-link\"><a href=\"searching-data-format-column.html\">Format
+        Columns</a></div><li><div class=\"nav-link\"><a href=\"searching-data-column-properties.html\">Column
+        Properties</a></div><li><div class=\"nav-link\"><a href=\"searching-data-types.html\">Field
+        Data Types</a></div><li><div class=\"nav-link\"><a href=\"searching-data-field-interactions.html\">Field
+        Interactions</a></div><li><div class=\"nav-link\"><a href=\"searching-data-change-data-display.html\">Different
+        Visualizations</a></div><li><div class=\"nav-link\"><a href=\"searching-data-filter-highlighting.html\">Highlight
+        Filter Match</a></div><li><div class=\"nav-link\"><a href=\"searching-data-expand-timeframe.html\">Change
+        Time Interval</a></div><li><div class=\"nav-link\"><a href=\"searching-data-set-timezone.html\">Set
+        Time Zone</a></div><li><div class=\"nav-link\"><a href=\"searching-data-saving-a-search.html\">Save
+        Results</a></div><li><div class=\"nav-link\"><a href=\"searching-data-data-export.html\">Export
+        Data</a></div><li><div class=\"nav-link\"><a href=\"searching-data-check-status.html\">Search
+        Status</a></div><li><div class=\"nav-link\"><a href=\"searching-data-search-interactions.html\">Event
+        List Interactions</a></div><li><div class=\"nav-link\"><a href=\"searching-data-query-prefix.html\">Query
+        Prefix</a></div><li><div class=\"nav-link\"><a href=\"searching-data-field-aliasing.html\">Field
+        Aliasing</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"searching-data-field-aliasing-configure.html\">Configuring
+        Field Aliasing</a></div><li><div class=\"nav-link\"><a href=\"searching-data-field-aliasing-manage.html\">Managing
+        Field Aliasing</a></div><li><div class=\"nav-link\"><a href=\"searching-data-field-aliasing-search.html\">Searching
+        with Field Aliasing</a></div><li><div class=\"nav-link\"><a href=\"searching-data-field-aliasing-mapping-requirements.html\">Understanding
+        Field Mapping Requirements</a></div><li><div class=\"nav-link\"><a href=\"searching-data-field-aliasing-schema-requirements.html\">Understanding
+        Schema Requirements</a></div></ul></ul><li><div class=\"nav-link\"><a href=\"writing-queries.html\"><h5>Write
+        Queries</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"writing-queries-flow.html\">Basic
+        query principles</a></div><li><div class=\"nav-link\"><a href=\"writing-queries-tail.html\">Returned
+        events</a></div><li><div class=\"nav-link\"><a href=\"writing-queries-manage.html\">Query
+        management</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"writing-queries-manage-write.html\">Writing
+        New Queries</a></div><li><div class=\"nav-link\"><a href=\"writing-queries-manage-save-new.html\">Save
+        searches</a></div><li><div class=\"nav-link\"><a href=\"writing-queries-manage-asset-sharing.html\">Grant
+        Permissions for Saved Queries</a></div><li><div class=\"nav-link\"><a href=\"writing-queries-manage-interactions-saved-query.html\">Use
+        Saved Queries in Interactions</a></div></ul><li><div class=\"nav-link\"><a
+        href=\"writing-queries-operations.html\">Common Queries</a></div><li><div
+        class=\"nav-link\"><a href=\"writing-queries-write-best-practice.html\">Statement
+        order for better queries</a></div><li><div class=\"nav-link\"><a href=\"writing-queries-usage-best-practice.html\">Query
+        readability and better usage</a></div></ul><li><div class=\"nav-link\"><a
+        href=\"syntax.html\"><h5>Query Language Syntax</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"syntax-comments.html\">Comments</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-filters.html\">Query Filters</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-operators.html\">Operators</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-fields.html\">Adding Fields to Events</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-fields-user-input.html\">User Parameters/Variables</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-conditional.html\">Conditional Evaluation</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-array.html\">Array Syntax</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-expressions.html\">Expressions</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-function-user.html\">Saved Searches (User
+        Functions)</a></div><li><div class=\"nav-link\"><a href=\"syntax-function.html\">Function
+        Syntax</a></div><li><div class=\"nav-link\"><a href=\"syntax-time.html\">Time
+        Syntax</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"syntax-time-timezones.html\">Supported Time Zones</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-time-relative.html\">Relative Time Syntax</a></div></ul><li><div
+        class=\"nav-link\"><a href=\"syntax-macros.html\">Referencing Resources</a></div><li><div
+        class=\"nav-link\"><a href=\"syntax-regex.html\">Regular Expression Syntax</a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"syntax-regex-syntax.html\">Regular Expression
+        Syntax Patterns</a></div><li><div class=\"nav-link\"><a href=\"syntax-regex-unsupported.html\">Unsupported
+        Regular Expression Patterns</a></div><li><div class=\"nav-link\"><a href=\"syntax-regex-flags.html\">Regular
+        Expression Flags</a></div><li><div class=\"nav-link\"><a href=\"syntax-regex-engines.html\">LogScale
+        Regular Expression Engines</a></div><li><div class=\"nav-link\"><a href=\"syntax-regex-diffs.html\">Differences
+        from Other Regex Implementations</a></div></ul></ul><li><div class=\"nav-link\"><a
+        href=\"query-joins.html\"><h5>Query Joins and Lookups</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"query-joins-types.html\">Types of Join</a></div><li><div
+        class=\"nav-link\"><a href=\"query-joins-methods.html\">Join Methods</a></div><li><div
+        class=\"nav-link\"><a href=\"query-joins-asset-resolution.html\">Asset Resolution
+        in Subqueries</a></div><li><div class=\"nav-link\"><a href=\"query-joins-methods-adhoc-tables.html\">Using
+        Ad-hoc Tables</a></div><li><div class=\"nav-link\"><a href=\"query-joins-methods-lookups.html\">Using
+        Lookup Files</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"query-joins-methods-readfile.html\">Using
+        the readFile() Function</a></div><li><div class=\"nav-link\"><a href=\"query-joins-methods-match.html\">Using
+        the match() Function</a></div></ul><li><div class=\"nav-link\"><a href=\"query-joins-methods-join-selfjoin.html\">Using
+        join() or selfJoin()</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"query-joins-methods-join.html\">Using
+        the join() Function</a></div><li><div class=\"nav-link\"><a href=\"query-joins-methods-selfjoin.html\">Using
+        the selfJoin() Function</a></div><li><div class=\"nav-link\"><a href=\"query-joins-performance.html\">Join
+        Operation and Optimization</a></div></ul></ul><li class=\"expanded\"><div
+        class=\"nav-link\"><a href=\"functions.html\"><h5>Query Functions</h5></a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"functions-aggregate.html\">Aggregate Query Functions</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array.html\">Array Query Functions</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-comparison.html\">Comparison Query
+        Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-condition.html\">Conditional
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-data-manipulation.html\">Data
+        Manipulation Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-event.html\">Event
+        Information Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-filter.html\">Filtering
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-formatting.html\">Formatting
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-geolocation.html\">Geolocation
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-hash-functions.html\">Hash
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-join-functions.html\">Join
+        Query Functions</a></div><li class=\"current expanded\"><div class=\"nav-link\"><a
+        class=\"current\" href=\"functions-math.html\">Math Query Functions</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-network-location.html\">Network and
+        Location Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-parsing.html\">Parsing
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-preamble.html\">Preamble
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-regular-expression.html\">Regular
+        Expression Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-security.html\">Security
+        Related Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-sequence.html\">Sequence
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-statistics.html\">Statistics
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-string.html\">String
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-time-date.html\">Time
+        and Date Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-transformation.html\">Tranformation
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-widget.html\">Widget
+        Query Functions</a></div><li><div class=\"nav-link\"><a href=\"functions-accumulate.html\">accumulate()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-append.html\">array:append()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-contains.html\">array:contains()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-dedup.html\">array:dedup()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-drop.html\">array:drop()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-eval.html\">array:eval()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-exists.html\">array:exists()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-filter.html\">array:filter()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-intersection.html\">array:intersection()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-length.html\">array:length()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-reduceall.html\">array:reduceAll()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-reducecolumn.html\">array:reduceColumn()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-reducerow.html\">array:reduceRow()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-regex.html\">array:regex()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-rename.html\">array:rename()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-sort.html\">array:sort()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-array-union.html\">array:union()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-asn.html\">asn()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-avg.html\">avg()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-base64decode.html\">base64Decode()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-base64encode.html\">base64Encode()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-beta-param.html\">beta:param()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-beta-repeating.html\">beta:repeating()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-bitfield-extractflags.html\">bitfield:extractFlags()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-bitfield-extractflagsasarray.html\">bitfield:extractFlagsAsArray()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-bitfield-extractflagsasstring.html\">bitfield:extractFlagsAsString()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-bucket.html\">bucket()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-callfunction.html\">callFunction()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-cidr.html\">cidr()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-coalesce.html\">coalesce()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-collect.html\">collect()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-communityid.html\">communityId()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-concat.html\">concat()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-concatarray.html\">concatArray()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-copyevent.html\">copyEvent()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-correlate.html\">correlate()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-count.html\">count()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-counterasrate.html\">counterAsRate()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-createevents.html\">createEvents()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-crypto-md5.html\">crypto:md5()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-crypto-sha1.html\">crypto:sha1()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-crypto-sha256.html\">crypto:sha256()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-default.html\">default()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-definetable.html\">defineTable()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-drop.html\">drop()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-dropevent.html\">dropEvent()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-duration.html\">duration()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-end.html\">end()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-eval.html\">eval()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-eventfieldcount.html\">eventFieldCount()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-eventinternals.html\">eventInternals()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-eventsize.html\">eventSize()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-fieldset.html\">fieldset()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-fieldstats.html\">fieldstats()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-findtimestamp.html\">findTimestamp()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-format.html\">format()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-formatduration.html\">formatDuration()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-formattime.html\">formatTime()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-geography-distance.html\">geography:distance()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-geohash.html\">geohash()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-getfield.html\">getField()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-groupby.html\">groupBy()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-hash.html\">hash()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-hashmatch.html\">hashMatch()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-hashrewrite.html\">hashRewrite()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-head.html\">head()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-if.html\">if()</a></div><li><div class=\"nav-link\"><a
+        href=\"functions-in.html\">in()</a></div><li><div class=\"nav-link\"><a href=\"functions-ioc-lookup.html\">ioc:lookup()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-iplocation.html\">ipLocation()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-join.html\">join()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-json-prettyprint.html\">json:prettyPrint()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-kvparse.html\">kvParse()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-length.html\">length()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-linreg.html\">linReg()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-lower.html\">lower()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-lowercase.html\">lowercase()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-match.html\">match()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-matchasarray.html\">matchAsArray()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-abs.html\">math:abs()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-arccos.html\">math:arccos()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-arcsin.html\">math:arcsin()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-arctan.html\">math:arctan()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-arctan2.html\">math:arctan2()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-ceil.html\">math:ceil()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-cos.html\">math:cos()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-cosh.html\">math:cosh()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-deg2rad.html\">math:deg2rad()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-exp.html\">math:exp()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-expm1.html\">math:expm1()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-floor.html\">math:floor()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-log.html\">math:log()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-log10.html\">math:log10()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-log1p.html\">math:log1p()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-log2.html\">math:log2()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-mod.html\">math:mod()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-pow.html\">math:pow()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-rad2deg.html\">math:rad2deg()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-sin.html\">math:sin()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-sinh.html\">math:sinh()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-spherical2cartesian.html\">math:spherical2cartesian()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-sqrt.html\">math:sqrt()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-tan.html\">math:tan()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-math-tanh.html\">math:tanh()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-max.html\">max()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-min.html\">min()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-neighbor.html\">neighbor()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-now.html\">now()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-objectarray-eval.html\">objectArray:eval()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-objectarray-exists.html\">objectArray:exists()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parsecef.html\">parseCEF()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parsecsv.html\">parseCsv()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parsefixedwidth.html\">parseFixedWidth()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parsehexstring.html\">parseHexString()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parseint.html\">parseInt()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parsejson.html\">parseJson()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parseleef.html\">parseLEEF()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parsetimestamp.html\">parseTimestamp()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parseuri.html\">parseUri()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parseurl.html\">parseUrl()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-parsexml.html\">parseXml()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-partition.html\">partition()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-percentage.html\">percentage()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-percentile.html\">percentile()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-range.html\">range()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-rdns.html\">rdns()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-readfile.html\">readFile()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-regex.html\">regex()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-rename.html\">rename()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-replace.html\">replace()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-reversedns.html\">reverseDns()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-round.html\">round()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-sample.html\">sample()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-sankey.html\">sankey()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-select.html\">select()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-selectfrommax.html\">selectFromMax()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-selectfrommin.html\">selectFromMin()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-selectlast.html\">selectLast()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-selfjoin.html\">selfJoin()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-selfjoinfilter.html\">selfJoinFilter()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-series.html\">series()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-session.html\">session()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-setfield.html\">setField()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-settimeinterval.html\">setTimeInterval()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-shannonentropy.html\">shannonEntropy()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-slidingtimewindow.html\">slidingTimeWindow()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-slidingwindow.html\">slidingWindow()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-sort.html\">sort()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-split.html\">split()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-splitstring.html\">splitString()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-start.html\">start()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-stats.html\">stats()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-stddev.html\">stdDev()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-stripansicodes.html\">stripAnsiCodes()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-subnet.html\">subnet()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-sum.html\">sum()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-table.html\">table()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-tail.html\">tail()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-test.html\">test()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-contains.html\">text:contains()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-editdistance.html\">text:editDistance()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-editdistanceasarray.html\">text:editDistanceAsArray()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-endswith.html\">text:endsWith()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-length.html\">text:length()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-positionof.html\">text:positionOf()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-startswith.html\">text:startsWith()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-text-substring.html\">text:substring()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-dayofmonth.html\">time:dayOfMonth()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-dayofweek.html\">time:dayOfWeek()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-dayofweekname.html\">time:dayOfWeekName()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-dayofyear.html\">time:dayOfYear()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-hour.html\">time:hour()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-millisecond.html\">time:millisecond()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-minute.html\">time:minute()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-month.html\">time:month()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-monthname.html\">time:monthName()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-second.html\">time:second()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-weekofyear.html\">time:weekOfYear()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-time-year.html\">time:year()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-timechart.html\">timeChart()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-tokenhash.html\">tokenHash()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-top.html\">top()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-transpose.html\">transpose()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-unit-convert.html\">unit:convert()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-upper.html\">upper()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-urldecode.html\">urlDecode()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-urlencode.html\">urlEncode()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-wildcard.html\">wildcard()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-window.html\">window()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-worldmap.html\">worldMap()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-writejson.html\">writeJson()</a></div><li><div
+        class=\"nav-link\"><a href=\"functions-xml-prettyprint.html\">xml:prettyPrint()</a></div></ul><li><div
+        class=\"nav-link\"><a href=\"data-visualization.html\"><h5>Data Visualization</h5></a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"dashboards.html\">Dashboards</a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"dashboards-guide.html\">Step-by-Step Guide to
+        Dashboards</a></div><li><div class=\"nav-link\"><a href=\"dashboards-create.html\">Create
+        Dashboards</a></div><li><div class=\"nav-link\"><a href=\"dashboards-manage.html\">Manage
+        Dashboards</a></div><li><div class=\"nav-link\"><a href=\"dashboards-edit.html\">Customize
+        Dashboards</a></div><li><div class=\"nav-link\"><a href=\"dashboards-organize.html\">Design
+        the Dashboard Layout</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"dashboards-organize-sections.html\">Dashboard
+        Sections</a></div></ul><li><div class=\"nav-link\"><a href=\"dashboards-time.html\">Work
+        with Time on Dashboards</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"dashboards-time-shared-time-selector.html\">Shared
+        Time Selector</a></div><li><div class=\"nav-link\"><a href=\"dashboards-time-widget-time-selector.html\">Widget
+        Time Selector</a></div><li><div class=\"nav-link\"><a href=\"dashboards-time-section-time-selector.html\">Section
+        Time Selector</a></div><li><div class=\"nav-link\"><a href=\"dashboards-time-live-dashboards.html\">Live
+        Dashboards</a></div><li><div class=\"nav-link\"><a href=\"dashboards-time-zone-settings.html\">Time
+        Zone Settings</a></div><li><div class=\"nav-link\"><a href=\"dashboards-time-default.html\">Default
+        Time Settings for Dashboards</a></div></ul><li><div class=\"nav-link\"><a
+        href=\"dashboards-interactive.html\">Make your Dashboard Interactive</a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"dashboards-interactive-filters.html\">Apply Dashboard
+        Filters</a></div><li><div class=\"nav-link\"><a href=\"dashboards-interactive-parameters.html\">Work
+        with Dashboard Parameters</a></div><li><div class=\"nav-link\"><a href=\"dashboards-interactive-interactions.html\">Work
+        with Dashboard Interactions</a></div></ul><li><div class=\"nav-link\"><a href=\"dashboards-share.html\">Share
+        Dashboards</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"dashboards-share-disable.html\">Disabling
+        Access to Shared Dashboards</a></div><li><div class=\"nav-link\"><a href=\"dashboards-share-restrict.html\">Restricting
+        Access with IP Filters</a></div></ul><li><div class=\"nav-link\"><a href=\"dashboards-pdfexport.html\">Export
+        Dashboards as PDF</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"dashboards-pdfexport-options.html\">PDF
+        Export Options</a></div></ul><li><div class=\"nav-link\"><a href=\"automated-scheduled-reports.html\">Schedule
+        PDF Reports</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"automated-scheduled-reports-permissions.html\">Scheduled
+        Reports Security</a></div><li><div class=\"nav-link\"><a href=\"automated-scheduled-reports-manage.html\">Managing
+        Scheduled Reports</a></div><li><div class=\"nav-link\"><a href=\"automated-scheduled-reports-create.html\">Create
+        Scheduled Reports</a></div><li><div class=\"nav-link\"><a href=\"automated-scheduled-reports-update.html\">Edit
+        Scheduled Reports</a></div><li><div class=\"nav-link\"><a href=\"automated-scheduled-reports-limitations.html\">Scheduled
+        Report Operation and Limitations</a></div><li><div class=\"nav-link\"><a href=\"automated-scheduled-reports-errors-resolutions.html\">Scheduled
+        Report Errors and Resolutions</a></div></ul></ul><li><div class=\"nav-link\"><a
+        href=\"widgets.html\">Widgets</a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"widgets-create.html\">Create Widgets</a></div><li><div
+        class=\"nav-link\"><a href=\"widgets-manage.html\">Manage Widgets</a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"widgets-manage-live-joins.html\">Widgets with
+        live join() functions</a></div><li><div class=\"nav-link\"><a href=\"widgets-manage-embed-widgets.html\">Embedding
+        iFrame Widgets</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-gallery.html\">Widgets
+        Gallery</a></div><li><div class=\"nav-link\"><a href=\"widgets-barchart.html\">Bar
+        Chart Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-barchart-data-mapping.html\">Bar
+        Chart Usage and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-barchart-howto.html\">Bar
+        Chart Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-barchart-howto-severity-levels.html\">Event
+        Detection Across Severity Levels</a></div><li><div class=\"nav-link\"><a href=\"widgets-barchart-howto-authentication-attempts.html\">Failed
+        and Successful Authentication Attempts</a></div><li><div class=\"nav-link\"><a
+        href=\"widgets-barchart-howto-threat-distribution.html\">Threat Type Distribution</a></div><li><div
+        class=\"nav-link\"><a href=\"widgets-barchart-howto-alert-and-detection-sources.html\">Alert
+        Type Proportion in Detection Sources</a></div><li><div class=\"nav-link\"><a
+        href=\"widgets-barchart-howto-daily-detection-counts.html\">Detection Counts
+        with Severity Average</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-barchart-properties.html\">Bar
+        Chart Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-eventlist.html\">Event
+        List Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-eventlist-input.html\">Event
+        List Usage and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-eventlist-properties.html\">Event
+        List Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-gauge.html\">Gauge
+        Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"widgets-gauge-usage-data.html\">Gauge Usage and
+        Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-gauge-howto.html\">Gauge
+        Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-gauge-howto-errors.html\">Display
+        Number of Errors</a></div><li><div class=\"nav-link\"><a href=\"widgets-gauge-howto-memory.html\">Display
+        Query Memory</a></div><li><div class=\"nav-link\"><a href=\"widgets-gauge-howto-multiple.html\">Display
+        Small Multiple Charts</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-gauge-properties.html\">Gauge
+        Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-heatmap.html\">Heat
+        Map Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-heatmap-input.html\">Heat
+        Map Usage and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-heatmap-howto.html\">Heat
+        Map Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"dashboards-allwidgets-heatmap-howto-example1.html\">Github
+        Push Events</a></div><li><div class=\"nav-link\"><a href=\"dashboards-allwidgets-heatmap-howto-example2.html\">Response
+        Time</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-heatmap-properties.html\">Heat
+        Map Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-note.html\">Note
+        Widget</a></div><ul><ul><li><div class=\"nav-link\"><a href=\"widgets-note-properties.html\">Note
+        Widget Property Reference</a></div></ul></ul><li><div class=\"nav-link\"><a
+        href=\"widgets-parameter-panel.html\">Parameter Panel Widget</a></div><li><div
+        class=\"nav-link\"><a href=\"widgets-piechart.html\">Pie Chart Widget</a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"widgets-piechart-input.html\">Pie Chart Usage
+        and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-piechart-howto.html\">Pie
+        Chart Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-piechart-howto-example1.html\">Log
+        Level Distribution</a></div><li><div class=\"nav-link\"><a href=\"widgets-piechart-howto-example2.html\">Method
+        Distribution in Small Multiples</a></div></ul><li><div class=\"nav-link\"><a
+        href=\"widgets-piechart-properties.html\">Pie Chart Property Reference</a></div></ul><li><div
+        class=\"nav-link\"><a href=\"widgets-sankey.html\">Sankey Diagram Widget</a><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"widgets-sankey-input.html\">Sankey Usage and
+        Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-sankey-howto.html\">Sankey
+        Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-sankey-howto-example1.html\">Network
+        Traffic</a></div><li><div class=\"nav-link\"><a href=\"widgets-sankey-howto-example2.html\">Thread
+        Usage</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-sankey-properties.html\">Sankey
+        Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-scatter.html\">Scatter
+        Chart Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-scatter-input.html\">Usage
+        and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-scatter-properties.html\">Scatter
+        Chart Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-single-value.html\">Single
+        Value Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-single-value-input.html\">Single
+        Value Usage and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-single-value-howto.html\">Single
+        Value Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-single-value-howto-example1.html\">Displaying
+        Number of Errors</a></div><li><div class=\"nav-link\"><a href=\"widgets-single-value-howto-example2.html\">Displaying
+        Statistics from a Build</a></div><li><div class=\"nav-link\"><a href=\"widgets-single-value-howto-example3.html\">Displaying
+        a Non-Numeric Value</a></div><li><div class=\"nav-link\"><a href=\"widgets-single-value-howto-example4.html\">Displaying
+        a Trend with a Timechart</a></div><li><div class=\"nav-link\"><a href=\"widgets-single-value-howto-example5.html\">Displaying
+        Values in a Grid</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-single-value-properties.html\">Single
+        Value Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-table.html\">Table
+        Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"widgets-table-usage-data.html\">Table Usage and
+        Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-table-interactions.html\">Table
+        Widget Interactions</a></div><li><div class=\"nav-link\"><a href=\"widgets-table-howto.html\">Table
+        Widget Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-table-howto-methods.html\">Display
+        Different Statuses</a></div><li><div class=\"nav-link\"><a href=\"widgets-table-howto-url.html\">Add
+        Temporary Events and URLs</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-table-properties.html\">Table
+        Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-timechart.html\">Time
+        Chart Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-timechart-usage-data.html\">Time
+        Chart Usage and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-timechart-howto.html\">Time
+        Chart Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-timechart-howto-example1.html\">Charting
+        Metric Data</a></div><li><div class=\"nav-link\"><a href=\"widgets-timechart-howto-example2.html\">Charting
+        Log Levels</a></div><li><div class=\"nav-link\"><a href=\"widgets-timechart-howto-example3.html\">Charting
+        Commits in GitHub</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-timechart-properties.html\">Time
+        Chart Property Reference</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-worldmap.html\">World
+        Map Widget</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-worldmap-usage-data.html\">World
+        Map Usage and Data Format</a></div><li><div class=\"nav-link\"><a href=\"widgets-worldmap-howto.html\">World
+        Map Examples Gallery</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"widgets-worldmap-howto-ip-geo-distribution.html\">IP-Based
+        Geographic Distribution</a></div><li><div class=\"nav-link\"><a href=\"widgets-worldmap-howto-service-monitoring.html\">Service
+        Performance Monitorings</a></div><li><div class=\"nav-link\"><a href=\"widgets-worldmap-howto-geo-clustering.html\">Geohash
+        Performance Clustering</a></div></ul><li><div class=\"nav-link\"><a href=\"widgets-worldmap-properties.html\">World
+        Map Property Reference</a></div></ul></ul></ul><li><div class=\"nav-link\"><a
+        href=\"automated.html\"><h5>Automation</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"automated-alerts.html\">Triggers</a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"automated-alerts-selector.html\">What trigger
+        type to choose</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-getting-started.html\">General
+        information about triggers</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-procedures.html\">Trigger
+        management</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"automated-alerts-create-new.html\">Create
+        triggers</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-editing-new.html\">Edit
+        triggers</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-manage-new.html\">Manage
+        triggers</a></div></ul><li><div class=\"nav-link\"><a href=\"automated-alerts-editing-new-properties.html\">Trigger
+        properties</a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"automated-alerts-create-general-new.html\">General
+        properties</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-create-query.html\">Configuration</a></div><li><div
+        class=\"nav-link\"><a href=\"automated-alerts-create-actions-new.html\">Actions</a></div><li><div
+        class=\"nav-link\"><a href=\"automated-alerts-editing-new-properties-advanced.html\">Advanced
+        settings</a></div><li><div class=\"nav-link\"><a href=\"automated-scheduled-searches-properties.html\">Scheduled
+        search properties</a></div></ul><li><div class=\"nav-link\"><a href=\"automated-alerts-monitoring.html\">Monitor,
+        diagnose, and troubleshoot triggers</a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"automated-alerts-errors-warnings-activity.html\">Monitor
+        Triggers with humio-activity Repository</a></div><li><div class=\"nav-link\"><a
+        href=\"automated-alerts-errors-warnings-activity-errortypes-aggregate-alerts.html\">Aggregate
+        alert errors and solutions</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-errors-warnings-activity-errortypes-scheduled-searches.html\">Scheduled
+        search errors and solutions</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-errors-warnings-activity-errortypes-filter-alerts.html\">Filter
+        alert errors and solutions</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-errors-warnings-activity-errortypes-legacy-alerts.html\">Legacy
+        alert errors and solutions</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-errors-warnings-joins.html\">Errors
+        when Using Live join() Functions</a></div></ul></ul><li><div class=\"nav-link\"><a
+        href=\"automated-actions.html\">Actions</a><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"nav-link\"><a href=\"automated-actions-creating.html\">Create Actions</a></div><li><div
+        class=\"nav-link\"><a href=\"automated-actions-managing.html\">Manage Actions</a></div><li><div
+        class=\"nav-link\"><a href=\"automated-actions-email.html\">Action Type: Email</a></div><li><div
+        class=\"nav-link\"><a href=\"automated-actions-logscale-repository.html\">Action
+        Type: Falcon LogScale Repository</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-opsgenie.html\">Action
+        Type: OpsGenie</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-pagerduty.html\">Action
+        Type: PagerDuty</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-s3.html\">Action
+        Type: S3</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-slack.html\">Action
+        Type: Slack</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-upload-file.html\">Action
+        Type: Lookup File</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-victorops.html\">Action
+        Type: VictorOps (Splunk On-Call)</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-webhooks.html\">Action
+        Type: Webhooks</a></div><li><div class=\"nav-link\"><a href=\"automated-alerts-aggregate-results.html\">Send
+        aggregate results to actions</a></div><li><div class=\"nav-link\"><a href=\"automated-actions-message-template.html\">Message
+        Templates and Variables</a></div></ul><li><div class=\"nav-link\"><a href=\"automated-scheduled-searches-create-schedule-template.html\">Cron
+        Scheduling</a></div></ul><li><div class=\"nav-link\"><a href=\"template-language.html\"><h5>Template
+        Language</h5></a><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"expand\" viewBox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58
+        4.59L10 18l6-6z\"></path></svg></div><ul><li><div class=\"nav-link\"><a href=\"template-language-expressions.html\">Template
+        Expressions</a></div><li><div class=\"nav-link\"><a href=\"template-language-variables.html\">Template
+        Variable Types</a></div><li><div class=\"nav-link\"><a href=\"template-language-examples.html\">Template
+        Examples</a></div></ul><li><div class=\"nav-link\"><a href=\"keyboard-shortcuts.html\"><h5>Keyboard
+        Shortcuts</h5></a></div></ul></ul></div></div></div><button aria-label=\"Close
+        menu\" class=\"text-4xl text-gray-800 p-4 bottom-0 text-white hover:text-magenta-700
+        md:hidden focus:text-magenta-700 self-center\" id=\"closeSidebar\" title=\"Close
+        menu\"><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"fill-current
+        stroke-current h-6 w-6\" viewbox=\"0 0 24 24\"><path d=\"M19 6.41L17.59 5
+        12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59
+        13.41 12z\"></path></svg></button></div></nav></aside><main class=\"px-3 lg:ml-fluid
+        grid-area-main overflow-y-auto flex flex-col bg-white\" id=\"grid-area-main\"><nav
+        aria-label=\"breadcrumbs\" class=\"breadcrumbs text-sm text-gray-700 leading-tight
+        print:hidden\"><div class=\"navigation-breadcrumbs\"><a href=\"https://library.humio.com\">Falcon
+        LogScale Documentation</a><div class=\"navigation-ancestors-link\"> / <a href=\"data-analysis-docs.html\">Data
+        Analysis 1.208.0-1.225.0</a></div><div class=\"navigation-ancestors-link\">
+        / <a href=\"functions.html\">Query Functions</a></div></div></nav><div class=\"dateinfo\"></div><article
+        id=\"mainarticle\" class=\"flex-1\" role=\"main\"><div id=\"functions-math\"><div
+        class=\"titlepage\"><div><div><h2 class=\"title\" style=\"clear: both\">Math
+        Query Functions</h2></div></div></div><p>\n      LogScale's math query functions
+        provide a range of arithmetical\n      and numerical functions.\n    </p><div
+        class=\"note\" style=\"margin-left: 0.5in; margin-right: 0.5in;\"><h3 class=\"title\">Note</h3><p>Math
+        functions on ARM architecture may return different results in very high-precision
+        calculationsc compared to Intel/AMD architectures.</p></div><div class=\"table\"
+        id=\"table_functions-math\"><p class=\"title\"><b>Table: Math Query Functions</b></p><div
+        class=\"table-contents\"><table summary=\"Math Query Functions\" border=\"1\"><colgroup><col
+        class=\"function\"><col class=\"implied\"><col class=\"avail\"><col class=\"desc\"></colgroup><thead><tr><th>Function</th><th>Default
+        Argument</th><th>Availability</th><th>Description</th></tr></thead><tbody><tr
+        id=\"table_functions-math-functions-row-math-abs\"><td><a class=\"link\" href=\"functions-math-abs.html\"
+        title=\"math:abs()\"><code class=\"function\">math:abs([as], field)</code></a></td><td><a
+        class=\"link\" href=\"functions-math-abs.html#query-functions-math-abs-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the absolute value of a field; the result is always a\n      positive number
+        or 0.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-arccos\"><td><a
+        class=\"link\" href=\"functions-math-arccos.html\" title=\"math:arccos()\"><code
+        class=\"function\">math:arccos([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-arccos.html#query-functions-math-arccos-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the arc cosine of a field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-arcsin\"><td><a
+        class=\"link\" href=\"functions-math-arcsin.html\" title=\"math:arcsin()\"><code
+        class=\"function\">math:arcsin([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-arcsin.html#query-functions-math-arcsin-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the arc sine of a field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-arctan\"><td><a
+        class=\"link\" href=\"functions-math-arctan.html\" title=\"math:arctan()\"><code
+        class=\"function\">math:arctan([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-arctan.html#query-functions-math-arctan-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the arc tangent of a value.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-arctan2\"><td><a
+        class=\"link\" href=\"functions-math-arctan2.html\" title=\"math:arctan2()\"><code
+        class=\"function\">math:arctan2([as], x, y)</code></a></td><td>\_</td><td>\_</td><td>\n
+        \     Calculates the arc tangent of a value.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-ceil\"><td><a
+        class=\"link\" href=\"functions-math-ceil.html\" title=\"math:ceil()\"><code
+        class=\"function\">math:ceil([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-ceil.html#query-functions-math-ceil-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Rounds field value to smallest integer that's larger than or equal\n
+        \     to it.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-cos\"><td><a
+        class=\"link\" href=\"functions-math-cos.html\" title=\"math:cos()\"><code
+        class=\"function\">math:cos([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-cos.html#query-functions-math-cos-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the cosine of a field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-cosh\"><td><a
+        class=\"link\" href=\"functions-math-cosh.html\" title=\"math:cosh()\"><code
+        class=\"function\">math:cosh([as], field)</code></a></td><td>\_</td><td>\_</td><td>\n
+        \     Computes the hyperbolic cosine of a double field.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-deg2rad\"><td><a class=\"link\"
+        href=\"functions-math-deg2rad.html\" title=\"math:deg2rad()\"><code class=\"function\">math:deg2rad([as],
+        field)</code></a></td><td><a class=\"link\" href=\"functions-math-deg2rad.html#query-functions-math-deg2rad-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Converts
+        angles from degrees to radians.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-exp\"><td><a
+        class=\"link\" href=\"functions-math-exp.html\" title=\"math:exp()\"><code
+        class=\"function\">math:exp([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-exp.html#query-functions-math-exp-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates Euler's number e raised to the power of a double value\n
+        \     in a field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-expm1\"><td><a
+        class=\"link\" href=\"functions-math-expm1.html\" title=\"math:expm1()\"><code
+        class=\"function\">math:expm1([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-expm1.html#query-functions-math-expm1-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the exponential value of a number minus 1.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-floor\"><td><a class=\"link\"
+        href=\"functions-math-floor.html\" title=\"math:floor()\"><code class=\"function\">math:floor([as],
+        field)</code></a></td><td><a class=\"link\" href=\"functions-math-floor.html#query-functions-math-floor-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Computes
+        the largest integer value not greater than the field\n      value given.\n
+        \   </td></tr><tr id=\"table_functions-math-functions-row-math-log\"><td><a
+        class=\"link\" href=\"functions-math-log.html\" title=\"math:log()\"><code
+        class=\"function\">math:log([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-log.html#query-functions-math-log-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the natural logarithm (base e) of the value in a double\n
+        \     field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-log10\"><td><a
+        class=\"link\" href=\"functions-math-log10.html\" title=\"math:log10()\"><code
+        class=\"function\">math:log10([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-log10.html#query-functions-math-log10-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the base 10 logarithm of a double field.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-log1p\"><td><a class=\"link\"
+        href=\"functions-math-log1p.html\" title=\"math:log1p()\"><code class=\"function\">math:log1p([as],
+        field)</code></a></td><td><a class=\"link\" href=\"functions-math-log1p.html#query-functions-math-log1p-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the natural logarithm of the sum of field's value and\n      1.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-log2\"><td><a class=\"link\"
+        href=\"functions-math-log2.html\" title=\"math:log2()\"><code class=\"function\">math:log2([as],
+        field)</code></a></td><td><a class=\"link\" href=\"functions-math-log2.html#query-functions-math-log2-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the base 2 logarithm of a double field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-mod\"><td><a
+        class=\"link\" href=\"functions-math-mod.html\" title=\"math:mod()\"><code
+        class=\"function\">math:mod([as], divisor, field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-mod.html#query-functions-math-mod-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the floor modulus of field value and the divisor.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-pow\"><td><a class=\"link\" href=\"functions-math-pow.html\"
+        title=\"math:pow()\"><code class=\"function\">math:pow([as], exponent, field)</code></a></td><td><a
+        class=\"link\" href=\"functions-math-pow.html#query-functions-math-pow-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the field value to the exponent power.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-rad2deg\"><td><a
+        class=\"link\" href=\"functions-math-rad2deg.html\" title=\"math:rad2deg()\"><code
+        class=\"function\">math:rad2deg([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-rad2deg.html#query-functions-math-rad2deg-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Converts
+        angles from radians to degrees.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-sin\"><td><a
+        class=\"link\" href=\"functions-math-sin.html\" title=\"math:sin()\"><code
+        class=\"function\">math:sin([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-sin.html#query-functions-math-sin-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the sine of a field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-sinh\"><td><a
+        class=\"link\" href=\"functions-math-sinh.html\" title=\"math:sinh()\"><code
+        class=\"function\">math:sinh([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-sinh.html#query-functions-math-sinh-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the hyperbolic sine of a double field.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-spherical2cartesian\"><td><a
+        class=\"link\" href=\"functions-math-spherical2cartesian.html\" title=\"math:spherical2cartesian()\"><code
+        class=\"function\">math:spherical2cartesian([as], azimuth, polar, radius)</code></a></td><td>\_</td><td>\_</td><td>\n
+        \     Calculates the average for a field of a set of events.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-sqrt\"><td><a class=\"link\"
+        href=\"functions-math-sqrt.html\" title=\"math:sqrt()\"><code class=\"function\">math:sqrt([as],
+        field)</code></a></td><td><a class=\"link\" href=\"functions-math-sqrt.html#query-functions-math-sqrt-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the rounded positive square root of a double field.\n    </td></tr><tr id=\"table_functions-math-functions-row-math-tan\"><td><a
+        class=\"link\" href=\"functions-math-tan.html\" title=\"math:tan()\"><code
+        class=\"function\">math:tan([as], field)</code></a></td><td><a class=\"link\"
+        href=\"functions-math-tan.html#query-functions-math-tan-field\"><em class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n
+        \     Calculates the trigonometric tangent of an angle in a field.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-math-tanh\"><td><a class=\"link\"
+        href=\"functions-math-tanh.html\" title=\"math:tanh()\"><code class=\"function\">math:tanh([as],
+        field)</code></a></td><td><a class=\"link\" href=\"functions-math-tanh.html#query-functions-math-tanh-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Calculates
+        the hyperbolic tangent of a field.\n    </td></tr><tr id=\"table_functions-math-functions-row-parsehexstring\"><td><a
+        class=\"link\" href=\"functions-parsehexstring.html\" title=\"parseHexString()\"><code
+        class=\"function\">parseHexString([as], [charset], field)</code></a></td><td><a
+        class=\"link\" href=\"functions-parsehexstring.html#query-functions-parsehexstring-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Parses
+        input from hex encoded bytes, decoding resulting bytes as a\n      string.\n
+        \   </td></tr><tr id=\"table_functions-math-functions-row-parseint\"><td><a
+        class=\"link\" href=\"functions-parseint.html\" title=\"parseInt()\"><code
+        class=\"function\">parseInt([as], [endian], field, [radix])</code></a></td><td><a
+        class=\"link\" href=\"functions-parseint.html#query-functions-parseint-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Converts
+        an integer from any radix or base to base-ten, decimal\n      radix.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-round\"><td><a class=\"link\" href=\"functions-round.html\"
+        title=\"round()\"><code class=\"function\">round([as], field, [how])</code></a></td><td><a
+        class=\"link\" href=\"functions-round.html#query-functions-round-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Rounds
+        an input field up or down, depending on which is nearest.\n    </td></tr><tr
+        id=\"table_functions-math-functions-row-unit-convert\"><td><a class=\"link\"
+        href=\"functions-unit-convert.html\" title=\"unit:convert()\"><code class=\"function\">unit:convert([as],
+        [binary], field, [from], [keepUnit], [to], [unit])</code></a></td><td><a class=\"link\"
+        href=\"functions-unit-convert.html#query-functions-unit-convert-field\"><em
+        class=\"parameter\"><code>field</code></em></a></td><td>\_</td><td>\n      Converts
+        values between different units.\n    </td></tr></tbody></table></div></div><br
+        class=\"table-break\"></div></article><footer><section id=\"footer\"><div
+        class=\"footer\"><div class=\"footer--top\"></div><div class=\"footer--main
+        flex justify-between\"><div class=\"flex\"><div class=\"crowdstrike-logo\"><a
+        class=\"flex\" aria-label=\"CrowdStrike homepage\" href=\"https://www.crowdstrike.com/\"
+        target=\"_blank\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+        width=\"173px\" height=\"32px\" viewBox=\"0 0 173 32\" version=\"1.1\"><g
+        id=\"Homepage\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g
+        id=\"Home\" transform=\"translate(-72.000000, -7240.000000)\" fill=\"#FEFEFE\"><g
+        id=\"Group-24\" transform=\"translate(72.000000, 7240.000000)\"><g id=\"Group-7\"
+        transform=\"translate(13.000000, 3.526700)\"><path d=\"M14.5154,12.2448 L14.5154,11.9378
+        L11.9154,9.6998 L11.6124,9.6998 C10.8974,10.4898 9.7934,11.0818 8.5584,11.0818
+        C6.6304,11.0818 5.1134,9.6118 5.1134,7.5938 C5.1134,5.5758 6.6304,4.1058 8.5584,4.1058
+        C9.7934,4.1058 10.8974,4.6978 11.6124,5.4878 L11.9154,5.4878 L14.5154,3.2498
+        L14.5154,2.9428 C13.1504,1.2758 11.0064,0.2008 8.5794,0.2008 C4.1174,0.2008
+        0.7384,3.3598 0.7384,7.5938 C0.7384,7.7578 0.7754,7.9088 0.7864,8.0698 C2.6124,9.3118
+        4.2244,10.3058 5.6124,11.2158 C7.6134,12.4818 9.2284,13.6468 10.5584,14.7298
+        C12.2164,14.3108 13.5604,13.4018 14.5154,12.2448 M2.3674,12.1658 C3.4094,13.4458
+        4.8804,14.3638 6.6154,14.7558 C5.4434,14.0968 4.3084,13.4498 3.2514,12.7338
+        C2.9414,12.5418 2.6654,12.3558 2.3674,12.1658\" id=\"Fill-1\"></path><path
+        d=\"M29.571,14.0437 L28.921,11.2357 L28.683,11.0817 C28.553,11.1477 28.445,11.2357
+        28.12,11.2357 C27.621,11.2357 27.318,10.7087 27.058,10.2927 C26.625,9.6337
+        26.278,9.2827 25.975,9.1297 C27.556,8.4277 28.618,7.1117 28.618,5.2247 C28.618,2.3067
+        26.625,0.4637 22.921,0.4637 L16.465,0.4637 L16.465,14.7237 L20.754,14.7237
+        L20.754,9.7217 L21.144,9.7217 C22.097,9.7217 23.311,11.7837 23.874,12.7057
+        C25.044,14.5707 25.975,14.9867 27.643,14.9867 C28.423,14.9867 29.073,14.7017
+        29.463,14.3507 L29.571,14.0437 Z M24.242,5.4657 C24.242,6.4097 23.549,6.8697
+        22.747,6.8697 L20.754,6.8697 L20.754,3.9737 L22.747,3.9737 C23.549,3.9737
+        24.242,4.5007 24.242,5.4657 L24.242,5.4657 Z\" id=\"Fill-3\"></path><path
+        d=\"M46.1426,7.5939 C46.1426,3.3599 42.7636,0.2009 38.2796,0.2009 C33.7946,0.2009
+        30.4156,3.3599 30.4156,7.5939 C30.4156,11.8279 33.7946,14.9869 38.2796,14.9869
+        C42.7636,14.9869 46.1426,11.8059 46.1426,7.5939 M41.7666,7.5939 C41.7666,9.6339
+        40.2066,11.0819 38.2796,11.0819 C36.3516,11.0819 34.7916,9.6339 34.7916,7.5939
+        C34.7916,5.5539 36.3516,4.1059 38.2796,4.1059 C40.2066,4.1059 41.7666,5.5539
+        41.7666,7.5939\" id=\"Fill-5\"></path></g><polygon id=\"Fill-8\" points=\"80.6103
+        3.9906 76.5163 3.9906 73.9813 11.8886 71.2953 3.9906 68.6963 3.9906 66.0313
+        11.8446 63.4973 3.9906 59.4023 3.9906 59.2073 4.3196 64.4503 18.2506 67.0493
+        18.2506 69.9953 10.4846 72.9633 18.2506 75.5633 18.2506 80.8053 4.3196\"></polygon><path
+        d=\"M96.5105,11.0987 C96.5105,6.8427 93.6725,3.9907 89.0585,3.9907 L82.4945,3.9907
+        L82.4945,18.2507 L89.0585,18.2507 C93.6725,18.2507 96.5105,15.3987 96.5105,11.0987
+        M92.1345,11.1207 C92.1345,13.4457 90.7695,14.7407 88.8855,14.7407 L86.7835,14.7407
+        L86.7835,7.5007 L88.8855,7.5007 C90.7695,7.5007 92.1345,8.7957 92.1345,11.1207\"
+        id=\"Fill-9\"></path><polygon id=\"Fill-11\" points=\"119.2316 7.5008 123.5206
+        7.5008 123.5206 3.9908 110.6536 3.9908 110.6536 7.5008 114.9426 7.5008 114.9426
+        18.2508 119.2316 18.2508\"></polygon><path d=\"M137.233,8.7513 C137.233,5.8333
+        135.24,3.9903 131.536,3.9903 L125.08,3.9903 L125.08,18.2503 L129.37,18.2503
+        L129.37,13.2483 L130.388,13.2483 L133.052,18.2503 L137.32,18.2503 L137.515,17.9213
+        L134.655,12.6343 C136.193,11.9103 137.233,10.6163 137.233,8.7513 M132.857,8.9923
+        C132.857,9.9363 132.164,10.3963 131.362,10.3963 L129.37,10.3963 L129.37,7.5003
+        L131.362,7.5003 C132.164,7.5003 132.857,8.0273 132.857,8.9923\" id=\"Fill-12\"></path><polygon
+        id=\"Fill-14\" points=\"139.832 18.2507 144.121 18.2507 144.121 3.9907 139.832
+        3.9907\"></polygon><polygon id=\"Fill-15\" points=\"154.9957 10.3747 159.8477
+        4.3197 159.6527 3.9907 155.0827 3.9907 151.1177 9.0587 151.1177 3.9907 146.8287
+        3.9907 146.8287 18.2507 151.1177 18.2507 151.1177 13.8627 151.8977 12.9417
+        155.5377 18.2507 160.0217 18.2507 160.2167 17.9217\"></polygon><polygon id=\"Fill-16\"
+        points=\"161.3862 3.9903 161.3862 18.2513 172.1732 18.2513 172.1732 14.7413
+        165.6742 14.7413 165.6742 12.7663 170.5702 12.7663 170.5702 9.4753 165.6742
+        9.4753 165.6742 7.5013 172.1092 7.5013 172.1092 3.9903\"></polygon><g id=\"Group-23\"
+        transform=\"translate(0.000000, 0.526700)\"><path d=\"M103.7658,17.8933 C106.9078,17.8933
+        109.6348,16.3583 109.6348,13.3983 C109.6348,10.1723 106.8858,9.3383 104.4598,8.6363
+        C103.5058,8.3513 102.5298,8.0213 102.5298,7.3193 C102.5298,6.8143 103.0718,6.5073
+        103.8958,6.5073 C105.3048,6.5073 106.4958,7.3853 107.1018,7.9563 L107.4048,7.9563
+        L109.4188,5.5433 L109.4188,5.2363 C108.3578,4.0303 106.1928,3.1093 103.8088,3.1093
+        C100.4728,3.1093 98.1568,4.9073 98.1568,7.5173 C98.1568,10.3263 100.7108,11.5553
+        102.8768,12.1693 C104.2858,12.5643 105.2408,12.6303 105.2408,13.3983 C105.2408,13.9473
+        104.5678,14.2763 103.5268,14.2763 C102.2048,14.2763 100.6028,13.4203 99.8238,12.6523
+        L99.5208,12.6523 L97.5288,15.1533 L97.5288,15.4603 C98.8058,16.8853 101.1008,17.8933
+        103.7658,17.8933\" id=\"Fill-17\"></path><path d=\"M29.8197,30.9998 C28.7807,28.6218
+        26.6937,25.5708 18.5177,21.2138 C14.7477,19.1178 8.3067,15.8908 2.5137,9.7578
+        C3.0387,11.9718 5.7287,16.8368 17.2987,22.9118 C20.5027,24.6648 25.9207,26.3088
+        29.8197,30.9998\" id=\"Fill-19\"></path><path d=\"M29.298,26.9271 C28.312,24.1171
+        26.532,20.5191 18.091,15.1751 C13.98,12.4811 7.945,9.0981 0,0.4731 C0.568,2.7981
+        3.078,8.8441 15.73,16.6931 C19.886,19.5091 25.25,21.2461 29.298,26.9271\"
+        id=\"Fill-21\"></path></g></g></g></g></svg></a></div><div class=\"footer--support\"><a
+        href=\"https://supportportal.crowdstrike.com/\" target=\"_blank\">\n                        Support\n
+        \                     </a></div></div><ul class=\"flex\"><li><a href=\"https://twitter.com/meethumio\"
+        target=\"_blank\"><img alt=\"Twitter\" src=\"css-images/twitter.svg\"></a></li><li><a
+        href=\"https://www.linkedin.com/company/humio/\" target=\"_blank\"><img alt=\"LinkedIn\"
+        src=\"css-images/linkedin.svg\"></a></li><li><a href=\"https://www.youtube.com/channel/UCjmEGReV0VCHpeS8tFgOvPQ\"
+        target=\"_blank\"><img alt=\"Youtube\" src=\"css-images/youtube.svg\"></a></li></ul></div><div><p
+        class=\"footer--copyright\">\n                    \xA9 2025 CrowdStrike\n
+        \                   All other marks contained herein are the property of their
+        respective owners.\n                  </p></div></div></section></footer></main><aside
+        class=\"grid-area-sidebarb fixed md:relative inset-y-0 left-0 z-20 md:z-0
+        print:hidden overflow-y-auto transition-all transform transform-gpu -translate-x-full
+        opacity-0 duration-300 md:translate-x-0 md:opacity-100 bg-gray-50\" id=\"sidebarb\"><button
+        class=\"sidebar-open\" id=\"rsidebar-openclose\" onclick=\"sidebar_toggle(this,'sidebarb',0);\"
+        title=\"Hide page contents and related links\">\xBB</button><div class=\"fixed-nav\"
+        id=\"rsidebar-nav\"><div class=\"navigation-siblings\" baseid=\"functions-math\"></div><div
+        class=\"navigation-children\" baseid=\"functions-math\"></div><div class=\"doccontent\"><div
+        class=\"nav-container\"><div class=\"nav-toc flex-1\"><ul><li class=\"expanded\"><div
+        class=\"nav-link\"><h3>Function Groups</h3><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"expand\" viewbox=\"0 0 24 24\"><path d=\"M10
+        6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-aggregate.html\">Aggregate
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-array.html\">Array Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-data-manipulation.html\">Data
+        Manipulation Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-event.html\">Event Information Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-filter.html\">Filtering
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-formatting.html\">Formatting Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-geolocation.html\">Geolocation
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-hash-functions.html\">Hash Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-join-functions.html\">Join
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-network-location.html\">Network and Location Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-parsing.html\">Parsing
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-preamble.html\">Preamble Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-regular-expression.html\">Regular
+        Expression Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-security.html\">Security Related Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-sequence.html\">Sequence
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-statistics.html\">Statistics Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-string.html\">String
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-time-date.html\">Time and Date Query Functions</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-transformation.html\">Tranformation
+        Query Functions</a></div></li><li><div class=\"navigation-sibling-link\"><a
+        href=\"functions-widget.html\">Widget Query Functions</a></div></li></ul></li></ul></div></div></div><div
+        class=\"doccontent\"><div class=\"nav-container\"><div class=\"nav-toc flex-1\"><ul><li
+        class=\"expanded\"><div class=\"nav-link\"><h3>Related Functions</h3><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewbox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-abs.html\">math:abs()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arccos.html\">math:arccos()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arcsin.html\">math:arcsin()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arctan.html\">math:arctan()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arctan2.html\">math:arctan2()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-ceil.html\">math:ceil()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-cos.html\">math:cos()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-cosh.html\">math:cosh()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-deg2rad.html\">math:deg2rad()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-exp.html\">math:exp()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-expm1.html\">math:expm1()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-floor.html\">math:floor()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log.html\">math:log()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log10.html\">math:log10()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log1p.html\">math:log1p()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log2.html\">math:log2()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-mod.html\">math:mod()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-pow.html\">math:pow()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-rad2deg.html\">math:rad2deg()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-sin.html\">math:sin()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-sinh.html\">math:sinh()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-spherical2cartesian.html\">math:spherical2cartesian()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-sqrt.html\">math:sqrt()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-tan.html\">math:tan()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-tanh.html\">math:tanh()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-parsehexstring.html\">parseHexString()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-parseint.html\">parseInt()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-round.html\">round()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-unit-convert.html\">unit:convert()</a></div></li></ul></li></ul></div></div></div><div
+        class=\"doccontent\"><div class=\"nav-container\"><div class=\"nav-toc flex-1\"><ul><li
+        class=\"expanded\"><div class=\"nav-link\"><h3>Similar Functions</h3><svg
+        xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\" class=\"expand\"
+        viewbox=\"0 0 24 24\"><path d=\"M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z\"></path></svg></div><ul><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-abs.html\">math:abs()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arccos.html\">math:arccos()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arcsin.html\">math:arcsin()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arctan.html\">math:arctan()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-arctan2.html\">math:arctan2()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-ceil.html\">math:ceil()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-cos.html\">math:cos()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-cosh.html\">math:cosh()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-deg2rad.html\">math:deg2rad()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-exp.html\">math:exp()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-expm1.html\">math:expm1()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-floor.html\">math:floor()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log.html\">math:log()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log10.html\">math:log10()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log1p.html\">math:log1p()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-log2.html\">math:log2()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-mod.html\">math:mod()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-pow.html\">math:pow()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-rad2deg.html\">math:rad2deg()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-sin.html\">math:sin()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-sinh.html\">math:sinh()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-spherical2cartesian.html\">math:spherical2cartesian()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-sqrt.html\">math:sqrt()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-tan.html\">math:tan()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-math-tanh.html\">math:tanh()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-parsehexstring.html\">parseHexString()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-parseint.html\">parseInt()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-round.html\">round()</a></div></li><li><div
+        class=\"navigation-sibling-link\"><a href=\"functions-unit-convert.html\">unit:convert()</a></div></li></ul></li></ul></div></div></div></div></aside><div
+        class=\"grid-area-version\" id=\"sidebar-version\"><div class=\"fixed-nav\"></div></div><div
+        class=\"sticky bottom-0 md:hidden print:hidden bg-white\" style=\"border-top:
+        1px solid #C4C8CD\"><div class=\"flex justify-center items-center\"><button
+        aria-labelledby=\"menuLabel\" class=\"text-3xl p-4 flex items-center focus:bg-gray-200\"
+        id=\"openSidebar\"><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"fill-current h-8 w-8\" viewbox=\"0 0 24 24\"><path d=\"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z\"></path></svg><span
+        class=\"pl-2 text-sm font-medium uppercase tracking-wide text-gray-700\" id=\"menuLabel\">Menu</span></button><button
+        aria-labelledby=\"searchLabel\" class=\"text-3xl p-4 flex items-center focus:bg-gray-200\"
+        id=\"openSearch\"><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"fill-current h-8 w-8\" viewbox=\"0 0 24 24\"><path d=\"M15.5 14h-.79l-.28-.27A6.471
+        6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5
+        4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14
+        9.5 11.99 14 9.5 14z\"></path></svg><span class=\"pl-2 text-sm font-medium
+        uppercase tracking-wide text-gray-700\" id=\"searchLabel\">Search</span></button></div></div><div
+        class=\"w-full fixed bottom-0 left-0 z-10 bg-gray-900 overflow-x-hidden pt-10
+        flex flex-col items-center md:hidden transition-all opacity-0 transform transform-gpu
+        translate-y-full duration-300\" id=\"search-pane\"><h4 class=\"text-xl text-white
+        mb-4\" id=\"search-label\">Enter search term</h4><form action=\"/search.html\"
+        class=\"md:flex my-auto mx-5 justify-between items-center print:hidden\" id=\"humio_searchpane\"
+        method=\"get\"><input aria-label=\"Search current releases\" spellcheck=\"false\"
+        autocorrect=\"off\" class=\"p-2 flex-1 focus:bg-yellow-50\" id=\"inlinesearchpane\"
+        name=\"search\" onchange=\"inline_search(this,'mobile_search');\" onkeyup=\"inline_search(this,'mobile_search');\"
+        placeholder=\"Find...\" style=\"width: 300px;\" type=\"search\"><div id=\"mobile_search\"
+        class=\"humio_searchdropdown_mobile\"><button aria-label=\"Get search results\"
+        class=\"p-2 text-white bg-gray-700 hover:bg-gray-200 hover:text-pink-500 focus:bg-gray-200
+        focus:text-pink-500 tooltipped tooltipped-sw\"><svg xmlns=\"http://www.w3.org/2000/svg\"
+        aria-hidden=\"true\" class=\"fill-current stroke-current h-6 w-6\" viewbox=\"0
+        0 24 24\"><path d=\"M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5
+        0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6
+        0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z\"></path></svg></button></div></form><button
+        aria-label=\"Close menu\" class=\"text-4xl text-gray-200 p-4 bottom-0 text-white
+        hover:text-magenta-700 md:hidden focus:text-magenta-700 self-center\" id=\"closeSearch\"
+        title=\"Close menu\"><svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"
+        class=\"fill-current stroke-current h-6 w-6\" viewbox=\"0 0 24 24\"><path
+        d=\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41
+        17.59 19 19 17.59 13.41 12z\"></path></svg></button></div><button class=\"fixed
+        bottom-0 right-0 opacity-0 p-4 m-4 tracking-wide bg-gray-900 text-gray-100
+        transition transform transform-gpu duration-500 translate-y-full\" id=\"snackbar\">\n
+        \         Clear highlights\n          </button><div class=\"fixed hidden inset-0
+        bg-black bg-opacity-50\" id=\"screen\"></div></div><div></div><script>\n              initialize_page();\n
+        \           </script></body></html>\n"
+    headers:
+      Age:
+      - '2792'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '101778'
+      Content-Security-Policy:
+      - frame-ancestors 'none'; default-src 'self'; img-src 'self' https://*.google-analytics.com
+        https://*.googletagmanager.com; script-src 'self' https://cdn.rawgit.com/
+        https://unpkg.com/ https://cdn.jsdelivr.net/ https://*.googletagmanager.com/
+        'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net/ 'unsafe-inline';
+        object-src 'none'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com
+        https://*.googletagmanager.com https://library.humio.net
+      Content-Type:
+      - text/html
+      Date:
+      - Mon, 02 Feb 2026 16:05:14 GMT
+      ETag:
+      - '"e01d15411f0d39d278b7eef57f19ce86"'
+      Last-Modified:
+      - Mon, 02 Feb 2026 15:44:23 GMT
+      Referrer-Policy:
+      - same-origin
+      Server:
+      - AmazonS3
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains; preload
+      Via:
+      - 1.1 4093d20d641782c8a61cba78cc905034.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 8D3OEIldYBjIl6CuZ6pxdKHaBPfL9sm8G6bZxiBjTLrw6BjAQihnWw==
+      X-Amz-Cf-Pop:
+      - MCI50-P4
+      X-Cache:
+      - Hit from cloudfront
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

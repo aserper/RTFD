@@ -187,18 +187,12 @@ class LogscaleProvider(BaseProvider):
             tool_names.extend(["logscale_syntax", "logscale_function"])
 
         tool_tiers = {
-            "search_logscale_docs": ToolTierInfo(
-                tier=5, defer_recommended=True, category="search"
-            ),
+            "search_logscale_docs": ToolTierInfo(tier=5, defer_recommended=True, category="search"),
             "list_logscale_functions": ToolTierInfo(
                 tier=5, defer_recommended=True, category="metadata"
             ),
-            "logscale_syntax": ToolTierInfo(
-                tier=5, defer_recommended=True, category="fetch"
-            ),
-            "logscale_function": ToolTierInfo(
-                tier=5, defer_recommended=True, category="fetch"
-            ),
+            "logscale_syntax": ToolTierInfo(tier=5, defer_recommended=True, category="fetch"),
+            "logscale_function": ToolTierInfo(tier=5, defer_recommended=True, category="fetch"),
         }
 
         return ProviderMetadata(
@@ -285,9 +279,7 @@ class LogscaleProvider(BaseProvider):
                 href = link.get("href", "")
                 if href.startswith("functions-") and href.endswith(".html"):
                     # Skip category pages
-                    if any(
-                        href == cat["page"] for cat in FUNCTION_CATEGORIES.values()
-                    ):
+                    if any(href == cat["page"] for cat in FUNCTION_CATEGORIES.values()):
                         continue
 
                     func_name = link.get_text(strip=True)
@@ -348,9 +340,7 @@ class LogscaleProvider(BaseProvider):
             "source": BASE_URL,
         }
 
-    async def _fetch_syntax_docs(
-        self, topic: str, max_bytes: int = 20480
-    ) -> dict[str, Any]:
+    async def _fetch_syntax_docs(self, topic: str, max_bytes: int = 20480) -> dict[str, Any]:
         """Fetch documentation for a specific syntax topic."""
         topic_lower = topic.lower().strip()
 
@@ -457,9 +447,7 @@ class LogscaleProvider(BaseProvider):
             if exc.response.status_code == 404:
                 # Try searching for the function
                 search_result = await self._search_docs(function_name, limit=5)
-                func_matches = [
-                    r for r in search_result["results"] if r["type"] == "function"
-                ]
+                func_matches = [r for r in search_result["results"] if r["type"] == "function"]
                 if func_matches:
                     suggestions = ", ".join(m["name"] for m in func_matches[:3])
                     return {
@@ -529,10 +517,7 @@ class LogscaleProvider(BaseProvider):
                     href = link.get("href", "")
                     if href.startswith("functions-") and href.endswith(".html"):
                         # Skip category pages
-                        if any(
-                            href == cat["page"]
-                            for cat in FUNCTION_CATEGORIES.values()
-                        ):
+                        if any(href == cat["page"] for cat in FUNCTION_CATEGORIES.values()):
                             continue
 
                         func_name = link.get_text(strip=True)
@@ -583,9 +568,7 @@ class LogscaleProvider(BaseProvider):
             "hint": "Use category parameter to list functions in a specific category",
         }
 
-    def _extract_main_content(
-        self, soup: BeautifulSoup, base_url: str, max_bytes: int
-    ) -> str:
+    def _extract_main_content(self, soup: BeautifulSoup, base_url: str, max_bytes: int) -> str:
         """Extract and process main content from a documentation page."""
         # Make a copy to avoid modifying the original soup
         from copy import copy
@@ -600,17 +583,23 @@ class LogscaleProvider(BaseProvider):
 
         # Remove elements by class patterns common in Humio docs
         unwanted_patterns = [
-            "nav", "sidebar", "menu", "breadcrumb", "toc", "footer",
-            "header", "skip", "social", "share", "cookie", "banner"
+            "nav",
+            "sidebar",
+            "menu",
+            "breadcrumb",
+            "toc",
+            "footer",
+            "header",
+            "skip",
+            "social",
+            "share",
+            "cookie",
+            "banner",
         ]
         for pattern in unwanted_patterns:
-            for elem in soup.find_all(
-                class_=lambda x: x and pattern in str(x).lower()
-            ):
+            for elem in soup.find_all(class_=lambda x, p=pattern: x and p in str(x).lower()):
                 elem.decompose()
-            for elem in soup.find_all(
-                id=lambda x: x and pattern in str(x).lower()
-            ):
+            for elem in soup.find_all(id=lambda x, p=pattern: x and p in str(x).lower()):
                 elem.decompose()
 
         # Try to find the main content area using multiple strategies
@@ -741,9 +730,7 @@ class LogscaleProvider(BaseProvider):
             result = await self._list_functions(category)
             return serialize_response_with_meta(result)
 
-        async def logscale_syntax(
-            topic: str, max_bytes: int = 20480
-        ) -> CallToolResult:
+        async def logscale_syntax(topic: str, max_bytes: int = 20480) -> CallToolResult:
             """
             Fetch LogScale syntax docs for a topic (filters, operators, regex, time, etc.).
 
@@ -754,9 +741,7 @@ class LogscaleProvider(BaseProvider):
             result = await self._fetch_syntax_docs(topic, max_bytes)
             return chunk_and_serialize_response(result)
 
-        async def logscale_function(
-            function_name: str, max_bytes: int = 20480
-        ) -> CallToolResult:
+        async def logscale_function(function_name: str, max_bytes: int = 20480) -> CallToolResult:
             """
             Fetch docs for a specific LogScale function (regex, split, count, etc.).
 
