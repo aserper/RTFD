@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **LogScale Provider**: LogScale (Humio) query language documentation support
+  - `search_logscale_docs` - Search LogScale documentation for syntax, functions, and operators
+  - `list_logscale_functions` - List available LogScale functions by category (aggregate, array, string, math, time-date, regex, parsing, hash, and more)
+  - `logscale_syntax` - Fetch detailed syntax documentation for topics like filters, operators, regex, time, conditionals, macros, and arrays
+  - `logscale_function` - Fetch function-specific documentation with signatures, parameters, and examples
 - **Deferred Loading Support**: Tool tier classification for client-side `defer_loading` optimization
   - New `ToolTierInfo` dataclass for categorizing tools by usage frequency (tiers 1-6)
   - All 28 tools classified into tiers: Core (1), Frequent (2), Regular (3), Situational (4), Niche (5), Admin (6)
