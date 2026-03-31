@@ -1,6 +1,6 @@
 ---
 name: using-rtfd
-description: Use when needing to look up library documentation, package metadata, Docker images, GitHub repos, GCP services, LogScale query syntax, or Zig docs. Use when unsure which documentation source to query or how to chain search-then-fetch tools for any package ecosystem.
+description: Use PROACTIVELY when writing or modifying code that calls external library APIs — verify function signatures, parameters, and return types are current before writing the code. Also use when looking up library docs, package metadata, Docker images, GitHub repos, GCP services, LogScale query syntax, or Zig docs.
 ---
 
 # Using RTFD
@@ -8,6 +8,15 @@ description: Use when needing to look up library documentation, package metadata
 RTFD provides 33 tools across 10 providers for real-time documentation lookup. Core pattern: **search first, then fetch full docs**.
 
 ## When to Use
+
+### Proactive (use without being asked)
+
+- **Writing code that uses external libraries** — look up current API before writing calls, especially for libraries that change frequently or that you're not 100% certain about
+- **Generating install commands or dependency specs** — verify the current version exists
+- **Recommending a library or tool** — confirm it's still maintained, check latest version
+- **Unsure about a function signature, parameter name, or default** — fetch the docs rather than guessing
+
+### Reactive (user asks for help)
 
 - Need current docs for any library/package (PyPI, npm, crates.io, Go, Zig)
 - Looking up package metadata, versions, or stats
