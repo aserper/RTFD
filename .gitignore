@@ -37,4 +37,5 @@ rtfd-claude/
 # Claude Code configuration
 CLAUDE.md
 .claude/
+!.claude/skills/
 AGENTS.md
